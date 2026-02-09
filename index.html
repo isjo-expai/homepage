@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>EXPAI — Expert AI for Factory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#0EA5E9 #060810}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:#060810}
+::-webkit-scrollbar-thumb{background:#0EA5E9;border-radius:3px}
+body{font-family:'Inter',sans-serif;background:#060810;color:#E2E8F0;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* === LOADER === */
+#loader{position:fixed;inset:0;z-index:9999;background:#060810;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .8s,visibility .8s}
+#loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+#loader .bar{width:200px;height:2px;background:#111827;border-radius:1px;overflow:hidden}
+#loader .bar::after{content:'';display:block;width:40%;height:100%;background:linear-gradient(90deg,#0EA5E9,#06B6D4);border-radius:1px;animation:load 1s ease-in-out infinite}
+@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+#loader img{height:40px;margin-bottom:24px;opacity:.7}
+
+/* === PROGRESS === */
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,#0EA5E9,#06B6D4,#0EA5E9);z-index:200;transition:width .1s}
+
+/* === GRID BG === */
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;background-image:linear-gradient(rgba(14,165,233,1) 1px,transparent 1px),linear-gradient(90deg,rgba(14,165,233,1) 1px,transparent 1px);background-size:60px 60px}
+
+/* === NAV === */
+#nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
+#nav.scrolled{background:rgba(6,8,16,0.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(14,165,233,0.06);padding:12px 48px}
+#nav .logo{height:30px;cursor:pointer;transition:opacity .3s}
+#nav .logo:hover{opacity:.8}
+#nav .nav-links{display:flex;gap:2px}
+#nav .nav-links a{color:#64748B;text-decoration:none;font-size:12px;font-weight:500;padding:8px 14px;border-radius:6px;transition:all .3s;letter-spacing:-.2px}
+#nav .nav-links a:hover,#nav .nav-links a.active{color:#E2E8F0;background:rgba(14,165,233,0.08)}
+
+/* === SIDE DOTS === */
+#side-dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:10px}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(100,116,139,0.25);cursor:pointer;transition:all .3s;position:relative}
+.dot:hover{background:#0EA5E9;transform:scale(1.5)}
+.dot.active{background:#0EA5E9;box-shadow:0 0 10px rgba(14,165,233,0.5)}
+.dot .tip{position:absolute;right:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:10px;color:#94A3B8;background:rgba(6,8,16,0.95);border:1px solid #1E293B;padding:4px 10px;border-radius:4px;opacity:0;pointer-events:none;transition:opacity .2s}
+.dot:hover .tip{opacity:1}
+
+/* === COMMON === */
+section{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center}
+section>.inner{width:100%}
+.inner{max-width:1400px;margin:0 auto;padding:40px 56px;position:relative;z-index:2}
+.badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#0EA5E9;border:1px solid rgba(14,165,233,0.15);border-radius:4px;padding:4px 14px;margin-bottom:14px;background:rgba(14,165,233,0.03);font-family:'JetBrains Mono',monospace}
+.stitle{font-size:clamp(20px,2.5vw,32px);font-weight:800;letter-spacing:-1.2px;line-height:1.15;margin-bottom:8px;color:#F1F5F9}
+.sdesc{font-size:14px;color:#64748B;line-height:1.7;max-width:600px}
+.accent{color:#0EA5E9}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+
+/* === REVEAL === */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv.v{opacity:1;transform:translateY(0)}
+.rv-l{opacity:0;transform:translateX(-40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv-l.v{opacity:1;transform:translateX(0)}
+.rv-r{opacity:0;transform:translateX(40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.rv-r.v{opacity:1;transform:translateX(0)}
+
+/* === CARDS === */
+.card{background:rgba(15,23,42,0.6);border:1px solid rgba(30,41,59,0.6);border-radius:10px;padding:20px;transition:all .4s;backdrop-filter:blur(8px)}
+.card:hover{border-color:rgba(14,165,233,0.15);transform:translateY(-2px)}
+.card h3{font-size:14px;font-weight:700;color:#F1F5F9;margin-bottom:6px;letter-spacing:-.3px}
+.card p{font-size:12px;color:#64748B;line-height:1.6}
+.card-accent{border-top:2px solid #0EA5E9}
+.card-purple{border-top:2px solid #7C3AED}
+.card-green{border-top:2px solid #10B981}
+.card-amber{border-top:2px solid #F59E0B}
+.card-red{border-top:2px solid #EF4444}
+
+/* === IMAGE FRAME === */
+.img-frame{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(30,41,59,0.5);background:#0A0E1A;transition:all .5s}
+.img-frame:hover{border-color:rgba(14,165,233,0.2);box-shadow:0 20px 60px rgba(14,165,233,0.06)}
+.img-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.img-frame:hover img{transform:scale(1.03)}
+.img-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(6,8,16,0.6) 100%);pointer-events:none}
+.img-glow::before{content:'';position:absolute;inset:-1px;border-radius:14px;padding:1px;background:linear-gradient(135deg,rgba(14,165,233,0.2),transparent 50%,rgba(124,58,237,0.15));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2}
+.img-caption{position:absolute;bottom:0;left:0;right:0;padding:10px 14px;z-index:3;display:flex;align-items:center;gap:6px}
+.img-caption span{font-size:9px;color:#94A3B8;font-family:'JetBrains Mono',monospace;letter-spacing:1px;text-transform:uppercase}
+.img-dot{width:5px;height:5px;border-radius:50%;background:#0EA5E9;flex-shrink:0}
+
+/* === STAT === */
+.stat{text-align:center;padding:10px;background:rgba(15,23,42,0.4);border:1px solid rgba(30,41,59,0.5);border-radius:8px;transition:all .3s}
+.stat:hover{border-color:rgba(14,165,233,0.25)}
+.stat-num{font-size:clamp(18px,2vw,26px);font-weight:900;color:#0EA5E9;letter-spacing:-1.5px;line-height:1;margin-bottom:2px;font-family:'JetBrains Mono',monospace}
+.stat-lbl{font-size:9px;color:#64748B;letter-spacing:.5px}
+
+/* === QUOTE === */
+.quote{background:rgba(14,165,233,0.03);border-left:2px solid #0EA5E9;border-radius:0 8px 8px 0;padding:16px 20px;font-size:12px;color:#94A3B8;line-height:1.7;font-style:italic}
+
+/* === AGENT BLOCK === */
+.ab{padding:6px 10px;border-radius:6px;border-left:3px solid;background:rgba(15,23,42,0.5);margin-bottom:4px;transition:background .3s}
+.ab:hover{background:rgba(15,23,42,0.8)}
+.ab h4{font-size:9px;font-weight:700;margin-bottom:2px;letter-spacing:-.2px}
+.ab ul{list-style:none;padding:0}
+.ab li{font-size:9px;color:#64748B;line-height:1.4;padding-left:10px;position:relative}
+.ab li::before{content:'';position:absolute;left:0;top:9px;width:3px;height:3px;border-radius:1px;background:currentColor;opacity:.3}
+
+/* === CYCLE === */
+.cycle{display:flex;justify-content:center;align-items:center;gap:0;margin:10px 0}
+.cycle-item{width:140px;padding:10px 8px;text-align:center;border-radius:8px;border:1px solid;background:rgba(15,23,42,0.4);transition:all .3s}
+.cycle-item:hover{transform:scale(1.04)}
+.cycle-item h4{font-size:11px;font-weight:700;margin-bottom:2px}
+.cycle-item p{font-size:9px;line-height:1.3;color:#64748B}
+.cycle-arrow{font-size:16px;color:#1E293B;padding:0 6px;font-family:'JetBrains Mono',monospace}
+
+/* === LAYER === */
+.layer{background:rgba(15,23,42,0.4);border:1px solid rgba(30,41,59,0.5);border-radius:8px;padding:10px 16px;margin-bottom:6px;border-left:3px solid}
+.layer-title{font-size:11px;font-weight:700;margin-bottom:6px;letter-spacing:-.2px}
+.layer-items{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.layer-item{background:rgba(6,8,16,0.5);border:1px solid rgba(30,41,59,0.4);border-radius:6px;padding:6px;font-size:9px;color:#64748B;text-align:center;line-height:1.3}
+.layer-item strong{display:block;color:#E2E8F0;font-size:9px;margin-bottom:1px;font-family:'JetBrains Mono',monospace}
+
+/* === TABS === */
+.tabs{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
+.tab{padding:6px 12px;border-radius:5px;font-size:10px;font-weight:600;color:#64748B;background:rgba(15,23,42,0.4);border:1px solid rgba(30,41,59,0.5);cursor:pointer;transition:all .3s;letter-spacing:-.2px}
+.tab:hover{color:#E2E8F0;border-color:rgba(14,165,233,0.2)}
+.tab.active{color:#060810;background:#0EA5E9;border-color:#0EA5E9}
+.case-tab{transition:all .3s;opacity:.5;transform:scale(.97)}
+.case-tab:hover{opacity:.8}
+.case-tab.active{opacity:1;transform:scale(1);box-shadow:0 0 20px rgba(14,165,233,0.1)}
+.tc{display:none;animation:fi .4s}
+.tc.active{display:block}
+@keyframes fi{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* === HERO === */
+#hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.15;filter:brightness(0.7)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,8,16,0.3) 0%,rgba(6,8,16,0.5) 40%,rgba(6,8,16,0.95) 100%)}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 35%,rgba(14,165,233,0.08) 0%,transparent 70%);z-index:1}
+#hero .content{text-align:center;max-width:800px;padding:60px 40px 0;position:relative;z-index:2}
+#hero .logo-hero{height:110px;margin-bottom:24px}
+#hero h1{font-size:clamp(22px,2.8vw,38px);font-weight:800;letter-spacing:-1px;line-height:1.15;margin-bottom:14px;color:#F1F5F9}
+#hero h1 span{background:linear-gradient(135deg,#0EA5E9,#06B6D4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+#hero .hero-sub{font-size:14px;color:#0EA5E9;font-weight:500;margin-bottom:10px;letter-spacing:2px}
+#hero .hero-desc{font-size:13px;color:#64748B;line-height:1.7;max-width:500px;margin:0 auto 20px}
+.btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:7px;font-size:12px;font-weight:600;text-decoration:none;transition:all .3s;cursor:pointer;border:none;letter-spacing:-.2px}
+.btn-p{background:#0EA5E9;color:#060810}
+.btn-p:hover{background:#38BDF8;transform:translateY(-1px);box-shadow:0 8px 24px rgba(14,165,233,0.25)}
+.btn-g{background:transparent;color:#94A3B8;border:1px solid #1E293B}
+.btn-g:hover{border-color:#0EA5E9;color:#E2E8F0}
+#hero .scroll-ind{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2}
+#hero .scroll-ind .line{width:1px;height:36px;background:linear-gradient(180deg,#0EA5E9,transparent);animation:scrolll 2s ease-in-out infinite}
+@keyframes scrolll{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(0);transform-origin:bottom}}
+#hero .scroll-ind span{font-size:9px;color:#475569;letter-spacing:3px;text-transform:uppercase;font-family:'JetBrains Mono',monospace}
+
+/* === MARQUEE === */
+.marquee{overflow:hidden;white-space:nowrap;padding:14px 0;border-top:1px solid rgba(30,41,59,0.3);border-bottom:1px solid rgba(30,41,59,0.3)}
+.marquee-c{display:inline-block;animation:mq 40s linear infinite}
+.marquee-c span{font-size:11px;color:#1E293B;margin:0 32px;font-weight:500;letter-spacing:1px;font-family:'JetBrains Mono',monospace}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* === INFO GRID === */
+.info-card{background:rgba(15,23,42,0.4);border:1px solid rgba(30,41,59,0.5);border-radius:6px;padding:12px;text-align:center;transition:all .3s}
+.info-card:hover{border-color:rgba(14,165,233,0.2)}
+.info-card .lbl{font-size:9px;color:#475569;margin-bottom:3px;text-transform:uppercase;letter-spacing:1.5px;font-family:'JetBrains Mono',monospace}
+.info-card .val{font-size:13px;font-weight:700;color:#F1F5F9;letter-spacing:-.3px}
+
+/* === DIVIDER === */
+.divider{width:100%;height:1px;background:rgba(30,41,59,0.4);margin:20px 0}
+
+/* === IMAGE GALLERY === */
+.img-gallery{display:grid;gap:10px;margin:16px 0}
+.img-gallery.cols-2{grid-template-columns:1fr 1fr}
+.img-gallery.cols-3{grid-template-columns:1fr 1fr 1fr}
+
+/* === FULLWIDTH IMG === */
+.full-img{position:relative;width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(30,41,59,0.4);margin:32px 0}
+.full-img img{width:100%;display:block}
+.full-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 70%,rgba(6,8,16,0.5));pointer-events:none}
+
+/* === SECTION BG IMAGE === */
+.sec-bg{position:absolute;top:0;right:0;width:45%;height:100%;z-index:0;opacity:.12;pointer-events:none}
+.sec-bg img{width:100%;height:100%;object-fit:cover}
+.sec-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#060810 0%,transparent 30%,transparent 70%,#060810 100%)}
+.sec-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#060810 0%,transparent 20%,transparent 80%,#060810 100%);z-index:1}
+
+/* === FOOTER === */
+#footer{background:#030508;border-top:1px solid rgba(30,41,59,0.3);padding:40px 48px 28px;text-align:center}
+#footer img{height:24px;margin-bottom:12px;opacity:.4}
+#footer p{font-size:12px;color:#334155;line-height:1.8}
+
+/* === SECTION GLOW === */
+.sec-glow::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:1px;background:linear-gradient(90deg,transparent,rgba(14,165,233,0.12),transparent);z-index:1}
+
+/* === EMAIL MODAL === */
+#email-modal{transition:opacity .3s;opacity:0}
+
+/* === RESPONSIVE === */
+@media(max-width:1024px){
+  .g2{grid-template-columns:1fr}
+  .g3{grid-template-columns:1fr 1fr}
+  .g4{grid-template-columns:1fr 1fr}
+  .inner{padding:80px 28px}
+  .cycle{flex-wrap:wrap;gap:12px}
+  .cycle-arrow{display:none}
+  .layer-items{grid-template-columns:1fr 1fr}
+  #side-dots{display:none}
+  .sec-bg{width:100%;opacity:.06}
+  .img-gallery.cols-2,.img-gallery.cols-3{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .g3,.g4{grid-template-columns:1fr}
+  #nav .nav-links{display:none}
+  #nav{padding:12px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <img src="expai_logo_large.png" alt="EXPAI"/>
+  <div class="bar"></div>
+</div>
+
+<!-- PROGRESS -->
+<div id="progress"></div>
+
+<!-- GRID BG -->
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <img src="expai_logo_large.png" alt="EXPAI" class="logo" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})"/>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#problem">Problem</a>
+    <a href="#solution">Solution</a>
+    <a href="#arch">Architecture</a>
+    <a href="#cases">Cases</a>
+    <a href="#why">Why EXPAI</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- SIDE DOTS -->
+<div id="side-dots"></div>
+
+<!-- ======== HERO ======== -->
+<section id="hero" data-name="Home">
+  <div class="hero-bg">
+    <img src="extracted_images/cover_1.png" alt="AI Manufacturing"/>
+  </div>
+  <div class="content">
+    <img src="expai_logo_large.png" alt="EXPAI" class="logo-hero rv"/>
+    <h1 class="rv" style="transition-delay:.1s">ARTIFICIAL<br>INTELLIGENT<br><span>MANUFACTURING</span></h1>
+    <div class="hero-sub rv mono" style="transition-delay:.2s">Expert AI for Factory</div>
+    <p class="hero-desc rv" style="transition-delay:.3s">제조 전문가의 숙련 지식을 AI가 학습하고, 스스로 판단하며, 체계적으로 수행합니다.</p>
+    <div class="mono rv" style="transition-delay:.35s;color:#0EA5E9;font-size:11px;letter-spacing:3px;margin-bottom:20px">Sense &rarr; Think &rarr; Act &rarr; Learn</div>
+    <div class="btn-row rv" style="transition-delay:.4s">
+      <a href="#about" class="btn btn-p">회사 소개</a>
+      <a href="#cases" class="btn btn-g">적용 사례</a>
+    </div>
+  </div>
+  <div class="scroll-ind">
+    <div class="line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-c">
+    <span>// EXPERT AI FOR FACTORY</span><span>// SENSE &rarr; THINK &rarr; ACT &rarr; LEARN</span><span>// AUTONOMOUS DECISION AI</span><span>// FACTORY EXPERTX PLATFORM</span><span>// TACIT KNOWLEDGE DIGITALIZATION</span><span>// MANUFACTURING AI INNOVATION</span>
+    <span>// EXPERT AI FOR FACTORY</span><span>// SENSE &rarr; THINK &rarr; ACT &rarr; LEARN</span><span>// AUTONOMOUS DECISION AI</span><span>// FACTORY EXPERTX PLATFORM</span><span>// TACIT KNOWLEDGE DIGITALIZATION</span><span>// MANUFACTURING AI INNOVATION</span>
+  </div>
+</div>
+
+<!-- ======== ABOUT ======== -->
+<section id="about" class="sec-glow" data-name="About">
+<div class="inner">
+  <div class="g2">
+    <div>
+      <div class="badge rv">01 // About EXPAI</div>
+      <h2 class="stitle rv" style="transition-delay:.1s">전문가 인공지능을<br>고객사에 <span class="accent">구축</span>합니다</h2>
+      <div class="quote rv" style="transition-delay:.2s;margin:10px 0;font-size:11px;padding:12px 16px">
+        전문가의 암묵적 지식(Tacit Knowledge)을 데이터화하기 어렵습니다. 저희는 Sense-Think-Act-Learn 사이클로 스스로 판단하는 자율 판단 AI를 만들어 제조업의 생산성/품질을 향상시킵니다.
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px">
+        <div class="info-card rv" style="transition-delay:.25s"><div class="lbl">회사명</div><div class="val" style="font-size:12px">EXPAI (엑스파이)</div></div>
+        <div class="info-card rv" style="transition-delay:.3s"><div class="lbl">설립일</div><div class="val" style="font-size:12px">2026년 1월 7일</div></div>
+        <div class="info-card rv" style="transition-delay:.35s"><div class="lbl">핵심 비전</div><div class="val" style="font-size:12px">자율 판단 AI</div></div>
+        <div class="info-card rv" style="transition-delay:.4s"><div class="lbl">목표 시장</div><div class="val" style="font-size:12px">제조업 AI</div></div>
+      </div>
+    </div>
+    <div class="rv-r" style="transition-delay:.2s">
+      <div class="img-frame img-glow" style="aspect-ratio:2/1;margin-bottom:10px">
+        <img src="extracted_images/about_1.png" alt="Smart Factory AI"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Smart Factory Data Flow</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="card card-accent" style="padding:14px">
+          <div class="mono accent" style="font-size:9px;margin-bottom:4px;letter-spacing:2px">PHASE 01</div>
+          <h3 style="font-size:13px">단일 서비스 영역</h3>
+          <p style="font-size:11px">특정 공정 단위 AI 에이전트 구축</p>
+        </div>
+        <div class="card card-purple" style="padding:14px">
+          <div class="mono" style="font-size:9px;margin-bottom:4px;letter-spacing:2px;color:#7C3AED">PHASE 02</div>
+          <h3 style="font-size:13px">전문 영역 확장</h3>
+          <p style="font-size:11px">다공정 / 다분야 전문가 AI 확장</p>
+        </div>
+        <div class="card card-green" style="padding:14px">
+          <div class="mono" style="font-size:9px;margin-bottom:4px;letter-spacing:2px;color:#10B981">PHASE 03</div>
+          <h3 style="font-size:13px">공장 전체 AI</h3>
+          <p style="font-size:11px">World Model 기반 완전 자율 판단</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======== PROBLEM ======== -->
+<section id="problem" class="sec-glow" data-name="Problem">
+<div class="sec-bg"><img src="extracted_images/business_1.png" alt=""/></div>
+<div class="inner">
+  <div class="badge rv">02 // Core Problem</div>
+  <h2 class="stitle rv" style="transition-delay:.1s">숙련자의 암묵지가 사람에게 묶여<br><span class="accent">일관되게 재현/확장되지 않는 것</span></h2>
+  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:24px">제조 현장의 핵심 문제를 정의하고, EXPAI가 어떻게 해결하는지 제시합니다.</p>
+
+  <div class="g3">
+    <div class="card card-red rv" style="transition-delay:.15s">
+      <div class="mono" style="font-size:10px;color:#EF4444;letter-spacing:2px;margin-bottom:10px">PROBLEM 01</div>
+      <h3 style="color:#EF4444">숙련 기술의 속인화</h3>
+      <p>숙련자의 노하우가 조직 자산이 아닌 개인 자산으로 묶여 있음</p>
+      <ul style="margin-top:10px;padding-left:16px">
+        <li style="font-size:12px;color:#64748B;line-height:1.9">라인/공장/조별 판단 기준 상이</li>
+        <li style="font-size:12px;color:#64748B;line-height:1.9">숙련자 퇴직 시 노하우 소실</li>
+        <li style="font-size:12px;color:#64748B;line-height:1.9">신입 숙련까지 오랜 시간</li>
+      </ul>
+    </div>
+    <div class="card card-amber rv" style="transition-delay:.25s">
+      <div class="mono" style="font-size:10px;color:#F59E0B;letter-spacing:2px;margin-bottom:10px">PROBLEM 02</div>
+      <h3 style="color:#F59E0B">보수적 운용</h3>
+      <p>잠재력 미활용으로 인한 생산성 저하</p>
+      <ul style="margin-top:10px;padding-left:16px">
+        <li style="font-size:12px;color:#64748B;line-height:1.9">최고 속도 대비 60~70%로 운용</li>
+        <li style="font-size:12px;color:#64748B;line-height:1.9">안전 마진을 크게 설정</li>
+        <li style="font-size:12px;color:#64748B;line-height:1.9">잠재 생산성 40~50% 사장</li>
+      </ul>
+    </div>
+    <div class="card card-purple rv" style="transition-delay:.35s">
+      <div class="mono" style="font-size:10px;color:#7C3AED;letter-spacing:2px;margin-bottom:10px">PROBLEM 03</div>
+      <h3 style="color:#7C3AED">인지와 실행 사이 단절</h3>
+      <p>피드백 루프 부재로 개선 축적 불가</p>
+      <ul style="margin-top:10px;padding-left:16px">
+        <li style="font-size:12px;color:#64748B;line-height:1.9">용접/조립 불량 반복</li>
+        <li style="font-size:12px;color:#64748B;line-height:1.9">알람 대응 혼란</li>
+        <li style="font-size:12px;color:#64748B;line-height:1.9">실행이 사람마다 달라 학습 안 됨</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card rv" style="margin-top:18px;transition-delay:.4s;border-color:rgba(14,165,233,0.12);background:linear-gradient(135deg,rgba(14,165,233,0.03),rgba(6,182,212,0.02))">
+    <div class="mono accent" style="font-size:10px;letter-spacing:2px;margin-bottom:8px">EXPAI APPROACH</div>
+    <h3 style="font-size:18px;margin-bottom:8px">EXPAI 솔루션 접근법</h3>
+    <p style="line-height:1.8">데이터 기반 판단으로 전문가의 암묵지를 데이터화하고, 자율 판단 사이클(STAL)로 수집 &rarr; 분석 &rarr; 실행 &rarr; 학습을 완전 자율 순환합니다.</p>
+  </div>
+</div>
+</section>
+
+<!-- ======== SOLUTION ======== -->
+<section id="solution" class="sec-glow" data-name="Solution">
+<div class="inner">
+  <div class="g2" style="margin-bottom:10px">
+    <div>
+      <div class="badge rv">03 // EXPAI Solution</div>
+      <h2 class="stitle rv" style="transition-delay:.1s">Factory <span class="accent">ExpertX</span></h2>
+      <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:12px;font-size:12px">현장 전문가의 경험/노하우를 멀티모달 AI로 승계하여, 지능형 공장 고도화를 지원합니다.</p>
+      <div class="g2" style="gap:8px">
+        <div class="card card-accent rv" style="transition-delay:.2s;padding:12px">
+          <div class="mono accent" style="font-size:9px;letter-spacing:2px;margin-bottom:4px">DATA</div>
+          <h3 style="font-size:12px">데이터 분석</h3>
+          <p style="font-size:11px">멀티모달 데이터 수집/전처리</p>
+        </div>
+        <div class="card card-purple rv" style="transition-delay:.25s;padding:12px">
+          <div class="mono" style="font-size:9px;color:#7C3AED;letter-spacing:2px;margin-bottom:4px">AI MODEL</div>
+          <h3 style="font-size:12px">AI 추론 모델링</h3>
+          <p style="font-size:11px">분석/예측/인퍼런스 구축</p>
+        </div>
+        <div class="card card-green rv" style="transition-delay:.3s;padding:12px">
+          <div class="mono" style="font-size:9px;color:#10B981;letter-spacing:2px;margin-bottom:4px">PLATFORM</div>
+          <h3 style="font-size:12px">Platform</h3>
+          <p style="font-size:11px">ExpertX Orchestration/MLOps</p>
+        </div>
+        <div class="card card-amber rv" style="transition-delay:.35s;padding:12px">
+          <div class="mono" style="font-size:9px;color:#F59E0B;letter-spacing:2px;margin-bottom:4px">PARTNER</div>
+          <h3 style="font-size:12px">Partnership</h3>
+          <p style="font-size:11px">Vision, Device, GPU/IoT</p>
+        </div>
+      </div>
+    </div>
+    <div class="rv-r" style="transition-delay:.2s">
+      <div class="img-frame img-glow" style="aspect-ratio:2/1">
+        <img src="images/generated-1770428650468.png" alt="Factory ExpertX AI"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Factory ExpertX AI Agent</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAL Cycle -->
+  <div>
+    <h3 class="rv" style="font-size:14px;font-weight:700;text-align:center;margin-bottom:2px;color:#F1F5F9;letter-spacing:-.5px">Sense &rarr; Think &rarr; Act &rarr; Learn</h3>
+    <p class="rv" style="text-align:center;color:#475569;font-size:10px;margin-bottom:14px;font-family:'JetBrains Mono',monospace">자율 판단 사이클</p>
+    <div class="cycle rv" style="transition-delay:.2s;margin:10px 0">
+      <div class="cycle-item" style="border-color:rgba(14,165,233,0.3);background:rgba(14,165,233,0.03)">
+        <h4 style="color:#0EA5E9">SENSE</h4>
+        <p>데이터 수집 / 정제<br>에이전트별 데이터 모델링</p>
+      </div>
+      <div class="cycle-arrow">&rarr;</div>
+      <div class="cycle-item" style="border-color:rgba(124,58,237,0.3);background:rgba(124,58,237,0.03)">
+        <h4 style="color:#7C3AED">THINK</h4>
+        <p>AI 모델링<br>분석/예측/인퍼런스</p>
+      </div>
+      <div class="cycle-arrow">&rarr;</div>
+      <div class="cycle-item" style="border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.03)">
+        <h4 style="color:#10B981">ACT</h4>
+        <p>실행<br>시뮬레이션 &rarr; 검증 &rarr; 적용</p>
+      </div>
+      <div class="cycle-arrow">&rarr;</div>
+      <div class="cycle-item" style="border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.03)">
+        <h4 style="color:#F59E0B">LEARN</h4>
+        <p>피드백<br>모델 업데이트 / 지속 향상</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======== ARCHITECTURE ======== -->
+<section id="arch" class="sec-glow" data-name="Architecture">
+<div class="inner">
+  <div class="g2" style="margin-bottom:12px">
+    <div>
+      <div class="badge rv">04 // Architecture</div>
+      <h2 class="stitle rv" style="transition-delay:.1s">Factory ExpertX <span class="accent">Architecture</span></h2>
+      <p class="sdesc rv" style="transition-delay:.15s;font-size:12px">SSOT + STAL Agent + ExpertX Runtime 통합 아키텍처</p>
+    </div>
+    <div class="rv-r" style="transition-delay:.2s">
+      <div class="img-frame img-glow" style="aspect-ratio:2/1">
+        <img src="extracted_images/architecture_3.png" alt="Factory Robots"/>
+        <div class="img-caption"><div class="img-dot"></div><span>AI-Powered Manufacturing Line</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="layer rv" style="border-color:#0EA5E9;transition-delay:.2s">
+    <div class="layer-title"><span class="accent">Layer 1</span> &mdash; Factory Data Layer (SSOT)</div>
+    <div class="layer-items">
+      <div class="layer-item"><strong>센서/IoT</strong>PLC/SCADA, OPC-UA 실시간 수집</div>
+      <div class="layer-item"><strong>비전 데이터</strong>CCTV 영상 스트림 분석</div>
+      <div class="layer-item"><strong>문서 데이터</strong>작업지시서, 도면, SOP</div>
+      <div class="layer-item"><strong>행동 패턴</strong>사물/디지털트윈 데이터</div>
+    </div>
+  </div>
+
+  <div class="layer rv" style="border-color:#7C3AED;transition-delay:.3s">
+    <div class="layer-title"><span style="color:#7C3AED">Layer 2</span> &mdash; ExpertX AI Agent Layer (STAL)</div>
+    <div class="layer-items">
+      <div class="layer-item"><strong style="color:#0EA5E9">SENSE</strong>데이터 수집/정제, 이상 탐지</div>
+      <div class="layer-item"><strong style="color:#7C3AED">THINK</strong>분석/예측/인퍼런스 모델</div>
+      <div class="layer-item"><strong style="color:#10B981">ACT</strong>시뮬레이션 &rarr; 안전 실행</div>
+      <div class="layer-item"><strong style="color:#F59E0B">LEARN</strong>피드백 &rarr; 모델 업데이트</div>
+    </div>
+  </div>
+
+  <div class="layer rv" style="border-color:#10B981;transition-delay:.4s">
+    <div class="layer-title"><span style="color:#10B981">Layer 3</span> &mdash; ExpertX Runtime (Governance)</div>
+    <div class="layer-items">
+      <div class="layer-item"><strong style="color:#10B981">LLM 오케스트레이션</strong>World Model 기반 조율</div>
+      <div class="layer-item"><strong style="color:#10B981">워크플로우</strong>가드레일 + Rollback</div>
+      <div class="layer-item"><strong style="color:#10B981">MLOps</strong>파이프라인 자동화</div>
+      <div class="layer-item"><strong style="color:#10B981">모니터링</strong>감사 로그, 대시보드</div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ======== CASES ======== -->
+<section id="cases" class="sec-glow" data-name="Cases">
+<div class="inner" style="padding-top:28px;padding-bottom:28px">
+  <div class="badge rv">05 // Reference Cases</div>
+  <h2 class="stitle rv" style="transition-delay:.1s"><span class="accent">적용 사례</span></h2>
+  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:8px;font-size:11px">Smart Factory Level별 적용 시나리오 &mdash; Level 0~4 모든 수준 적용 가능</p>
+
+  <!-- Overview Cards as Tabs -->
+  <div class="g3 rv" style="margin-bottom:12px;transition-delay:.2s">
+    <div class="card card-accent case-tab active" data-tab="c1" style="text-align:center;padding:14px;cursor:pointer">
+      <div class="mono accent" style="font-size:9px;letter-spacing:2px;margin-bottom:4px">LEVEL 0-2</div>
+      <h3 style="font-size:13px">K사 시트 제조라인</h3>
+      <p style="margin-top:4px;font-size:11px">도포 전문가의 손끝 감각을 AI가 배운다</p>
+    </div>
+    <div class="card card-purple case-tab" data-tab="c2" style="text-align:center;padding:14px;cursor:pointer">
+      <div class="mono" style="font-size:9px;letter-spacing:2px;margin-bottom:4px;color:#7C3AED">LEVEL 3</div>
+      <h3 style="font-size:13px">H사 소각로 운영</h3>
+      <p style="margin-top:4px;font-size:11px">20년 경력 운영자, AI가 대신한다</p>
+    </div>
+    <div class="card card-green case-tab" data-tab="c3" style="text-align:center;padding:14px;cursor:pointer">
+      <div class="mono" style="font-size:9px;letter-spacing:2px;margin-bottom:4px;color:#10B981">LEVEL 4</div>
+      <h3 style="font-size:13px">L사 로봇 자동화 라인</h3>
+      <p style="margin-top:4px;font-size:11px">1,000대 로봇을 5명이 관리하던 시대</p>
+    </div>
+  </div>
+
+  <!-- CASE 1 -->
+  <div class="tc active" id="tab-c1">
+    <div class="img-gallery cols-2" style="margin-bottom:6px">
+      <div class="img-frame img-glow" style="aspect-ratio:4/1">
+        <img src="extracted_images/case1_overview_1.png" alt="3D Human Tracking System"/>
+        <div class="img-caption"><div class="img-dot"></div><span>3D Human Tracking System</span></div>
+      </div>
+      <div class="img-frame img-glow" style="aspect-ratio:4/1">
+        <img src="extracted_images/case1_overview_2.png" alt="Spray Centroid Analysis" style="object-fit:contain;background:#0A0E1A"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Spray Centroid Analysis</span></div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:6px">
+      <div>
+        <div class="ab" style="border-color:#0EA5E9">
+          <h4 style="color:#0EA5E9">SENSE Agent &mdash; 전문가의 눈과 손을 데이터화</h4>
+          <ul>
+            <li>형틀 ID, 3D 모델, 재질 정보 &mdash; PLC/MES 연동</li>
+            <li>스프레이 압력, 도포량, 작업 시간 &mdash; IoT 센서</li>
+            <li>전문가 손 움직임, 스프레이 궤적 &mdash; 3D 비전 + Pose Estimation</li>
+          </ul>
+        </div>
+        <div class="ab" style="border-color:#7C3AED">
+          <h4 style="color:#7C3AED">THINK Agent &mdash; 암묵지를 명시지로 변환</h4>
+          <ul>
+            <li>100종 형틀의 도포 패턴 &rarr; 5개 대표 패턴 도출</li>
+            <li>모서리/곡면/평면별 도포 집중도 &rarr; 영역별 도포량 맵</li>
+            <li>유사 형틀 기반 최적 도포 패턴 자동 생성</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="ab" style="border-color:#10B981">
+          <h4 style="color:#10B981">ACT Agent &mdash; 지식을 실행 가능한 형태로 출력</h4>
+          <ul>
+            <li><strong style="color:#E2E8F0">Advice</strong> &mdash; 신입 작업자 &rarr; 상세 작업 지시서</li>
+            <li><strong style="color:#E2E8F0">Assisted</strong> &mdash; 스프레이 경로 시각화 + 승인</li>
+            <li><strong style="color:#E2E8F0">Auto</strong> &mdash; OLP 시뮬레이션 + Job 코드 자동 생성</li>
+          </ul>
+        </div>
+        <div class="ab" style="border-color:#F59E0B">
+          <h4 style="color:#F59E0B">LEARN Agent &mdash; 지속적 품질 개선</h4>
+          <ul>
+            <li>품질 검사 결과 &rarr; 부족 영역 자동 조정</li>
+            <li>전문가 피드백 반영 &rarr; 패턴 DB 업데이트</li>
+            <li>작업 시간 vs 품질 트레이드오프 최적화</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="g4" style="margin-top:10px">
+      <div class="stat"><div class="stat-num" data-target="75">0</div><div class="stat-lbl">신입 교육 기간 단축 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="73">0</div><div class="stat-lbl">불량률 감소 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="93">0</div><div class="stat-lbl">신규 형틀 대응 단축 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="100">0</div><div class="stat-lbl">작업 지시서 표준화 (%)</div></div>
+    </div>
+  </div>
+
+  <!-- CASE 2 -->
+  <div class="tc" id="tab-c2">
+    <div class="img-gallery cols-2" style="margin-bottom:10px">
+      <div class="img-frame img-glow" style="aspect-ratio:3/1">
+        <img src="extracted_images/case2_overview_1.png" alt="소각로 Control Dashboard"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Incinerator Control Dashboard</span></div>
+      </div>
+      <div class="img-frame img-glow" style="aspect-ratio:3/1">
+        <img src="images/slide17_dark.png" alt="소각로 제어 추천 솔루션"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Incinerator RPM Control Solution</span></div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:10px">
+      <div>
+        <div class="ab" style="border-color:#0EA5E9">
+          <h4 style="color:#0EA5E9">SENSE Agent &mdash; 소각로의 모든 것을 감지</h4>
+          <ul>
+            <li>밸브 개도율, 송풍량, 연료 공급량 &mdash; 제어 이력 추적</li>
+            <li>로내 온도, 배기가스 성분, 압력 &mdash; 실시간 수집</li>
+            <li>슬러지 3D 볼륨 / 외기 온습도 &mdash; 환경 변수 분석</li>
+          </ul>
+        </div>
+        <div class="ab" style="border-color:#7C3AED">
+          <h4 style="color:#7C3AED">THINK Agent &mdash; 전문가 판단 로직을 AI로 재현</h4>
+          <ul>
+            <li>(슬러지, 외기, 계절) 조합별 &rarr; 200+ 상황 패턴 DB</li>
+            <li>동일 상황 각 전문가 제어 비교 &rarr; 최적 제어 도출</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="ab" style="border-color:#10B981">
+          <h4 style="color:#10B981">ACT Agent &mdash; 안전한 실행 보장</h4>
+          <ul>
+            <li><strong style="color:#E2E8F0">Advice</strong> &mdash; 운영자에게 제어 권고 표시</li>
+            <li><strong style="color:#E2E8F0">Assisted</strong> &mdash; AI 제어값 &rarr; 운영자 1-click 승인</li>
+            <li><strong style="color:#E2E8F0">Auto</strong> &mdash; 정책 범위 내 자동 제어 + Guardrails</li>
+          </ul>
+        </div>
+        <div class="ab" style="border-color:#F59E0B">
+          <h4 style="color:#F59E0B">LEARN Agent &mdash; 운영 최적화 고도화</h4>
+          <ul>
+            <li>에너지 투입 vs 소각량 vs 배출 &rarr; 효율 극대화</li>
+            <li>전문가 피드백 &rarr; 판단 로직 보정</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="g4">
+      <div class="stat"><div class="stat-num" data-target="80">0</div><div class="stat-lbl">전문가 인력 절감 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="11" data-suffix="%p">0</div><div class="stat-lbl">에너지 효율 향상</div></div>
+      <div class="stat"><div class="stat-num" data-target="100">0</div><div class="stat-lbl">환경 규제 준수 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="30" data-suffix="min">0</div><div class="stat-lbl">돌발 상황 사전 예측</div></div>
+    </div>
+  </div>
+
+  <!-- CASE 3 -->
+  <div class="tc" id="tab-c3">
+    <div class="img-gallery cols-2" style="margin-bottom:10px">
+      <div class="img-frame img-glow" style="aspect-ratio:3/1">
+        <img src="ppt_images/slide22_img09_652636B.png" alt="Factory ExpertX Platform"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Factory ExpertX Platform</span></div>
+      </div>
+      <div class="img-frame img-glow" style="aspect-ratio:3/1">
+        <img src="extracted_images/case2_detail_2.png" alt="Robot Anomaly Simulator"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Robot Anomaly Simulator</span></div>
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:10px">
+      <div>
+        <div class="ab" style="border-color:#0EA5E9">
+          <h4 style="color:#0EA5E9">SENSE Agent &mdash; 로봇의 모든 움직임을 포착</h4>
+          <ul>
+            <li>각 축 위치, 속도, 토크, 전류 &mdash; 1kHz 실시간 수집</li>
+            <li>생산량, 사이클 타임, 알람 이력 &mdash; MES 연동</li>
+            <li>로봇 3D 궤적 / 관절 패턴 &mdash; Kinematics 분석</li>
+          </ul>
+        </div>
+        <div class="ab" style="border-color:#7C3AED">
+          <h4 style="color:#7C3AED">THINK Agent &mdash; 자율 진단 및 최적화</h4>
+          <ul>
+            <li>정상 패턴 대비 편차 &mdash; Anomaly Detection</li>
+            <li>축/구간/원인 &mdash; Self-Attention 기반 추론</li>
+            <li>품질/생산성 영향도 시뮬레이션</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="ab" style="border-color:#10B981">
+          <h4 style="color:#10B981">ACT Agent &mdash; 시뮬레이션 검증 후 자동 적용</h4>
+          <ul>
+            <li><strong style="color:#E2E8F0">Step 1.</strong> OLP 시뮬레이션 &rarr; 충돌/도달성 검증</li>
+            <li><strong style="color:#E2E8F0">Step 2.</strong> Job 코드 &rarr; 로봇 프로그램 자동 생성</li>
+            <li><strong style="color:#E2E8F0">Step 3.</strong> 승인 후 로봇에 자동 배포</li>
+          </ul>
+        </div>
+        <div class="ab" style="border-color:#F59E0B">
+          <h4 style="color:#F59E0B">LEARN Agent &mdash; 1,000대 로봇의 집단 학습</h4>
+          <ul>
+            <li>개별 학습: 각 로봇 고유 특성 &rarr; 맞춤형 튜닝</li>
+            <li>집단 학습: 동일 모델 로봇 간 지식 공유</li>
+            <li>예측 모델: 마모/고장 패턴 &rarr; 예방 정비</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="g4">
+      <div class="stat"><div class="stat-num" data-target="92">0</div><div class="stat-lbl">로봇 관리 시간 절감 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="94">0</div><div class="stat-lbl">품질 이상 대응 단축 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="88">0</div><div class="stat-lbl">돌발 고장 감소 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="14" data-suffix="%p">0</div><div class="stat-lbl">전체 OEE 향상</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======== OTHER CASES ======== -->
+<section id="other" class="sec-glow" data-name="Other Cases">
+<div class="inner">
+  <div class="badge rv">06 // Other Cases</div>
+  <h2 class="stitle rv" style="transition-delay:.1s">추가 <span class="accent">적용 사례</span></h2>
+  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:20px">EXPAI 기술이 적용 가능한 다양한 산업 시나리오</p>
+
+  <div class="g2" style="gap:18px">
+    <div class="rv-l" style="transition-delay:.2s">
+      <div class="img-frame img-glow" style="aspect-ratio:5/2;margin-bottom:10px">
+        <img src="extracted_images/case3_detail_1.png" alt="EXPAI 3D Analysis"/>
+        <div class="img-caption"><div class="img-dot"></div><span>EXPAI 3D Analysis Platform</span></div>
+      </div>
+      <div class="card" style="padding:14px">
+        <div class="mono accent" style="font-size:9px;letter-spacing:2px;margin-bottom:6px">OTHER CASE 01</div>
+        <h3 style="font-size:14px;margin-bottom:6px">도면 비교 품질 분석</h3>
+        <p style="font-size:11px;margin-bottom:8px">3D 스캔 기반 제품 형상 비교로 미세 편차를 실시간 탐지합니다.</p>
+        <div class="g2" style="gap:10px">
+          <div>
+            <div class="mono" style="font-size:9px;color:#0EA5E9;letter-spacing:1px;margin-bottom:2px">SENSE</div>
+            <p style="font-size:10px">STL, OBJ, PLY 3D 데이터 로딩</p>
+          </div>
+          <div>
+            <div class="mono" style="font-size:9px;color:#7C3AED;letter-spacing:1px;margin-bottom:2px">THINK</div>
+            <p style="font-size:10px">AI 자동 정합 / Fitness Score</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rv-r" style="transition-delay:.3s">
+      <div class="img-frame img-glow" style="aspect-ratio:5/2;margin-bottom:10px">
+        <img src="extracted_images/other_cases_2.png" alt="3D Reconstruction & Leak Detection"/>
+        <div class="img-caption"><div class="img-dot"></div><span>3D Reconstruction & Leak Detection</span></div>
+      </div>
+      <div class="card" style="padding:14px">
+        <div class="mono accent" style="font-size:9px;letter-spacing:2px;margin-bottom:6px">OTHER CASE 02</div>
+        <h3 style="font-size:14px;margin-bottom:6px">CCTV 기반 파이프 누출 감지</h3>
+        <p style="font-size:11px;margin-bottom:8px">CCTV 영상으로 변색 테이프를 분석, 3D Reconstruction으로 누출 위치를 특정합니다.</p>
+        <div class="g2" style="gap:10px">
+          <div>
+            <div class="mono" style="font-size:9px;color:#0EA5E9;letter-spacing:1px;margin-bottom:2px">SENSE</div>
+            <p style="font-size:10px">CCTV 스트리밍 / 변색 감지</p>
+          </div>
+          <div>
+            <div class="mono" style="font-size:9px;color:#7C3AED;letter-spacing:1px;margin-bottom:2px">THINK</div>
+            <p style="font-size:10px">다중 2D &rarr; 3D Reconstruction</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======== WHY EXPAI ======== -->
+<section id="why" class="sec-glow" data-name="Why EXPAI">
+<div class="sec-bg"><img src="extracted_images/why_expai_1.png" alt=""/></div>
+<div class="inner">
+  <div class="badge rv">07 // Why EXPAI</div>
+  <h2 class="stitle rv" style="transition-delay:.1s">수집 &rarr; 분석 &rarr; 실행 &rarr; 학습<br><span class="accent">완전 자율 순환</span></h2>
+  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:10px;font-size:12px">기존 솔루션의 한계를 넘어, EXPAI만의 차별화된 가치를 제공합니다.</p>
+
+  <div class="g2" style="gap:18px;margin-bottom:14px">
+    <div class="rv-l" style="transition-delay:.2s">
+      <div class="mono" style="font-size:9px;color:#EF4444;letter-spacing:2px;margin-bottom:10px">LIMITATIONS</div>
+      <div class="card card-red" style="margin-bottom:6px;padding:12px 16px">
+        <h3 style="color:#EF4444;font-size:12px">IoT 플랫폼</h3>
+        <p style="font-size:11px">데이터 수집만 &mdash; 분석/실행 부재</p>
+      </div>
+      <div class="card card-red" style="margin-bottom:6px;padding:12px 16px">
+        <h3 style="color:#EF4444;font-size:12px">BI / Analytics</h3>
+        <p style="font-size:11px">분석만 &mdash; 실행과의 연결 부재</p>
+      </div>
+      <div class="card card-red" style="padding:12px 16px">
+        <h3 style="color:#EF4444;font-size:12px">RPA / 로봇</h3>
+        <p style="font-size:11px">자동화만 &mdash; 인지/판단 부재</p>
+      </div>
+    </div>
+    <div class="rv-r" style="transition-delay:.3s">
+      <div class="mono accent" style="font-size:9px;letter-spacing:2px;margin-bottom:10px">EXPAI DIFFERENTIATION</div>
+      <div class="card card-accent" style="margin-bottom:6px;padding:12px 16px">
+        <h3 style="color:#0EA5E9;font-size:12px">Sense &mdash; 데이터 + 암묵지 추출</h3>
+        <p style="font-size:11px">IoT 데이터 + 전문가 행동 패턴 통합 수집</p>
+      </div>
+      <div class="card card-purple" style="margin-bottom:6px;padding:12px 16px">
+        <h3 style="color:#7C3AED;font-size:12px">Think &mdash; 전문가처럼 분석</h3>
+        <p style="font-size:11px">AI가 패턴 분석 &rarr; 전문가 수준 판단</p>
+      </div>
+      <div class="card card-green" style="margin-bottom:6px;padding:12px 16px">
+        <h3 style="color:#10B981;font-size:12px">Act &mdash; 안전하게 실행</h3>
+        <p style="font-size:11px">시뮬레이션 검증 + Guardrails + Rollback</p>
+      </div>
+      <div class="card card-amber" style="padding:12px 16px">
+        <h3 style="color:#F59E0B;font-size:12px">Learn &mdash; 지속 개선</h3>
+        <p style="font-size:11px">피드백 반영 &rarr; 모델 업데이트 &rarr; 성능 향상</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider" style="margin:12px 0"></div>
+
+  <div style="margin-top:14px">
+    <div class="mono accent rv" style="font-size:9px;letter-spacing:2px;margin-bottom:10px;text-align:center">VALUE PROPOSITION</div>
+    <div class="g4">
+      <div class="card card-accent rv" style="transition-delay:.1s;text-align:center;padding:14px">
+        <div class="mono" style="font-size:9px;color:#475569;letter-spacing:1px;margin-bottom:3px">FOR C-LEVEL</div>
+        <h3 style="color:#0EA5E9;font-size:13px">경영진</h3>
+        <p style="font-size:10px">노하우 보존 / 데이터 기반 의사결정</p>
+      </div>
+      <div class="card card-purple rv" style="transition-delay:.2s;text-align:center;padding:14px">
+        <div class="mono" style="font-size:9px;color:#475569;letter-spacing:1px;margin-bottom:3px">FOR MANAGERS</div>
+        <h3 style="color:#7C3AED;font-size:13px">현장 관리자</h3>
+        <p style="font-size:10px">실시간 모니터링 / 표준화 지시</p>
+      </div>
+      <div class="card card-green rv" style="transition-delay:.3s;text-align:center;padding:14px">
+        <div class="mono" style="font-size:9px;color:#475569;letter-spacing:1px;margin-bottom:3px">FOR EXPERTS</div>
+        <h3 style="color:#10B981;font-size:13px">전문가</h3>
+        <p style="font-size:10px">암묵지 보존 / AI 협업 극대화</p>
+      </div>
+      <div class="card card-amber rv" style="transition-delay:.4s;text-align:center;padding:14px">
+        <div class="mono" style="font-size:9px;color:#475569;letter-spacing:1px;margin-bottom:3px">FOR NEWCOMERS</div>
+        <h3 style="color:#F59E0B;font-size:13px">신입</h3>
+        <p style="font-size:10px">AI 코칭 / 빠른 숙련 가속</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ======== CONTACT ======== -->
+<section id="contact" data-name="Contact" style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative">
+<div class="hero-bg" style="opacity:1">
+  <img src="extracted_images/why_expai_1.png" alt="" style="opacity:.1;filter:brightness(0.5) blur(1px)"/>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(6,8,16,0.7),rgba(6,8,16,0.95))"></div>
+</div>
+<div style="position:relative;z-index:2;padding:60px">
+  <img src="expai_logo_large.png" alt="EXPAI" class="rv" style="height:60px;margin-bottom:28px"/>
+  <div class="mono rv" style="font-size:11px;color:#0EA5E9;letter-spacing:5px;margin-bottom:18px;transition-delay:.1s">EXPERT AI FOR FACTORY</div>
+  <h2 class="stitle rv" style="transition-delay:.15s;text-align:center">"전문가의 20년이<br><span class="accent">AI의 하루</span>가 된다"</h2>
+  <div class="divider rv" style="max-width:180px;margin:28px auto;transition-delay:.2s"></div>
+  <div class="rv" style="transition-delay:.25s">
+    <p style="font-size:18px;font-weight:700;color:#F1F5F9;margin-bottom:4px;letter-spacing:-.5px">EXPAI (엑스파이)</p>
+    <p style="font-size:13px;color:#64748B;line-height:2.2">
+      대표이사: <span style="color:#E2E8F0;font-weight:600">이병석</span><br>
+      창업일: <span style="color:#E2E8F0">2026년 1월 7일</span>
+    </p>
+    <a href="#" onclick="openEmailModal();return false" class="mono" style="display:inline-block;margin-top:12px;color:#0EA5E9;font-size:13px;letter-spacing:0.5px;text-decoration:none;border-bottom:1px solid rgba(14,165,233,0.3);padding-bottom:2px;transition:all .3s;cursor:pointer" onmouseover="this.style.borderColor='#0EA5E9'" onmouseout="this.style.borderColor='rgba(14,165,233,0.3)'">exp-ai@exp-ai.io</a>
+  </div>
+  <div style="display:flex;gap:10px;margin-top:20px;justify-content:center" class="rv" style="transition-delay:.3s">
+    <a href="#hero" class="btn btn-g">Top</a>
+    <a href="#" onclick="openEmailModal();return false" class="btn btn-p">문의하기</a>
+  </div>
+</div>
+</section>
+
+<!-- EMAIL MODAL -->
+<div id="email-modal" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);align-items:center;justify-content:center" onclick="if(event.target===this)closeEmailModal()">
+  <div style="background:#0D1117;border:1px solid rgba(30,41,59,0.6);border-radius:14px;padding:36px;max-width:480px;width:90%;position:relative;box-shadow:0 32px 80px rgba(0,0,0,0.5)">
+    <button onclick="closeEmailModal()" style="position:absolute;top:14px;right:14px;background:none;border:none;color:#64748B;font-size:18px;cursor:pointer;width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:6px;transition:all .2s" onmouseover="this.style.background='rgba(30,41,59,0.5)';this.style.color='#E2E8F0'" onmouseout="this.style.background='none';this.style.color='#64748B'">&times;</button>
+    <div class="mono" style="font-size:10px;color:#0EA5E9;letter-spacing:2px;margin-bottom:10px">CONTACT EXPAI</div>
+    <h3 style="font-size:18px;font-weight:700;color:#F1F5F9;margin-bottom:4px;letter-spacing:-.5px">문의하기</h3>
+    <p style="font-size:12px;color:#64748B;margin-bottom:20px">exp-ai@exp-ai.io로 메일을 보내드립니다.</p>
+    <form id="email-form" onsubmit="sendEmail(event)">
+      <div style="margin-bottom:12px">
+        <label style="display:block;font-size:11px;color:#64748B;margin-bottom:4px;font-family:'JetBrains Mono',monospace;letter-spacing:1px">보내는 분</label>
+        <input type="text" id="em-name" placeholder="이름 / 회사명" required style="width:100%;padding:10px 14px;background:rgba(15,23,42,0.6);border:1px solid rgba(30,41,59,0.6);border-radius:7px;color:#E2E8F0;font-size:13px;outline:none;transition:border-color .3s;font-family:'Inter',sans-serif" onfocus="this.style.borderColor='rgba(14,165,233,0.4)'" onblur="this.style.borderColor='rgba(30,41,59,0.6)'"/>
+      </div>
+      <div style="margin-bottom:12px">
+        <label style="display:block;font-size:11px;color:#64748B;margin-bottom:4px;font-family:'JetBrains Mono',monospace;letter-spacing:1px">이메일</label>
+        <input type="email" id="em-email" placeholder="your@email.com" required style="width:100%;padding:10px 14px;background:rgba(15,23,42,0.6);border:1px solid rgba(30,41,59,0.6);border-radius:7px;color:#E2E8F0;font-size:13px;outline:none;transition:border-color .3s;font-family:'Inter',sans-serif" onfocus="this.style.borderColor='rgba(14,165,233,0.4)'" onblur="this.style.borderColor='rgba(30,41,59,0.6)'"/>
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-size:11px;color:#64748B;margin-bottom:4px;font-family:'JetBrains Mono',monospace;letter-spacing:1px">내용</label>
+        <textarea id="em-body" placeholder="문의 내용을 입력해주세요" rows="4" required style="width:100%;padding:10px 14px;background:rgba(15,23,42,0.6);border:1px solid rgba(30,41,59,0.6);border-radius:7px;color:#E2E8F0;font-size:13px;outline:none;transition:border-color .3s;resize:vertical;font-family:'Inter',sans-serif;line-height:1.6" onfocus="this.style.borderColor='rgba(14,165,233,0.4)'" onblur="this.style.borderColor='rgba(30,41,59,0.6)'"></textarea>
+      </div>
+      <button type="submit" class="btn btn-p" style="width:100%;justify-content:center;padding:12px;font-size:13px">메일 보내기</button>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div id="footer">
+  <img src="expai_logo_large.png" alt="EXPAI"/>
+  <p>&copy; 2026 EXPAI Inc. All rights reserved.<br>
+  <span class="mono" style="font-size:10px;letter-spacing:1px">Expert AI for Factory &mdash; Sense / Think / Act / Learn</span></p>
+</div>
+
+<script>
+/* LOADER */
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('hidden'),700))
+
+/* PROGRESS */
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight
+  document.getElementById('progress').style.width=(window.scrollY/h*100)+'%'
+})
+
+/* NAV */
+const nav=document.getElementById('nav')
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60))
+
+/* SIDE DOTS */
+const sections=document.querySelectorAll('section[data-name]')
+const dotsC=document.getElementById('side-dots')
+sections.forEach(sec=>{
+  const d=document.createElement('div');d.className='dot'
+  d.innerHTML='<span class="tip">'+sec.dataset.name+'</span>'
+  d.onclick=()=>sec.scrollIntoView({behavior:'smooth'})
+  dotsC.appendChild(d)
+})
+
+/* REVEAL */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('v')})},{threshold:.06,rootMargin:'0px 0px -20px 0px'})
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>ro.observe(el))
+
+/* SECTION OBSERVER */
+const so=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const id=e.target.id
+  document.querySelectorAll('#nav .nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id))
+  const idx=[...sections].indexOf(e.target)
+  dotsC.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===idx))
+}})},{threshold:.2})
+sections.forEach(s=>so.observe(s))
+
+/* COUNTER */
+const co=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&!e.target.dataset.counted){
+  e.target.dataset.counted='1'
+  const t=parseInt(e.target.dataset.target),sfx=e.target.dataset.suffix||''
+  let c=0;const step=Math.max(1,Math.floor(t/35))
+  const iv=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(iv)};e.target.textContent=c+sfx},25)
+}})},{threshold:.5})
+document.querySelectorAll('.stat-num[data-target]').forEach(el=>co.observe(el))
+
+/* TABS - Case card tabs */
+document.querySelectorAll('.case-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const id=tab.dataset.tab
+    document.querySelectorAll('.case-tab').forEach(t=>t.classList.remove('active'))
+    tab.classList.add('active')
+    document.querySelectorAll('.tc').forEach(tc=>tc.classList.remove('active'))
+    document.getElementById('tab-'+id).classList.add('active')
+    document.getElementById('tab-'+id).querySelectorAll('.stat-num[data-target]').forEach(el=>{el.dataset.counted='';el.textContent='0';co.observe(el)})
+  })
+})
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})
+})
+
+/* EMAIL MODAL */
+function openEmailModal(){
+  const m=document.getElementById('email-modal')
+  m.style.display='flex'
+  setTimeout(()=>m.style.opacity='1',10)
+}
+function closeEmailModal(){
+  const m=document.getElementById('email-modal')
+  m.style.opacity='0'
+  setTimeout(()=>m.style.display='none',300)
+}
+function sendEmail(e){
+  e.preventDefault()
+  const name=document.getElementById('em-name').value
+  const email=document.getElementById('em-email').value
+  const body=document.getElementById('em-body').value
+  const subject=encodeURIComponent('[EXPAI 문의] '+name+' ('+email+')')
+  const mailBody=encodeURIComponent('보내는 분: '+name+'\n이메일: '+email+'\n\n'+body)
+  window.location.href='mailto:exp-ai@exp-ai.io?subject='+subject+'&body='+mailBody
+  closeEmailModal()
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeEmailModal()})
+
+/* FULLPAGE SCROLL SNAP */
+const snapSecs=[...document.querySelectorAll('section')]
+let curIdx=0,isAnimating=false
+function snapTo(idx){
+  if(idx<0||idx>=snapSecs.length||isAnimating)return
+  isAnimating=true;curIdx=idx
+  snapSecs[idx].scrollIntoView({behavior:'smooth'})
+  setTimeout(()=>isAnimating=false,700)
+}
+function updateIdx(){
+  const sy=window.scrollY,vh=window.innerHeight
+  let best=0,bestDist=Infinity
+  snapSecs.forEach((s,i)=>{const d=Math.abs(s.offsetTop-sy);if(d<bestDist){bestDist=d;best=i}})
+  curIdx=best
+}
+window.addEventListener('wheel',(e)=>{
+  if(isAnimating){e.preventDefault();return}
+  const delta=e.deltaY
+  if(Math.abs(delta)<30)return
+  e.preventDefault()
+  updateIdx()
+  if(delta>0)snapTo(curIdx+1)
+  else snapTo(curIdx-1)
+},{passive:false})
+/* Touch swipe */
+let touchY=0
+window.addEventListener('touchstart',(e)=>{touchY=e.touches[0].clientY},{passive:true})
+window.addEventListener('touchend',(e)=>{
+  if(isAnimating)return
+  const diff=touchY-e.changedTouches[0].clientY
+  if(Math.abs(diff)<50)return
+  updateIdx()
+  if(diff>0)snapTo(curIdx+1)
+  else snapTo(curIdx-1)
+},{passive:true})
+/* Sync index on manual scroll (nav clicks) */
+window.addEventListener('scroll',()=>{if(!isAnimating)updateIdx()},{passive:true})
+
+/* IMAGE LAZY LOAD EFFECT */
+document.querySelectorAll('.img-frame img').forEach(img=>{
+  img.style.opacity='0';img.style.transition='opacity .6s ease'
+  if(img.complete){img.style.opacity='1'}
+  else{img.addEventListener('load',()=>{img.style.opacity='1'})}
+})
+</script>
+</body>
+</html>
