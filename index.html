@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>EXPAI — Expert AI for Factory</title>
-<link rel="icon" type="image/png" sizes="32x32" href="favicon_32.png"/>
-<link rel="icon" type="image/png" sizes="180x180" href="favicon_circle.png"/>
-<link rel="apple-touch-icon" href="favicon_circle.png"/>
+<title>EXPAI — Factory ExpertX</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images_html/favicon_32.png"/>
+<link rel="icon" type="image/png" sizes="180x180" href="images_html/favicon_circle.png"/>
+<link rel="apple-touch-icon" href="images_html/favicon_circle.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Abril+Fatface&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#0EA5E9 #060810}
@@ -109,14 +109,6 @@ section>.inner{width:100%}
 .ab li{font-size:12px;color:#AEAEBC;line-height:1.4;padding-left:10px;position:relative}
 .ab li::before{content:'';position:absolute;left:0;top:9px;width:3px;height:3px;border-radius:1px;background:currentColor;opacity:.3}
 
-/* === CYCLE === */
-.cycle{display:flex;justify-content:center;align-items:center;gap:0;margin:10px 0}
-.cycle-item{width:140px;padding:10px 8px;text-align:center;border-radius:8px;border:1px solid;background:rgba(15,23,42,0.4);transition:all .3s}
-.cycle-item:hover{transform:scale(1.04)}
-.cycle-item h4{font-size:14px;font-weight:700;margin-bottom:2px}
-.cycle-item p{font-size:12px;line-height:1.3;color:#AEAEBC}
-.cycle-arrow{font-size:16px;color:#1E293B;padding:0 6px;font-family:'JetBrains Mono',monospace}
-
 /* === LAYER === */
 .layer{background:rgba(15,23,42,0.4);border:1px solid rgba(30,41,59,0.5);border-radius:8px;padding:10px 16px;margin-bottom:6px;border-left:3px solid}
 .layer-title{font-size:13px;font-weight:700;margin-bottom:6px;letter-spacing:-.2px}
@@ -125,10 +117,6 @@ section>.inner{width:100%}
 .layer-item strong{display:block;color:#E2E8F0;font-size:12px;margin-bottom:1px;font-family:'JetBrains Mono',monospace}
 
 /* === TABS === */
-.tabs{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
-.tab{padding:6px 12px;border-radius:5px;font-size:12px;font-weight:600;color:#AEAEBC;background:rgba(15,23,42,0.4);border:1px solid rgba(30,41,59,0.5);cursor:pointer;transition:all .3s;letter-spacing:-.2px}
-.tab:hover{color:#E2E8F0;border-color:rgba(14,165,233,0.2)}
-.tab.active{color:#060810;background:#0EA5E9;border-color:#0EA5E9}
 .case-tab{transition:all .3s;opacity:.5;transform:scale(.97)}
 .case-tab:hover{opacity:.8}
 .case-tab.active{opacity:1;transform:scale(1);box-shadow:0 0 20px rgba(14,165,233,0.1)}
@@ -177,12 +165,6 @@ section>.inner{width:100%}
 /* === IMAGE GALLERY === */
 .img-gallery{display:grid;gap:10px;margin:16px 0}
 .img-gallery.cols-2{grid-template-columns:1fr 1fr}
-.img-gallery.cols-3{grid-template-columns:1fr 1fr 1fr}
-
-/* === FULLWIDTH IMG === */
-.full-img{position:relative;width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(30,41,59,0.4);margin:32px 0}
-.full-img img{width:100%;display:block}
-.full-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 70%,rgba(6,8,16,0.5));pointer-events:none}
 
 /* === SECTION BG IMAGE === */
 .sec-bg{position:absolute;top:0;right:0;width:45%;height:100%;z-index:0;opacity:.12;pointer-events:none}
@@ -201,18 +183,33 @@ section>.inner{width:100%}
 /* === EMAIL MODAL === */
 #email-modal{transition:opacity .3s;opacity:0}
 
+/* === TEAM CARD === */
+.team-card{background:rgba(15,23,42,0.6);border:1px solid rgba(14,165,233,0.15);border-radius:12px;padding:20px 16px;text-align:center;transition:all .4s;backdrop-filter:blur(8px)}
+.team-card:hover{border-color:rgba(14,165,233,0.4);transform:translateY(-3px);box-shadow:0 16px 40px rgba(14,165,233,0.08)}
+.team-role{font-size:11px;font-weight:600;color:#0EA5E9;letter-spacing:2px;margin-bottom:6px;font-family:'JetBrains Mono',monospace;text-transform:uppercase}
+.team-name{font-size:18px;font-weight:800;color:#F1F5F9;letter-spacing:-.5px;margin-bottom:8px}
+.team-desc{font-size:12px;color:#AEAEBC;line-height:1.7}
+
+/* === STEP CARD === */
+.step-card{background:rgba(15,23,42,0.5);border:1px solid rgba(30,41,59,0.6);border-radius:12px;padding:22px;transition:all .4s}
+.step-card:hover{border-color:rgba(14,165,233,0.2);transform:translateY(-2px)}
+.step-num{font-size:11px;font-weight:700;color:#0EA5E9;letter-spacing:3px;margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.step-title{font-size:15px;font-weight:800;color:#F1F5F9;margin-bottom:4px;letter-spacing:-.3px}
+.step-dur{font-size:11px;color:#607080;margin-bottom:10px;font-family:'JetBrains Mono',monospace}
+.step-list{list-style:none;padding:0}
+.step-list li{font-size:12px;color:#AEAEBC;line-height:1.9;padding-left:14px;position:relative}
+.step-list li::before{content:'→';position:absolute;left:0;color:#0EA5E9;font-size:10px;top:1px}
+
 /* === RESPONSIVE === */
 @media(max-width:1024px){
   .g2{grid-template-columns:1fr}
   .g3{grid-template-columns:1fr 1fr}
   .g4{grid-template-columns:1fr 1fr}
   .inner{padding:80px 28px}
-  .cycle{flex-wrap:wrap;gap:12px}
-  .cycle-arrow{display:none}
   .layer-items{grid-template-columns:1fr 1fr}
   #side-dots{display:none}
   .sec-bg{width:100%;opacity:.06}
-  .img-gallery.cols-2,.img-gallery.cols-3{grid-template-columns:1fr}
+  .img-gallery.cols-2{grid-template-columns:1fr}
 }
 @media(max-width:640px){
   .g3,.g4{grid-template-columns:1fr}
@@ -225,7 +222,7 @@ section>.inner{width:100%}
 
 <!-- LOADER -->
 <div id="loader">
-  <img src="expai_logo_large.png" alt="EXPAI"/>
+  <img src="images_html/expai_logo_large.png" alt="EXPAI"/>
   <div class="bar"></div>
 </div>
 
@@ -237,14 +234,15 @@ section>.inner{width:100%}
 
 <!-- NAV -->
 <nav id="nav">
-  <img src="expai_logo_large.png" alt="EXPAI" class="logo" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})"/>
+  <img src="images_html/expai_logo_large.png" alt="EXPAI" class="logo" onclick="document.getElementById('hero').scrollIntoView({behavior:'smooth'})"/>
   <div class="nav-links">
     <a href="#about">About</a>
-    <a href="#problem">Problem</a>
+    <a href="#barrier">Problem</a>
     <a href="#solution">Solution</a>
-    <a href="#arch">Architecture</a>
     <a href="#cases">Cases</a>
-    <a href="#why">Why EXPAI</a>
+    <a href="#consulting">Consulting</a>
+    <a href="#demo">Live Demo</a>
+    <a href="#team">Team</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -255,14 +253,14 @@ section>.inner{width:100%}
 <!-- ======== HERO ======== -->
 <section id="hero" data-name="Home">
   <div class="hero-bg">
-    <img src="extracted_images/cover_1.png" alt="AI Manufacturing"/>
+    <img src="images_html/cover_1.png" alt="Factory ExpertX"/>
   </div>
   <div class="content">
-    <img src="expai_logo_large.png" alt="EXPAI" class="logo-hero rv"/>
-    <h1 class="rv" style="transition-delay:.1s">ARTIFICIAL<br>INTELLIGENT<br><span>MANUFACTURING</span></h1>
-    <div class="hero-sub rv mono" style="transition-delay:.2s">Expert AI for Factory</div>
-    <p class="hero-desc rv" style="transition-delay:.3s">제조 전문가의 숙련 지식을 AI가 학습하고, 스스로 판단하며, 체계적으로 수행합니다.</p>
-    <div class="mono rv" style="transition-delay:.35s;color:#0EA5E9;font-size:12px;letter-spacing:3px;margin-bottom:20px">Sense &rarr; Think &rarr; Act &rarr; Learn</div>
+    <img src="images_html/expai_logo_large.png" alt="EXPAI" class="logo-hero rv"/>
+    <h1 class="rv" style="transition-delay:.1s">THINKING FACTORY MANAGER<br><span>FACTORY EXPERTX</span></h1>
+    <div class="hero-sub rv mono" style="transition-delay:.2s">전문가 AI Agent를 연동한 제조 특화 LLM 챗봇 서비스</div>
+    <p class="hero-desc rv" style="transition-delay:.3s">숙련 전문가의 판단 로직을 AI Agent로 재현하고,<br>실시간으로 공장을 감지·분석·실행·학습합니다.</p>
+    <div class="mono rv" style="transition-delay:.35s;color:#0EA5E9;font-size:12px;letter-spacing:3px;margin-bottom:20px">AssistX &rarr; ExpertX Agent &rarr; Platform Core &rarr; SSOTX</div>
     <div class="btn-row rv" style="transition-delay:.4s">
       <a href="#about" class="btn btn-p">회사 소개</a>
       <a href="#cases" class="btn btn-g">적용 사례</a>
@@ -277,8 +275,8 @@ section>.inner{width:100%}
 <!-- MARQUEE -->
 <div class="marquee">
   <div class="marquee-c">
-    <span>// EXPERT AI FOR FACTORY</span><span>// SENSE &rarr; THINK &rarr; ACT &rarr; LEARN</span><span>// AUTONOMOUS DECISION AI</span><span>// FACTORY EXPERTX PLATFORM</span><span>// TACIT KNOWLEDGE DIGITALIZATION</span><span>// MANUFACTURING AI INNOVATION</span>
-    <span>// EXPERT AI FOR FACTORY</span><span>// SENSE &rarr; THINK &rarr; ACT &rarr; LEARN</span><span>// AUTONOMOUS DECISION AI</span><span>// FACTORY EXPERTX PLATFORM</span><span>// TACIT KNOWLEDGE DIGITALIZATION</span><span>// MANUFACTURING AI INNOVATION</span>
+    <span>// FACTORY EXPERTX</span><span>// THINKING FACTORY MANAGER</span><span>// CONSULTINGX · MAINTENANCEX · PRODUCTIONX</span><span>// QUALITYX · SAFETYX</span><span>// RAGX · EEPX · DAIP · SSOTX</span><span>// WE MAKE INDUSTRIAL OPERATIONS AI-NATIVE</span>
+    <span>// FACTORY EXPERTX</span><span>// THINKING FACTORY MANAGER</span><span>// CONSULTINGX · MAINTENANCEX · PRODUCTIONX</span><span>// QUALITYX · SAFETYX</span><span>// RAGX · EEPX · DAIP · SSOTX</span><span>// WE MAKE INDUSTRIAL OPERATIONS AI-NATIVE</span>
   </div>
 </div>
 
@@ -288,37 +286,37 @@ section>.inner{width:100%}
   <div class="g2">
     <div>
       <div class="badge rv">01 // About EXPAI</div>
-      <h2 class="stitle rv" style="transition-delay:.1s">전문가 인공지능을<br>고객사에 <span class="accent">구축</span>합니다</h2>
+      <h2 class="stitle rv" style="transition-delay:.1s">"We make industrial operations<br><span class="accent">AI-native."</span></h2>
       <div class="quote rv" style="transition-delay:.2s;margin:10px 0;font-size:12px;padding:12px 16px">
-        전문가의 암묵적 지식(Tacit Knowledge)을 데이터화하기 어렵습니다. 저희는 Sense-Think-Act-Learn 사이클로 스스로 판단하는 자율 판단 AI를 만들어 제조업의 생산성/품질을 향상시킵니다.
+        XAI+LLM+ExpertX Agent 융합 기술로 제조 현장의 판단·실행·학습을 완전 자율화합니다.
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px">
         <div class="info-card rv" style="transition-delay:.25s"><div class="lbl">회사명</div><div class="val" style="font-size:12px">EXPAI (엑스파이)</div></div>
         <div class="info-card rv" style="transition-delay:.3s"><div class="lbl">설립일</div><div class="val" style="font-size:12px">2026년 1월 7일</div></div>
-        <div class="info-card rv" style="transition-delay:.35s"><div class="lbl">핵심 비전</div><div class="val" style="font-size:12px">자율 판단 AI</div></div>
-        <div class="info-card rv" style="transition-delay:.4s"><div class="lbl">목표 시장</div><div class="val" style="font-size:12px">제조업 AI</div></div>
+        <div class="info-card rv" style="transition-delay:.35s"><div class="lbl">대표이사</div><div class="val" style="font-size:12px">이병석</div></div>
+        <div class="info-card rv" style="transition-delay:.4s"><div class="lbl">목표 시장</div><div class="val" style="font-size:12px">스마트 제조 AI</div></div>
       </div>
     </div>
     <div class="rv-r" style="transition-delay:.2s">
       <div class="img-frame img-glow" style="aspect-ratio:2/1;margin-bottom:10px">
-        <img src="extracted_images/about_1.png" alt="Smart Factory AI"/>
-        <div class="img-caption"><div class="img-dot"></div><span>Smart Factory Data Flow</span></div>
+        <img src="images_html/about_1.png" alt="Smart Factory AI"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Factory ExpertX Platform</span></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:6px">
         <div class="card card-accent" style="padding:14px">
-          <div class="mono accent" style="font-size:12px;margin-bottom:4px;letter-spacing:2px">PHASE 01</div>
-          <h3 style="font-size:13px">단일 서비스 영역</h3>
-          <p style="font-size:12px">특정 공정 단위 AI 에이전트 구축</p>
+          <div class="mono accent" style="font-size:12px;margin-bottom:4px;letter-spacing:2px">TECHNOLOGY</div>
+          <h3 style="font-size:13px">XAI + LLM + ExpertX Agent 융합</h3>
+          <p style="font-size:12px">설명 가능 AI(XAI) 분석 · LLM Agent/Orchestration · ExpertX 종합 판단·학습</p>
         </div>
         <div class="card card-purple" style="padding:14px">
-          <div class="mono" style="font-size:12px;margin-bottom:4px;letter-spacing:2px;color:#7C3AED">PHASE 02</div>
-          <h3 style="font-size:13px">전문 영역 확장</h3>
-          <p style="font-size:12px">다공정 / 다분야 전문가 AI 확장</p>
+          <div class="mono" style="font-size:12px;margin-bottom:4px;letter-spacing:2px;color:#7C3AED">MFG EXPERTISE</div>
+          <h3 style="font-size:13px">스마트팩토리 현장 13년+ 실무</h3>
+          <p style="font-size:12px">용접·소각로·로봇 등 다종 도메인 · 대기업 제조·AI 솔루션 네트워크</p>
         </div>
         <div class="card card-green" style="padding:14px">
-          <div class="mono" style="font-size:12px;margin-bottom:4px;letter-spacing:2px;color:#10B981">PHASE 03</div>
-          <h3 style="font-size:13px">공장 전체 AI</h3>
-          <p style="font-size:12px">World Model 기반 완전 자율 판단</p>
+          <div class="mono" style="font-size:12px;margin-bottom:4px;letter-spacing:2px;color:#10B981">PARTNERSHIP</div>
+          <h3 style="font-size:13px">제조업·AI 분야 산·학·연 네트워크</h3>
+          <p style="font-size:12px">AWS · MS · NCP 클라우드 파트너 · 울산 산·학·연 컨소시엄 · 고려대·전북대 협력 체계 구축</p>
         </div>
       </div>
     </div>
@@ -326,51 +324,57 @@ section>.inner{width:100%}
 </div>
 </section>
 
-<!-- ======== PROBLEM ======== -->
-<section id="problem" class="sec-glow" data-name="Problem">
-<div class="sec-bg"><img src="extracted_images/business_1.png" alt=""/></div>
+<!-- ======== AI 도입 장벽 ======== -->
+<section id="barrier" class="sec-glow" data-name="AI 도입 장벽">
+<div class="sec-bg"><img src="images_html/business_1.png" alt=""/></div>
 <div class="inner">
-  <div class="badge rv">02 // Core Problem</div>
-  <h2 class="stitle rv" style="transition-delay:.1s">숙련자의 암묵지가 사람에게 묶여<br><span class="accent">일관되게 재현/확장되지 않는 것</span></h2>
-  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:24px">제조 현장의 핵심 문제를 정의하고, EXPAI가 어떻게 해결하는지 제시합니다.</p>
+  <div class="badge rv">02 // AI 도입 장벽</div>
+  <h2 class="stitle rv" style="transition-delay:.1s">현장의 AI 도입 장벽,<br><span class="accent">ExpertX가 풀어냅니다</span></h2>
+  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:24px">범용 LLM이 해결하지 못하는 제조 현장의 3대 장벽에 대한 EXPAI의 해법입니다.</p>
 
   <div class="g3">
     <div class="card card-red rv" style="transition-delay:.15s">
-      <div class="mono" style="font-size:12px;color:#EF4444;letter-spacing:2px;margin-bottom:10px">PROBLEM 01</div>
-      <h3 style="color:#EF4444">숙련 기술의 속인화</h3>
-      <p>숙련자의 노하우가 조직 자산이 아닌 개인 자산으로 묶여 있음</p>
+      <div class="mono" style="font-size:12px;color:#EF4444;letter-spacing:2px;margin-bottom:10px">장벽 01</div>
+      <h3 style="color:#EF4444">알람은 쏟아지지만 근거 없음</h3>
+      <p>'왜' 발생했는지 근거 제시 불가 — 센서 데이터와 문서 데이터의 단절</p>
       <ul style="margin-top:10px;padding-left:16px">
-        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">라인/공장/조별 판단 기준 상이</li>
-        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">숙련자 퇴직 시 노하우 소실</li>
-        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">신입 숙련까지 오랜 시간</li>
+        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">알람 원인 파악에 숙련자 의존</li>
+        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">SOP·매뉴얼 검색에 수십 분 소요</li>
+        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">과거 유사 사례 재활용 불가</li>
       </ul>
+      <div style="margin-top:12px;padding:8px 12px;background:rgba(14,165,233,0.05);border-radius:6px;border-left:2px solid #0EA5E9">
+        <div class="mono accent" style="font-size:11px;letter-spacing:1px;margin-bottom:3px">→ RAGX + EEPX</div>
+        <p style="font-size:11px;color:#94A3B8">문서·센서·영상 근거 자동 교차 수집</p>
+      </div>
     </div>
     <div class="card card-amber rv" style="transition-delay:.25s">
-      <div class="mono" style="font-size:12px;color:#F59E0B;letter-spacing:2px;margin-bottom:10px">PROBLEM 02</div>
-      <h3 style="color:#F59E0B">보수적 운용</h3>
-      <p>잠재력 미활용으로 인한 생산성 저하</p>
+      <div class="mono" style="font-size:12px;color:#F59E0B;letter-spacing:2px;margin-bottom:10px">장벽 02</div>
+      <h3 style="color:#F59E0B">실행·승인·롤백 체계 부재 및 결과 데이터 축적 어려움</h3>
+      <p>분석 결과는 있어도 실제 현장 실행과의 연결 고리가 없음</p>
       <ul style="margin-top:10px;padding-left:16px">
-        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">최고 속도 대비 60~70%로 운용</li>
-        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">안전 마진을 크게 설정</li>
-        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">잠재 생산성 40~50% 사장</li>
+        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">AI 권고를 믿고 실행할 수 없음</li>
+        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">잘못된 실행 시 복구 방법 없음</li>
+        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">승인 책임 주체가 불명확</li>
       </ul>
+      <div style="margin-top:12px;padding:8px 12px;background:rgba(14,165,233,0.05);border-radius:6px;border-left:2px solid #0EA5E9">
+        <div class="mono accent" style="font-size:11px;letter-spacing:1px;margin-bottom:3px">→ DAIP 승인 체계</div>
+        <p style="font-size:11px;color:#94A3B8">안전한 실행 가드레일 + 자동 롤백</p>
+      </div>
     </div>
     <div class="card card-purple rv" style="transition-delay:.35s">
-      <div class="mono" style="font-size:12px;color:#7C3AED;letter-spacing:2px;margin-bottom:10px">PROBLEM 03</div>
-      <h3 style="color:#7C3AED">인지와 실행 사이 단절</h3>
-      <p>피드백 루프 부재로 개선 축적 불가</p>
+      <div class="mono" style="font-size:12px;color:#7C3AED;letter-spacing:2px;margin-bottom:10px">장벽 03</div>
+      <h3 style="color:#7C3AED">PoC 성공 후 확장 불가</h3>
+      <p>설비 PoC 성공해도 라인 확장 시 매번 처음부터 재구축</p>
       <ul style="margin-top:10px;padding-left:16px">
-        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">용접/조립 불량 반복</li>
-        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">알람 대응 혼란</li>
-        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">실행이 사람마다 달라 학습 안 됨</li>
+        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">현장별 재학습 비용 반복 발생</li>
+        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">운영 노하우가 축적되지 않음</li>
+        <li style="font-size:12px;color:#AEAEBC;line-height:1.9">동일 업종 횡전개 어려움</li>
       </ul>
+      <div style="margin-top:12px;padding:8px 12px;background:rgba(14,165,233,0.05);border-radius:6px;border-left:2px solid #0EA5E9">
+        <div class="mono accent" style="font-size:11px;letter-spacing:1px;margin-bottom:3px">→ RAGX + EEPX + EPX Fusion 의</div>
+        <p style="font-size:11px;color:#94A3B8">템플릿화 → 동일 업종 빠른 확산</p>
+      </div>
     </div>
-  </div>
-
-  <div class="card rv" style="margin-top:18px;transition-delay:.4s;border-color:rgba(14,165,233,0.12);background:linear-gradient(135deg,rgba(14,165,233,0.03),rgba(6,182,212,0.02))">
-    <div class="mono accent" style="font-size:12px;letter-spacing:2px;margin-bottom:8px">EXPAI APPROACH</div>
-    <h3 style="font-size:18px;margin-bottom:8px">EXPAI 솔루션 접근법</h3>
-    <p style="line-height:1.8">데이터 기반 판단으로 전문가의 암묵지를 데이터화하고, 자율 판단 사이클(STAL)로 수집 &rarr; 분석 &rarr; 실행 &rarr; 학습을 완전 자율 순환합니다.</p>
   </div>
 </div>
 </section>
@@ -380,247 +384,251 @@ section>.inner{width:100%}
 <div class="inner">
   <div class="g2" style="margin-bottom:10px">
     <div>
-      <div class="badge rv">03 // EXPAI Solution</div>
-      <h2 class="stitle rv" style="transition-delay:.1s">Factory <span class="accent">ExpertX</span></h2>
-      <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:12px;font-size:12px">현장 전문가의 경험/노하우를 멀티모달 AI로 승계하여, 지능형 공장 고도화를 지원합니다.</p>
-      <div class="g2" style="gap:8px">
-        <div class="card card-accent rv" style="transition-delay:.2s;padding:12px">
-          <div class="mono accent" style="font-size:12px;letter-spacing:2px;margin-bottom:4px">DATA</div>
-          <h3 style="font-size:12px">데이터 분석</h3>
-          <p style="font-size:12px">멀티모달 데이터 수집/전처리</p>
-        </div>
-        <div class="card card-purple rv" style="transition-delay:.25s;padding:12px">
-          <div class="mono" style="font-size:12px;color:#7C3AED;letter-spacing:2px;margin-bottom:4px">AI MODEL</div>
-          <h3 style="font-size:12px">AI 추론 모델링</h3>
-          <p style="font-size:12px">분석/예측/인퍼런스 구축</p>
-        </div>
-        <div class="card card-green rv" style="transition-delay:.3s;padding:12px">
-          <div class="mono" style="font-size:12px;color:#10B981;letter-spacing:2px;margin-bottom:4px">PLATFORM</div>
-          <h3 style="font-size:12px">Platform</h3>
-          <p style="font-size:12px">ExpertX Orchestration/MLOps</p>
-        </div>
-        <div class="card card-amber rv" style="transition-delay:.35s;padding:12px">
-          <div class="mono" style="font-size:12px;color:#F59E0B;letter-spacing:2px;margin-bottom:4px">PARTNER</div>
-          <h3 style="font-size:12px">Partnership</h3>
-          <p style="font-size:12px">Vision, Device, GPU/IoT</p>
+      <div class="badge rv">03 // Factory ExpertX</div>
+      <h2 class="stitle rv" style="transition-delay:.1s">Factory <span class="accent">ExpertX</span> 구성</h2>
+      <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:12px;font-size:12px">AssistX 챗봇부터 전문 Agent, Platform Core까지 — 완전 통합 제조 AI 플랫폼</p>
+
+      <div class="card rv" style="transition-delay:.2s;padding:14px;margin-bottom:8px;border-color:rgba(14,165,233,0.25);background:linear-gradient(135deg,rgba(14,165,233,0.05),transparent)">
+        <div class="mono accent" style="font-size:11px;letter-spacing:2px;margin-bottom:4px">ASSISTX — Thinking Factory Manager</div>
+        <h3 style="font-size:13px;color:#0EA5E9">제조 특화 LLM 챗봇 인터페이스</h3>
+        <p style="font-size:12px">자연어로 공장 현황 질의, 맥락 파악, 이상 원인 분석, 조치 지시까지 ONE-STOP 처리</p>
+      </div>
+
+      <div class="card card-accent" style="padding:14px">
+        <div class="mono accent" style="font-size:11px;letter-spacing:2px;margin-bottom:8px">ExpertX AGENTS</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          <div style="padding:8px 10px;background:rgba(14,165,233,0.06);border-radius:6px;border:1px solid rgba(14,165,233,0.15)">
+            <div class="mono" style="font-size:10px;color:#0EA5E9;letter-spacing:1px">MaintenanceX</div>
+            <div style="font-size:11px;color:#94A3B8;margin-top:2px">설비 예지보전</div>
+          </div>
+          <div style="padding:8px 10px;background:rgba(124,58,237,0.06);border-radius:6px;border:1px solid rgba(124,58,237,0.15)">
+            <div class="mono" style="font-size:10px;color:#7C3AED;letter-spacing:1px">ProductionX</div>
+            <div style="font-size:11px;color:#94A3B8;margin-top:2px">제조 운영 최적화</div>
+          </div>
+          <div style="padding:8px 10px;background:rgba(16,185,129,0.06);border-radius:6px;border:1px solid rgba(16,185,129,0.15)">
+            <div class="mono" style="font-size:10px;color:#10B981;letter-spacing:1px">QualityX</div>
+            <div style="font-size:11px;color:#94A3B8;margin-top:2px">품질 불량 분석</div>
+          </div>
+          <div style="padding:8px 10px;background:rgba(239,68,68,0.06);border-radius:6px;border:1px solid rgba(239,68,68,0.15)">
+            <div class="mono" style="font-size:10px;color:#EF4444;letter-spacing:1px">SafetyX</div>
+            <div style="font-size:11px;color:#94A3B8;margin-top:2px">실시간 안전 감시</div>
+          </div>
         </div>
       </div>
     </div>
     <div class="rv-r" style="transition-delay:.2s">
-      <div class="img-frame img-glow" style="aspect-ratio:2/1">
-        <img src="images/generated-1770428650468.png" alt="Factory ExpertX AI"/>
-        <div class="img-caption"><div class="img-dot"></div><span>Factory ExpertX AI Agent</span></div>
+      <div class="img-frame img-glow" style="aspect-ratio:2/1;margin-bottom:10px">
+        <img src="images_html/generated-1770428650468.png" alt="Factory ExpertX AI"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Factory ExpertX Platform Core</span></div>
       </div>
-    </div>
-  </div>
 
-  <!-- STAL Cycle -->
-  <div>
-    <h3 class="rv" style="font-size:14px;font-weight:700;text-align:center;margin-bottom:2px;color:#F1F5F9;letter-spacing:-.5px">Sense &rarr; Think &rarr; Act &rarr; Learn</h3>
-    <p class="rv" style="text-align:center;color:#607080;font-size:12px;margin-bottom:14px;font-family:'JetBrains Mono',monospace">자율 판단 사이클</p>
-    <div class="cycle rv" style="transition-delay:.2s;margin:10px 0">
-      <div class="cycle-item" style="border-color:rgba(14,165,233,0.3);background:rgba(14,165,233,0.03)">
-        <h4 style="color:#0EA5E9">SENSE</h4>
-        <p>데이터 수집 / 정제<br>에이전트별 데이터 모델링</p>
-      </div>
-      <div class="cycle-arrow">&rarr;</div>
-      <div class="cycle-item" style="border-color:rgba(124,58,237,0.3);background:rgba(124,58,237,0.03)">
-        <h4 style="color:#7C3AED">THINK</h4>
-        <p>AI 모델링<br>분석/예측/인퍼런스</p>
-      </div>
-      <div class="cycle-arrow">&rarr;</div>
-      <div class="cycle-item" style="border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.03)">
-        <h4 style="color:#10B981">ACT</h4>
-        <p>실행<br>시뮬레이션 &rarr; 검증 &rarr; 적용</p>
-      </div>
-      <div class="cycle-arrow">&rarr;</div>
-      <div class="cycle-item" style="border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.03)">
-        <h4 style="color:#F59E0B">LEARN</h4>
-        <p>피드백<br>모델 업데이트 / 지속 향상</p>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
 
-<!-- ======== ARCHITECTURE ======== -->
-<section id="arch" class="sec-glow" data-name="Architecture">
-<div class="inner">
-  <div class="g2" style="margin-bottom:12px">
-    <div>
-      <div class="badge rv">04 // Architecture</div>
-      <h2 class="stitle rv" style="transition-delay:.1s">Factory ExpertX <span class="accent">Architecture</span></h2>
-      <p class="sdesc rv" style="transition-delay:.15s;font-size:12px">SSOT + STAL Agent + ExpertX Runtime 통합 아키텍처</p>
-    </div>
-    <div class="rv-r" style="transition-delay:.2s">
-      <div class="img-frame img-glow" style="aspect-ratio:2/1">
-        <img src="extracted_images/architecture_3.png" alt="Factory Robots"/>
-        <div class="img-caption"><div class="img-dot"></div><span>AI-Powered Manufacturing Line</span></div>
-      </div>
+
+
+
     </div>
   </div>
 
   <div class="layer rv" style="border-color:#0EA5E9;transition-delay:.2s">
-    <div class="layer-title"><span class="accent">Layer 1</span> &mdash; Factory Data Layer (SSOT)</div>
+    <div class="layer-title"><span class="accent">Layer 1</span> &mdash; Factory Data Layer</div>
     <div class="layer-items">
       <div class="layer-item"><strong>센서/IoT</strong>PLC/SCADA, OPC-UA 실시간 수집</div>
-      <div class="layer-item"><strong>비전 데이터</strong>CCTV 영상 스트림 분석</div>
-      <div class="layer-item"><strong>문서 데이터</strong>작업지시서, 도면, SOP</div>
-      <div class="layer-item"><strong>행동 패턴</strong>사물/디지털트윈 데이터</div>
+      <div class="layer-item"><strong>비전/CCTV</strong>영상 스트림 실시간 분석</div>
+      <div class="layer-item"><strong>문서 데이터</strong>SOP, 매뉴얼, 작업지시서</div>
+      <div class="layer-item"><strong>MES/ERP</strong>생산·정비·품질 이력</div>
     </div>
   </div>
 
   <div class="layer rv" style="border-color:#7C3AED;transition-delay:.3s">
-    <div class="layer-title"><span style="color:#7C3AED">Layer 2</span> &mdash; ExpertX AI Agent Layer (STAL)</div>
+    <div class="layer-title"><span style="color:#7C3AED">Layer 2</span> &mdash; Platform Core (RAGX · EEPX · DAIP · SSOTX)</div>
     <div class="layer-items">
-      <div class="layer-item"><strong style="color:#0EA5E9">SENSE</strong>데이터 수집/정제, 이상 탐지</div>
-      <div class="layer-item"><strong style="color:#7C3AED">THINK</strong>분석/예측/인퍼런스 모델</div>
-      <div class="layer-item"><strong style="color:#10B981">ACT</strong>시뮬레이션 &rarr; 안전 실행</div>
-      <div class="layer-item"><strong style="color:#F59E0B">LEARN</strong>피드백 &rarr; 모델 업데이트</div>
+      <div class="layer-item"><strong style="color:#F59E0B">RAGX</strong>문서 근거 추출</div>
+      <div class="layer-item"><strong style="color:#0EA5E9">EEPX</strong>센서 이벤트 추출·이상 탐지</div>
+      <div class="layer-item"><strong style="color:#10B981">DAIP</strong>안전 실행 제어</div>
+      <div class="layer-item"><strong style="color:#7C3AED">SSOTX</strong>운영 기억·근거 축적</div>
     </div>
   </div>
 
   <div class="layer rv" style="border-color:#10B981;transition-delay:.4s">
-    <div class="layer-title"><span style="color:#10B981">Layer 3</span> &mdash; ExpertX Runtime (Governance)</div>
+    <div class="layer-title"><span style="color:#10B981">Layer 3</span> &mdash; ExpertX Agents + AssistX Interface</div>
     <div class="layer-items">
-      <div class="layer-item"><strong style="color:#10B981">LLM 오케스트레이션</strong>World Model 기반 조율</div>
-      <div class="layer-item"><strong style="color:#10B981">워크플로우</strong>가드레일 + Rollback</div>
-      <div class="layer-item"><strong style="color:#10B981">MLOps</strong>파이프라인 자동화</div>
-      <div class="layer-item"><strong style="color:#10B981">모니터링</strong>감사 로그, 대시보드</div>
+      <div class="layer-item"><strong style="color:#0EA5E9">MaintenanceX</strong>설비 예지보전 Agent</div>
+      <div class="layer-item"><strong style="color:#7C3AED">ProductionX</strong>제조 운영 최적화 Agent</div>
+      <div class="layer-item"><strong style="color:#10B981">QualityX</strong>품질 불량 분석 Agent</div>
+      <div class="layer-item"><strong style="color:#EF4444">SafetyX</strong>안전 감시 Agent</div>
     </div>
   </div>
-
 </div>
 </section>
+
+
+<!-- <div class="g2" style="gap:8px">
+  <div class="card card-amber rv" style="transition-delay:.25s;padding:12px">
+    <div class="mono" style="font-size:11px;color:#F59E0B;letter-spacing:2px;margin-bottom:4px">RAGX</div>
+    <h3 style="font-size:12px">문서 기반 검색</h3>
+    <p style="font-size:12px">SOP·매뉴얼·이력 자동 검색</p>
+  </div>
+  <div class="card card-accent rv" style="transition-delay:.3s;padding:12px">
+    <div class="mono accent" style="font-size:11px;letter-spacing:2px;margin-bottom:4px">EEPX</div>
+    <h3 style="font-size:12px">센서 패턴 분석</h3>
+    <p style="font-size:12px">실시간 이상 탐지 및 추론</p>
+  </div>
+  <div class="card card-green rv" style="transition-delay:.35s;padding:12px">
+    <div class="mono" style="font-size:11px;color:#10B981;letter-spacing:2px;margin-bottom:4px">DAIP</div>
+    <h3 style="font-size:12px">안전 실행 승인</h3>
+    <p style="font-size:12px">가드레일 + 1-click 승인</p>
+  </div>
+  <div class="card card-purple rv" style="transition-delay:.4s;padding:12px">
+    <div class="mono" style="font-size:11px;color:#7C3AED;letter-spacing:2px;margin-bottom:4px">SSOTX</div>
+    <h3 style="font-size:12px">운영 기억 저장</h3>
+    <p style="font-size:12px">근거 축적 → 템플릿 확산</p>
+  </div>
+</div> -->
+
+
 
 <!-- ======== CASES ======== -->
 <section id="cases" class="sec-glow" data-name="Cases">
 <div class="inner" style="padding-top:28px;padding-bottom:28px">
-  <div class="badge rv">05 // Reference Cases</div>
+  <div class="badge rv">04 // ExpertX Agent Cases</div>
   <h2 class="stitle rv" style="transition-delay:.1s"><span class="accent">적용 사례</span></h2>
-  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:8px;font-size:12px">Smart Factory Level별 적용 시나리오 &mdash; Level 0~4 모든 수준 적용 가능</p>
+  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:8px;font-size:12px">RAGX + EEPX 교차 분석으로 근거 있는 판단 &mdash; DAIP로 안전한 실행 &mdash; SSOTX로 지속 축적</p>
 
-  <!-- Overview Cards as Tabs -->
-  <div class="g3 rv" style="margin-bottom:12px;transition-delay:.2s">
+  <div class="g4 rv" style="margin-bottom:12px;transition-delay:.2s">
     <div class="card card-accent case-tab active" data-tab="c1" style="text-align:center;padding:14px;cursor:pointer">
-      <div class="mono accent" style="font-size:12px;letter-spacing:2px;margin-bottom:4px">LEVEL 0-2</div>
-      <h3 style="font-size:13px">K사 시트 제조라인</h3>
-      <p style="margin-top:4px;font-size:12px">도포 전문가의 손끝 감각을 AI가 배운다</p>
+      <div class="mono accent" style="font-size:12px;letter-spacing:2px;margin-bottom:4px">CASE 1</div>
+      <h3 style="font-size:13px">MaintenanceX</h3>
+      <p style="margin-top:4px;font-size:12px">설비 예지보전 - L사 공장 라인 로봇</p>
     </div>
     <div class="card card-purple case-tab" data-tab="c2" style="text-align:center;padding:14px;cursor:pointer">
-      <div class="mono" style="font-size:12px;letter-spacing:2px;margin-bottom:4px;color:#7C3AED">LEVEL 3</div>
-      <h3 style="font-size:13px">H사 소각로 운영</h3>
-      <p style="margin-top:4px;font-size:12px">20년 경력 운영자, AI가 대신한다</p>
+      <div class="mono" style="font-size:12px;letter-spacing:2px;margin-bottom:4px;color:#7C3AED">CASE 2</div>
+      <h3 style="font-size:13px">ProductionX</h3>
+      <p style="margin-top:4px;font-size:12px">제조 운영 최적화 - H사 소각로</p>
     </div>
     <div class="card card-green case-tab" data-tab="c3" style="text-align:center;padding:14px;cursor:pointer">
-      <div class="mono" style="font-size:12px;letter-spacing:2px;margin-bottom:4px;color:#10B981">LEVEL 4</div>
-      <h3 style="font-size:13px">L사 로봇 자동화 라인</h3>
-      <p style="margin-top:4px;font-size:12px">1,000대 로봇을 5명이 관리하던 시대</p>
+      <div class="mono" style="font-size:12px;letter-spacing:2px;margin-bottom:4px;color:#10B981">CASE 3</div>
+      <h3 style="font-size:13px">QualityX</h3>
+      <p style="margin-top:4px;font-size:12px">품질 불량 분석 - 3D 스캔 검사</p>
+    </div>
+    <div class="card card-red case-tab" data-tab="c4" style="text-align:center;padding:14px;cursor:pointer">
+      <div class="mono" style="font-size:12px;letter-spacing:2px;margin-bottom:4px;color:#EF4444">CASE 4</div>
+      <h3 style="font-size:13px">SafetyX</h3>
+      <p style="margin-top:4px;font-size:12px">실시간 안전 감시 - CCTV 누출/오염</p>
     </div>
   </div>
 
-  <!-- CASE 1 -->
+  <!-- CASE 1: MaintenanceX -->
   <div class="tc active" id="tab-c1">
     <div class="img-gallery cols-2" style="margin-bottom:6px">
       <div class="img-frame img-glow" style="aspect-ratio:4/1">
-        <img src="extracted_images/case1_overview_1.png" alt="3D Human Tracking System"/>
-        <div class="img-caption"><div class="img-dot"></div><span>3D Human Tracking System</span></div>
+        <img src="images_html/case2_detail_1.png" alt="Robot Sensor Analysis"/>
+        <div class="img-caption"><div class="img-dot"></div><span>6-Axis Robot Sensor Pattern Analysis</span></div>
       </div>
       <div class="img-frame img-glow" style="aspect-ratio:4/1">
-        <img src="extracted_images/case1_overview_2.png" alt="Spray Centroid Analysis" style="object-fit:contain;background:#0A0E1A"/>
-        <div class="img-caption"><div class="img-dot"></div><span>Spray Centroid Analysis</span></div>
+        <img src="images_html/case2_detail_2.png" alt="Predictive Maintenance" style="object-fit:contain;background:#0A0E1A"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Predictive Maintenance Dashboard</span></div>
       </div>
+    </div>
+    <div style="margin-bottom:8px">
+      <div class="mono accent" style="font-size:11px;letter-spacing:2px;margin-bottom:4px">ExpertX Agent CASE 1 — MaintenanceX &nbsp;|&nbsp; 설비 예지보전 — L사 공장 라인 로봇</div>
+      <p style="font-size:12px;color:#94A3B8">6축 로봇 센서 패턴 + 정비 매뉴얼 → 고장 예측 및 자율 튜닝</p>
     </div>
     <div class="g2" style="margin-bottom:6px">
       <div>
-        <div class="ab" style="border-color:#0EA5E9">
-          <h4 style="color:#0EA5E9">SENSE Agent &mdash; 전문가의 눈과 손을 데이터화</h4>
+        <div class="ab" style="border-color:#F59E0B">
+          <h4 style="color:#F59E0B">EEPX &mdash; 센서 패턴 분석</h4>
           <ul>
-            <li>형틀 ID, 3D 모델, 재질 정보 &mdash; PLC/MES 연동</li>
-            <li>스프레이 압력, 도포량, 작업 시간 &mdash; IoT 센서</li>
-            <li>전문가 손 움직임, 스프레이 궤적 &mdash; 3D 비전 + Pose Estimation</li>
+            <li>6축 위치/속도/토크/전류 (1kHz 실시간 수집)</li>
+            <li>3D 궤적 비전-피드백 비교 (±0.1mm 정밀도)</li>
+            <li>Attention 기반 정상 대비 편차 구간 자동 감지</li>
           </ul>
         </div>
-        <div class="ab" style="border-color:#7C3AED">
-          <h4 style="color:#7C3AED">THINK Agent &mdash; 암묵지를 명시지로 변환</h4>
+        <div class="ab" style="border-color:#0EA5E9">
+          <h4 style="color:#0EA5E9">RAGX &mdash; 문서 교차 검색</h4>
           <ul>
-            <li>100종 형틀의 도포 패턴 &rarr; 5개 대표 패턴 도출</li>
-            <li>모서리/곡면/평면별 도포 집중도 &rarr; 영역별 도포량 맵</li>
-            <li>유사 형틀 기반 최적 도포 패턴 자동 생성</li>
+            <li>SOP-LUBE-01 윤활유 점검 절차 자동 검색</li>
+            <li>MANUAL-BRG-04 베어링 교체 주기 기준</li>
+            <li>유사사례: 2025.12 A라인 베어링 교체 이력</li>
           </ul>
         </div>
       </div>
       <div>
         <div class="ab" style="border-color:#10B981">
-          <h4 style="color:#10B981">ACT Agent &mdash; 지식을 실행 가능한 형태로 출력</h4>
+          <h4 style="color:#10B981">Fusion &rarr; SSOTX &mdash; 근거 카드 생성</h4>
           <ul>
-            <li><strong style="color:#E2E8F0">Advice</strong> &mdash; 신입 작업자 &rarr; 상세 작업 지시서</li>
-            <li><strong style="color:#E2E8F0">Assisted</strong> &mdash; 스프레이 경로 시각화 + 승인</li>
-            <li><strong style="color:#E2E8F0">Auto</strong> &mdash; OLP 시뮬레이션 + Job 코드 자동 생성</li>
+            <li>진동 패턴 + SOP 절차 + 과거 정비 이력 교차 검증</li>
+            <li>고장 예측 근거 카드 자동 생성 → DAIP 승인 후 실행</li>
+            <li>Advice / Assisted / Auto 3단계 실행 모드</li>
           </ul>
         </div>
-        <div class="ab" style="border-color:#F59E0B">
-          <h4 style="color:#F59E0B">LEARN Agent &mdash; 지속적 품질 개선</h4>
+        <div class="ab" style="border-color:#7C3AED">
+          <h4 style="color:#7C3AED">SSOTX &mdash; 운영 기억 축적</h4>
           <ul>
-            <li>품질 검사 결과 &rarr; 부족 영역 자동 조정</li>
-            <li>전문가 피드백 반영 &rarr; 패턴 DB 업데이트</li>
-            <li>작업 시간 vs 품질 트레이드오프 최적화</li>
+            <li>정비 이력 + 근거 카드 → SSOTX 자동 저장</li>
+            <li>동일 모델 로봇 간 지식 공유 (집단 학습)</li>
+            <li>마모·고장 패턴 → 예방 정비 자동 스케줄</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="g4" style="margin-top:10px">
-      <div class="stat"><div class="stat-num" data-target="75">0</div><div class="stat-lbl">신입 교육 기간 단축 (%)</div></div>
-      <div class="stat"><div class="stat-num" data-target="73">0</div><div class="stat-lbl">불량률 감소 (%)</div></div>
-      <div class="stat"><div class="stat-num" data-target="93">0</div><div class="stat-lbl">신규 형틀 대응 단축 (%)</div></div>
-      <div class="stat"><div class="stat-num" data-target="100">0</div><div class="stat-lbl">작업 지시서 표준화 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="92">0</div><div class="stat-lbl">로봇 관리 시간 절감 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="94">0</div><div class="stat-lbl">품질 이상 대응 단축 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="88">0</div><div class="stat-lbl">돌발 고장 감소 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="14" data-suffix="%p">0</div><div class="stat-lbl">전체 OEE 향상</div></div>
     </div>
   </div>
 
-  <!-- CASE 2 -->
+  <!-- CASE 2: ProductionX -->
   <div class="tc" id="tab-c2">
     <div class="img-gallery cols-2" style="margin-bottom:10px">
       <div class="img-frame img-glow" style="aspect-ratio:3/1">
-        <img src="extracted_images/case2_overview_1.png" alt="소각로 Control Dashboard"/>
+        <img src="images_html/case2_overview_1.png" alt="소각로 Control Dashboard"/>
         <div class="img-caption"><div class="img-dot"></div><span>Incinerator Control Dashboard</span></div>
       </div>
       <div class="img-frame img-glow" style="aspect-ratio:3/1">
-        <img src="images/slide17_dark.png" alt="소각로 제어 추천 솔루션"/>
+        <img src="images_html/slide17_dark.png" alt="소각로 RPM 제어"/>
         <div class="img-caption"><div class="img-dot"></div><span>Incinerator RPM Control Solution</span></div>
       </div>
     </div>
+    <div style="margin-bottom:8px">
+      <div class="mono" style="font-size:11px;letter-spacing:2px;margin-bottom:4px;color:#7C3AED">ExpertX Agent CASE 2 — ProductionX &nbsp;|&nbsp; 제조 운영 최적화 — H사 소각로</div>
+      <p style="font-size:12px;color:#94A3B8">전문가 3인 제어 로직을 AI로 재현 → 에너지·배출 동시 최적화</p>
+    </div>
     <div class="g2" style="margin-bottom:10px">
       <div>
-        <div class="ab" style="border-color:#0EA5E9">
-          <h4 style="color:#0EA5E9">SENSE Agent &mdash; 소각로의 모든 것을 감지</h4>
+        <div class="ab" style="border-color:#F59E0B">
+          <h4 style="color:#F59E0B">EEPX &mdash; 소각로 상태 분석</h4>
           <ul>
-            <li>밸브 개도율, 송풍량, 연료 공급량 &mdash; 제어 이력 추적</li>
-            <li>로내 온도, 배기가스 성분, 압력 &mdash; 실시간 수집</li>
-            <li>슬러지 3D 볼륨 / 외기 온습도 &mdash; 환경 변수 분석</li>
+            <li>로내 온도 32점 + 배기가스 (1초 주기)</li>
+            <li>슬러지 3D 볼륨 + 외기 환경 30종 변수</li>
+            <li>Attention 기반 연소 불안정 구간 자동 감지</li>
           </ul>
         </div>
-        <div class="ab" style="border-color:#7C3AED">
-          <h4 style="color:#7C3AED">THINK Agent &mdash; 전문가 판단 로직을 AI로 재현</h4>
+        <div class="ab" style="border-color:#0EA5E9">
+          <h4 style="color:#0EA5E9">RAGX &mdash; 운전 문서 검색</h4>
           <ul>
-            <li>(슬러지, 외기, 계절) 조합별 &rarr; 200+ 상황 패턴 DB</li>
-            <li>동일 상황 각 전문가 제어 비교 &rarr; 최적 제어 도출</li>
+            <li>SOP-BURN-05 소각로 운전 매뉴얼 자동 검색</li>
+            <li>REG-ENV-03 배출가스 허용 기준 즉시 제공</li>
+            <li>유사사례: 2025.11 온도 급등 대응 이력</li>
           </ul>
         </div>
       </div>
       <div>
         <div class="ab" style="border-color:#10B981">
-          <h4 style="color:#10B981">ACT Agent &mdash; 안전한 실행 보장</h4>
+          <h4 style="color:#10B981">Fusion &rarr; SSOTX &mdash; 최적 운전 근거 카드</h4>
           <ul>
-            <li><strong style="color:#E2E8F0">Advice</strong> &mdash; 운영자에게 제어 권고 표시</li>
-            <li><strong style="color:#E2E8F0">Assisted</strong> &mdash; AI 제어값 &rarr; 운영자 1-click 승인</li>
-            <li><strong style="color:#E2E8F0">Auto</strong> &mdash; 정책 범위 내 자동 제어 + Guardrails</li>
+            <li>연소 패턴 + 운전 매뉴얼 + 과거 조치 이력 교차 검증</li>
+            <li>최적 운전 조건 근거 카드 자동 생성</li>
+            <li>DAIP Advice / Assisted / Auto 실행 모드</li>
           </ul>
         </div>
-        <div class="ab" style="border-color:#F59E0B">
-          <h4 style="color:#F59E0B">LEARN Agent &mdash; 운영 최적화 고도화</h4>
+        <div class="ab" style="border-color:#7C3AED">
+          <h4 style="color:#7C3AED">SSOTX &mdash; 전문가 판단 로직 보존</h4>
           <ul>
-            <li>에너지 투입 vs 소각량 vs 배출 &rarr; 효율 극대화</li>
-            <li>전문가 피드백 &rarr; 판단 로직 보정</li>
+            <li>전문가 3인의 제어 결정 패턴 → SSOTX 축적</li>
+            <li>에너지 투입 vs 소각량 vs 배출 최적 균형점</li>
+            <li>에너지 효율 + 환경 규제 동시 달성</li>
           </ul>
         </div>
       </div>
@@ -633,191 +641,571 @@ section>.inner{width:100%}
     </div>
   </div>
 
-  <!-- CASE 3 -->
+  <!-- CASE 3: QualityX -->
   <div class="tc" id="tab-c3">
     <div class="img-gallery cols-2" style="margin-bottom:10px">
       <div class="img-frame img-glow" style="aspect-ratio:3/1">
-        <img src="ppt_images/slide22_img09_652636B.png" alt="Factory ExpertX Platform"/>
-        <div class="img-caption"><div class="img-dot"></div><span>Factory ExpertX Platform</span></div>
+        <img src="images_html/case3_detail_1.png" alt="3D Scan Quality Analysis"/>
+        <div class="img-caption"><div class="img-dot"></div><span>3D Scan Shape Comparison</span></div>
       </div>
       <div class="img-frame img-glow" style="aspect-ratio:3/1">
-        <img src="extracted_images/case2_detail_2.png" alt="Robot Anomaly Simulator"/>
-        <div class="img-caption"><div class="img-dot"></div><span>Robot Anomaly Simulator</span></div>
+        <img src="images_html/generated-1773306289224.png" alt="Quality Analysis Platform"/>
+        <div class="img-caption"><div class="img-dot"></div><span>QualityX Analysis Platform</span></div>
       </div>
+    </div>
+    <div style="margin-bottom:8px">
+      <div class="mono" style="font-size:11px;letter-spacing:2px;margin-bottom:4px;color:#10B981">ExpertX Agent CASE 3 — QualityX &nbsp;|&nbsp; 품질 불량 원인 분석 — 3D 스캔 검사</div>
+      <p style="font-size:12px;color:#94A3B8">3D 스캔 도면 비교 → QualityX가 편차 분석 → Pass/Fail 자동 판정</p>
     </div>
     <div class="g2" style="margin-bottom:10px">
       <div>
-        <div class="ab" style="border-color:#0EA5E9">
-          <h4 style="color:#0EA5E9">SENSE Agent &mdash; 로봇의 모든 움직임을 포착</h4>
+        <div class="ab" style="border-color:#F59E0B">
+          <h4 style="color:#F59E0B">EEPX &mdash; 3D 형상 분석</h4>
           <ul>
-            <li>각 축 위치, 속도, 토크, 전류 &mdash; 1kHz 실시간 수집</li>
-            <li>생산량, 사이클 타임, 알람 이력 &mdash; MES 연동</li>
-            <li>로봇 3D 궤적 / 관절 패턴 &mdash; Kinematics 분석</li>
+            <li>STL/OBJ/PLY 3D 스캔 데이터 로딩 및 자동 정합</li>
+            <li>±0.05mm 정밀도 형상 비교 편차 히트맵 생성</li>
+            <li>AI 자동 정합 / Fitness Score 산출</li>
           </ul>
         </div>
-        <div class="ab" style="border-color:#7C3AED">
-          <h4 style="color:#7C3AED">THINK Agent &mdash; 자율 진단 및 최적화</h4>
+        <div class="ab" style="border-color:#0EA5E9">
+          <h4 style="color:#0EA5E9">RAGX &mdash; 도면·기준 검색</h4>
           <ul>
-            <li>정상 패턴 대비 편차 &mdash; Anomaly Detection</li>
-            <li>축/구간/원인 &mdash; Self-Attention 기반 추론</li>
-            <li>품질/생산성 영향도 시뮬레이션</li>
+            <li>도면 설계 허용 공차 기준서 자동 검색</li>
+            <li>과거 불량 유형 및 조치 이력 데이터베이스</li>
+            <li>품질 검사 SOP 절차서 자동 매핑</li>
           </ul>
         </div>
       </div>
       <div>
         <div class="ab" style="border-color:#10B981">
-          <h4 style="color:#10B981">ACT Agent &mdash; 시뮬레이션 검증 후 자동 적용</h4>
+          <h4 style="color:#10B981">Fusion &rarr; SSOTX &mdash; 판정 근거 카드</h4>
           <ul>
-            <li><strong style="color:#E2E8F0">Step 1.</strong> OLP 시뮬레이션 &rarr; 충돌/도달성 검증</li>
-            <li><strong style="color:#E2E8F0">Step 2.</strong> Job 코드 &rarr; 로봇 프로그램 자동 생성</li>
-            <li><strong style="color:#E2E8F0">Step 3.</strong> 승인 후 로봇에 자동 배포</li>
+            <li>형상 편차 + 허용 공차 + 불량 이력 교차 검증</li>
+            <li>Pass/Fail 판정 근거 카드 자동 생성</li>
+            <li>불량 원인 리포트 → DAIP 승인 후 조치 실행</li>
           </ul>
         </div>
+        <div class="ab" style="border-color:#7C3AED">
+          <h4 style="color:#7C3AED">SSOTX &mdash; 품질 기준 축적</h4>
+          <ul>
+            <li>합격·불합격 사례 → SSOTX 자동 분류 저장</li>
+            <li>동일 부품군 검사 기준 자동 템플릿화</li>
+            <li>신규 부품 검사 셋업 시간 대폭 단축</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="g4">
+      <div class="stat"><div class="stat-num" data-target="95">0</div><div class="stat-lbl">검사 시간 단축 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="99">0</div><div class="stat-lbl">탐지 정확도 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="85">0</div><div class="stat-lbl">재검사 감소 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="70">0</div><div class="stat-lbl">검사 인력 절감 (%)</div></div>
+    </div>
+  </div>
+
+  <!-- CASE 4: SafetyX -->
+  <div class="tc" id="tab-c4">
+    <div class="img-gallery cols-2" style="margin-bottom:10px">
+      <div class="img-frame img-glow" style="aspect-ratio:3/1">
+        <img src="images_html/other_cases_2.png" alt="CCTV Leak Detection"/>
+        <div class="img-caption"><div class="img-dot"></div><span>3D Reconstruction &amp; Leak Detection</span></div>
+      </div>
+      <div class="img-frame img-glow" style="aspect-ratio:3/1">
+        <img src="images_html/other_cases_1.png" alt="Safety Monitoring"/>
+        <div class="img-caption"><div class="img-dot"></div><span>Real-time Safety Monitoring</span></div>
+      </div>
+    </div>
+    <div style="margin-bottom:8px">
+      <div class="mono" style="font-size:11px;letter-spacing:2px;margin-bottom:4px;color:#EF4444">ExpertX Agent CASE 4 — SafetyX &nbsp;|&nbsp; 실시간 안전 감시 — CCTV 누출/오염</div>
+      <p style="font-size:12px;color:#94A3B8">다중 카메라 3D 재구성 → SafetyX가 누출 좌표 특정 → 즉시 대응</p>
+    </div>
+    <div class="g2" style="margin-bottom:10px">
+      <div>
         <div class="ab" style="border-color:#F59E0B">
-          <h4 style="color:#F59E0B">LEARN Agent &mdash; 1,000대 로봇의 집단 학습</h4>
+          <h4 style="color:#F59E0B">EEPX &mdash; 영상 이상 감지</h4>
           <ul>
-            <li>개별 학습: 각 로봇 고유 특성 &rarr; 맞춤형 튜닝</li>
-            <li>집단 학습: 동일 모델 로봇 간 지식 공유</li>
-            <li>예측 모델: 마모/고장 패턴 &rarr; 예방 정비</li>
+            <li>다중 CCTV 스트리밍 실시간 분석</li>
+            <li>변색 테이프 색상 패턴 변화 감지</li>
+            <li>다중 2D → 3D Reconstruction 누출 위치 특정</li>
+          </ul>
+        </div>
+        <div class="ab" style="border-color:#0EA5E9">
+          <h4 style="color:#0EA5E9">RAGX &mdash; 배관 도면 검색</h4>
+          <ul>
+            <li>파이프 배관 도면 및 재질·압력 정보 자동 검색</li>
+            <li>누출 대응 SOP 및 안전 규정 즉시 제공</li>
+            <li>과거 누출 사고 이력 및 조치 결과 데이터</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="ab" style="border-color:#10B981">
+          <h4 style="color:#10B981">Fusion &rarr; SSOTX &mdash; 즉시 대응 근거 카드</h4>
+          <ul>
+            <li>영상 분석 + 배관 도면 + 대응 이력 교차 검증</li>
+            <li>누출 위치·규모·원인 근거 카드 자동 생성</li>
+            <li>DAIP Advice → 즉시 대응 조치 지시</li>
+          </ul>
+        </div>
+        <div class="ab" style="border-color:#EF4444">
+          <h4 style="color:#EF4444">SSOTX &mdash; 안전 이력 축적</h4>
+          <ul>
+            <li>누출 사고 이력 + 대응 조치 → SSOTX 저장</li>
+            <li>동일 배관 유형 사전 경보 기준 자동 업데이트</li>
+            <li>24/7 무인 감시 → 사고 예방 체계 구축</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="g4">
-      <div class="stat"><div class="stat-num" data-target="92">0</div><div class="stat-lbl">로봇 관리 시간 절감 (%)</div></div>
-      <div class="stat"><div class="stat-num" data-target="94">0</div><div class="stat-lbl">품질 이상 대응 단축 (%)</div></div>
-      <div class="stat"><div class="stat-num" data-target="88">0</div><div class="stat-lbl">돌발 고장 감소 (%)</div></div>
-      <div class="stat"><div class="stat-num" data-target="14" data-suffix="%p">0</div><div class="stat-lbl">전체 OEE 향상</div></div>
+      <div class="stat"><div class="stat-num" data-target="90">0</div><div class="stat-lbl">누출 탐지 시간 단축 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="95">0</div><div class="stat-lbl">탐지 정확도 (%)</div></div>
+      <div class="stat"><div class="stat-num" data-target="24" data-suffix="/7">0</div><div class="stat-lbl">실시간 무인 감시</div></div>
+      <div class="stat"><div class="stat-num" data-target="60">0</div><div class="stat-lbl">안전 사고 감소 (%)</div></div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- ======== OTHER CASES ======== -->
-<section id="other" class="sec-glow" data-name="Other Cases">
+<!-- ======== 도입 절차 ======== -->
+<section id="consulting" class="sec-glow" data-name="도입 절차">
 <div class="inner">
-  <div class="badge rv">06 // Other Cases</div>
-  <h2 class="stitle rv" style="transition-delay:.1s">추가 <span class="accent">적용 사례</span></h2>
-  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:20px">EXPAI 기술이 적용 가능한 다양한 산업 시나리오</p>
+  <div class="badge rv">05 // ConsultingX</div>
+  <h2 class="stitle rv" style="transition-delay:.1s">도입 시작 — <span class="accent">0원 진단</span>으로 시작합니다</h2>
+  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:24px">"우리 공장 어디부터 AI를 적용하면 돼?" &mdash; 현장 진단부터 본도입 확산까지 3단계로 안내합니다.</p>
 
-  <div class="g2" style="gap:18px">
-    <div class="rv-l" style="transition-delay:.2s">
-      <div class="img-frame img-glow" style="aspect-ratio:5/2;margin-bottom:10px">
-        <img src="extracted_images/case3_detail_1.png" alt="EXPAI 3D Analysis"/>
-        <div class="img-caption"><div class="img-dot"></div><span>EXPAI 3D Analysis Platform</span></div>
-      </div>
-      <div class="card" style="padding:14px">
-        <div class="mono accent" style="font-size:12px;letter-spacing:2px;margin-bottom:6px">OTHER CASE 01</div>
-        <h3 style="font-size:14px;margin-bottom:6px">도면 비교 품질 분석</h3>
-        <p style="font-size:12px;margin-bottom:8px">3D 스캔 기반 제품 형상 비교로 미세 편차를 실시간 탐지합니다.</p>
-        <div class="g2" style="gap:10px">
-          <div>
-            <div class="mono" style="font-size:12px;color:#0EA5E9;letter-spacing:1px;margin-bottom:2px">SENSE</div>
-            <p style="font-size:12px">STL, OBJ, PLY 3D 데이터 로딩</p>
-          </div>
-          <div>
-            <div class="mono" style="font-size:12px;color:#7C3AED;letter-spacing:1px;margin-bottom:2px">THINK</div>
-            <p style="font-size:12px">AI 자동 정합 / Fitness Score</p>
-          </div>
-        </div>
-      </div>
+  <div class="g3 rv" style="transition-delay:.2s;align-items:start">
+    <div class="step-card" style="border-color:rgba(14,165,233,0.25)">
+      <div class="step-num">STEP 01</div>
+      <div class="step-title">현장 진단</div>
+      <div class="step-dur">2주 · 무료</div>
+      <ul class="step-list">
+        <li>현장 방문 · 업무 프로세스 관찰</li>
+        <li>숙련자 인터뷰 (암묵지 수집)</li>
+        <li>반복 질문 · 판단 패턴 분류</li>
+        <li>데이터 소스 매핑</li>
+        <li>Pain → Agent 번역 리포트 제공</li>
+      </ul>
     </div>
+    <div class="step-card" style="border-color:rgba(16,185,129,0.25)">
+      <div class="step-num" style="color:#10B981">STEP 02</div>
+      <div class="step-title">PoC 구축</div>
+      <div class="step-dur">6주</div>
+      <ul class="step-list">
+        <li>핵심 유스케이스 1~2개 선정</li>
+        <li>ConnectorX 데이터 연동</li>
+        <li>RAGX 문서 인덱싱</li>
+        <li>EEPX 센서 패턴 학습</li>
+        <li>MSC 사전 합의 · KPI 측정</li>
+      </ul>
+    </div>
+    <div class="step-card" style="border-color:rgba(124,58,237,0.25)">
+      <div class="step-num" style="color:#7C3AED">STEP 03</div>
+      <div class="step-title">본도입 확산</div>
+      <div class="step-dur">PoC ROI 기반 전환</div>
+      <ul class="step-list">
+        <li>PoC ROI 리포트 기반 전환 결정</li>
+        <li>추가 ExpertX Agent 활성화</li>
+        <li>SSOTX 템플릿 라인 확장</li>
+        <li>On-Premise 라이선스 적용</li>
+        <li>지속적 학습·개선 사이클 운영</li>
+      </ul>
+    </div>
+  </div>
 
-    <div class="rv-r" style="transition-delay:.3s">
-      <div class="img-frame img-glow" style="aspect-ratio:5/2;margin-bottom:10px">
-        <img src="extracted_images/other_cases_2.png" alt="3D Reconstruction & Leak Detection"/>
-        <div class="img-caption"><div class="img-dot"></div><span>3D Reconstruction & Leak Detection</span></div>
+  <div class="card rv" style="margin-top:20px;transition-delay:.4s;border-color:rgba(14,165,233,0.12);background:linear-gradient(135deg,rgba(14,165,233,0.03),rgba(6,182,212,0.02))">
+    <div class="mono accent" style="font-size:12px;letter-spacing:2px;margin-bottom:8px">DEPLOYMENT MODE</div>
+    <h3 style="font-size:15px;margin-bottom:10px">On-Premise 배포 (선택형 Cloud)</h3>
+    <div class="g3" style="gap:10px">
+      <div style="padding:12px 14px;background:rgba(16,185,129,0.05);border-radius:8px;border:1px solid rgba(16,185,129,0.2)">
+        <div class="mono" style="font-size:11px;color:#10B981;letter-spacing:1px;margin-bottom:4px">Full On-Premise</div>
+        <p style="font-size:12px;color:#AEAEBC">강력한 보안이 필요한 방산/반도체 공장<br>모든 LLM 추론 및 데이터 저장이<br>사내 폐쇄망에서 이루어집니다.</p>
       </div>
-      <div class="card" style="padding:14px">
-        <div class="mono accent" style="font-size:12px;letter-spacing:2px;margin-bottom:6px">OTHER CASE 02</div>
-        <h3 style="font-size:14px;margin-bottom:6px">CCTV 기반 파이프 누출 감지</h3>
-        <p style="font-size:12px;margin-bottom:8px">CCTV 영상으로 변색 테이프를 분석, 3D Reconstruction으로 누출 위치를 특정합니다.</p>
-        <div class="g2" style="gap:10px">
-          <div>
-            <div class="mono" style="font-size:12px;color:#0EA5E9;letter-spacing:1px;margin-bottom:2px">SENSE</div>
-            <p style="font-size:12px">CCTV 스트리밍 / 변색 감지</p>
-          </div>
-          <div>
-            <div class="mono" style="font-size:12px;color:#7C3AED;letter-spacing:1px;margin-bottom:2px">THINK</div>
-            <p style="font-size:12px">다중 2D &rarr; 3D Reconstruction</p>
-          </div>
-        </div>
+      <div style="padding:12px 14px;background:rgba(59,130,246,0.05);border-radius:8px;border:1px solid rgba(59,130,246,0.2)">
+        <div class="mono" style="font-size:11px;color:#3B82F6;letter-spacing:1px;margin-bottom:4px">Hybird</div>
+        <p style="font-size:12px;color:#AEAEBC">민감한 제어/OT 데이터는 내부망(Edge)에 두고,<br>무거운 LLM 추론 및 통합 분석은<br>보안 클라우드(VPC)를 활용합니다.</p>
+      </div>
+      <div style="padding:12px 14px;background:rgba(148,163,184,0.05);border-radius:8px;border:1px solid rgba(148,163,184,0.15)">
+        <div class="mono" style="font-size:11px;color:#94A3B8;letter-spacing:1px;margin-bottom:4px">Full Cloud</div>
+        <p style="font-size:12px;color:#AEAEBC">초기 인프라 투자 없이 빠르게 도입하려는<br>중소/중견 제조사 대상.<br>표준화된 SaaS 형태로 즉시 제공됩니다.</p>
       </div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- ======== WHY EXPAI ======== -->
-<section id="why" class="sec-glow" data-name="Why EXPAI">
-<div class="sec-bg"><img src="extracted_images/why_expai_1.png" alt=""/></div>
-<div class="inner">
-  <div class="badge rv">07 // Why EXPAI</div>
-  <h2 class="stitle rv" style="transition-delay:.1s">수집 &rarr; 분석 &rarr; 실행 &rarr; 학습<br><span class="accent">완전 자율 순환</span></h2>
-  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:10px;font-size:12px">기존 솔루션의 한계를 넘어, EXPAI만의 차별화된 가치를 제공합니다.</p>
+<!-- ======== DEMO ======== -->
+<section id="demo" data-name="서비스 데모" style="background:linear-gradient(180deg,#060810 0%,#080D1A 50%,#060810 100%)">
+<div class="inner" style="padding-top:80px;padding-bottom:80px">
+  <div class="rv" style="text-align:center;margin-bottom:40px">
+    <div class="badge">LIVE DEMO</div>
+    <h2 class="stitle" style="font-size:clamp(22px,3vw,36px)">Factory ExpertX <span class="accent">서비스 시연</span></h2>
+    <p class="sdesc" style="margin:10px auto 0;text-align:center">제조 현장의 질문 하나로 — AI가 근거와 함께 즉각 응답합니다</p>
+  </div>
+  <!-- step indicator -->
+  <div class="rv" style="display:flex;justify-content:center;gap:0;margin-bottom:28px;transition-delay:.05s">
+    <div class="demo-step active" id="dstep-1"><span class="ds-num">1</span><span class="ds-lbl">질문</span></div>
+    <div class="demo-step-line" id="dline-1"></div>
+    <div class="demo-step" id="dstep-2"><span class="ds-num">2</span><span class="ds-lbl">근거 분석</span></div>
+    <div class="demo-step-line" id="dline-2"></div>
+    <div class="demo-step" id="dstep-3"><span class="ds-num">3</span><span class="ds-lbl">승인 요청</span></div>
+    <div class="demo-step-line" id="dline-3"></div>
+    <div class="demo-step" id="dstep-4"><span class="ds-num">4</span><span class="ds-lbl">리포트 생성</span></div>
+  </div>
 
-  <div class="g2" style="gap:18px;margin-bottom:14px">
-    <div class="rv-l" style="transition-delay:.2s">
-      <div class="mono" style="font-size:12px;color:#EF4444;letter-spacing:2px;margin-bottom:10px">LIMITATIONS</div>
-      <div class="card card-red" style="margin-bottom:6px;padding:12px 16px">
-        <h3 style="color:#EF4444;font-size:12px">IoT 플랫폼</h3>
-        <p style="font-size:12px">데이터 수집만 &mdash; 분석/실행 부재</p>
+  <!-- 3 Panel Demo -->
+  <div class="rv" id="demo-panels" style="display:grid;grid-template-columns:280px 1fr 240px;gap:14px;max-width:1200px;margin:0 auto;height:520px;transition-delay:.1s">
+
+    <!-- === LEFT: CHAT PANEL === -->
+    <div style="background:rgba(10,14,26,0.9);border:1px solid rgba(30,41,59,0.7);border-radius:12px;display:flex;flex-direction:column;overflow:hidden">
+      <div style="padding:14px 16px;border-bottom:1px solid rgba(30,41,59,0.6);display:flex;align-items:center;gap:8px;flex-shrink:0">
+        <span style="font-size:12px;font-weight:600;color:#F1F5F9;letter-spacing:-.2px">ExpertX AssistX</span>
+        <span style="margin-left:auto;font-size:10px;color:#64748B;font-family:'JetBrains Mono',monospace">v2.1</span>
       </div>
-      <div class="card card-red" style="margin-bottom:6px;padding:12px 16px">
-        <h3 style="color:#EF4444;font-size:12px">BI / Analytics</h3>
-        <p style="font-size:12px">분석만 &mdash; 실행과의 연결 부재</p>
+      <div id="dc-messages" style="flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;scrollbar-width:thin;scrollbar-color:#1E293B transparent">
+        <div style="text-align:center;font-size:10px;color:#475569;font-family:'JetBrains Mono',monospace;padding:4px 0">— 설비 A라인 컨텍스트 로드됨 —</div>
       </div>
-      <div class="card card-red" style="padding:12px 16px">
-        <h3 style="color:#EF4444;font-size:12px">RPA / 로봇</h3>
-        <p style="font-size:12px">자동화만 &mdash; 인지/판단 부재</p>
+      <div style="padding:10px 12px;border-top:1px solid rgba(30,41,59,0.5);flex-shrink:0;position:relative">
+<div style="display:flex;gap:8px;align-items:center;background:rgba(15,23,42,0.6);border:1px solid rgba(30,41,59,0.5);border-radius:8px;padding:6px 10px 6px 12px" id="dc-input-wrap">
+          <input id="dc-input" type="text" value="설비에 이상이 있어?" readonly style="font-size:12px;color:#CBD5E1;flex:1;background:none;border:none;outline:none;font-family:'Inter',sans-serif;cursor:default"/>
+          <button id="dc-send" onclick="demoSend()" style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#0EA5E9,#0284C7);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;animation:btn-pulse 1.4s ease-in-out infinite">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
       </div>
     </div>
-    <div class="rv-r" style="transition-delay:.3s">
-      <div class="mono accent" style="font-size:12px;letter-spacing:2px;margin-bottom:10px">EXPAI DIFFERENTIATION</div>
-      <div class="card card-accent" style="margin-bottom:6px;padding:12px 16px">
-        <h3 style="color:#0EA5E9;font-size:12px">Sense &mdash; 데이터 + 암묵지 추출</h3>
-        <p style="font-size:12px">IoT 데이터 + 전문가 행동 패턴 통합 수집</p>
+
+    <!-- === CENTER: EVIDENCE PANEL === -->
+    <div style="background:rgba(10,14,26,0.9);border:1px solid rgba(30,41,59,0.7);border-radius:12px;display:flex;flex-direction:column;overflow:hidden">
+      <div style="padding:14px 18px;border-bottom:1px solid rgba(30,41,59,0.6);display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:13px;font-weight:700;color:#F1F5F9">근거 패널</span>
+        </div>
+        <span id="de-badge" style="font-size:10px;color:#475569;font-family:'JetBrains Mono',monospace;background:rgba(30,41,59,0.4);border:1px solid rgba(30,41,59,0.5);border-radius:4px;padding:2px 8px;transition:all .4s">대기 중</span>
       </div>
-      <div class="card card-purple" style="margin-bottom:6px;padding:12px 16px">
-        <h3 style="color:#7C3AED;font-size:12px">Think &mdash; 전문가처럼 분석</h3>
-        <p style="font-size:12px">AI가 패턴 분석 &rarr; 전문가 수준 판단</p>
+      <div id="de-placeholder" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.2"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#94A3B8" stroke-width="1.5"/><path d="M3 9h18M9 21V9" stroke="#94A3B8" stroke-width="1.5"/></svg>
+        <p style="font-size:12px;color:#475569;text-align:center;line-height:1.6">질문을 전송하면<br/>근거 데이터가 표시됩니다</p>
       </div>
-      <div class="card card-green" style="margin-bottom:6px;padding:12px 16px">
-        <h3 style="color:#10B981;font-size:12px">Act &mdash; 안전하게 실행</h3>
-        <p style="font-size:12px">시뮬레이션 검증 + Guardrails + Rollback</p>
+      <div id="de-content" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+        <div style="display:flex;gap:0;border-bottom:1px solid rgba(30,41,59,0.5);padding:0 18px;flex-shrink:0">
+          <button onclick="demoTab('ev-graph')" id="dt-graph" class="dtab dtab-active">진동 RMS 데이터</button>
+          <button onclick="demoTab('ev-hist')" id="dt-hist" class="dtab">유사 고장 이력</button>
+          <button onclick="demoTab('ev-doc')" id="dt-doc" class="dtab">설비 문서</button>
+        </div>
+        <div style="flex:1;overflow-y:auto;padding:16px 18px">
+          <div id="ev-graph">
+            <div style="font-size:11px;color:#64748B;margin-bottom:10px;font-family:'JetBrains Mono',monospace">진동 RMS (g) — 최근 72시간</div>
+            <svg viewBox="0 0 520 140" style="width:100%;overflow:visible" preserveAspectRatio="none">
+              <defs><linearGradient id="dcGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0EA5E9" stop-opacity=".3"/><stop offset="100%" stop-color="#0EA5E9" stop-opacity="0"/></linearGradient></defs>
+              <line x1="0" y1="20" x2="520" y2="20" stroke="#1E293B" stroke-width="1"/><line x1="0" y1="50" x2="520" y2="50" stroke="#1E293B" stroke-width="1"/><line x1="0" y1="80" x2="520" y2="80" stroke="#1E293B" stroke-width="1"/><line x1="0" y1="110" x2="520" y2="110" stroke="#1E293B" stroke-width="1"/>
+              <line x1="0" y1="55" x2="520" y2="55" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="6,4" opacity=".7"/>
+              <text x="524" y="58" font-size="9" fill="#EF4444" font-family="JetBrains Mono">6.0g</text>
+              <text x="-4" y="23" font-size="9" fill="#475569" text-anchor="end" font-family="JetBrains Mono">10g</text><text x="-4" y="53" font-size="9" fill="#475569" text-anchor="end" font-family="JetBrains Mono">6g</text><text x="-4" y="83" font-size="9" fill="#475569" text-anchor="end" font-family="JetBrains Mono">4g</text><text x="-4" y="113" font-size="9" fill="#475569" text-anchor="end" font-family="JetBrains Mono">2g</text>
+              <path d="M0,105 C30,103 50,100 80,98 C110,96 130,92 160,88 C190,84 210,80 240,76 C270,72 290,68 320,62 C340,58 360,52 390,42 C410,35 430,28 460,22 C480,18 500,16 520,16 L520,140 L0,140 Z" fill="url(#dcGrad)"/>
+              <path d="M0,105 C30,103 50,100 80,98 C110,96 130,92 160,88 C190,84 210,80 240,76 C270,72 290,68 320,62 C340,58 360,52 390,42 C410,35 430,28 460,22 C480,18 500,16 520,16" fill="none" stroke="#0EA5E9" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="520" cy="16" r="5" fill="#EF4444" opacity=".9"/><circle cx="520" cy="16" r="9" fill="none" stroke="#EF4444" stroke-width="1.5" opacity=".5"/>
+              <text x="505" y="11" font-size="8" fill="#EF4444" text-anchor="middle" font-family="JetBrains Mono">8.7g</text>
+              <text x="0" y="130" font-size="9" fill="#475569" font-family="JetBrains Mono">-72h</text><text x="240" y="130" font-size="9" fill="#475569" text-anchor="middle" font-family="JetBrains Mono">-36h</text><text x="520" y="130" font-size="9" fill="#F59E0B" text-anchor="end" font-family="JetBrains Mono">NOW</text>
+            </svg>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px">
+              <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:7px;padding:8px 10px;text-align:center"><div style="font-size:16px;font-weight:900;color:#EF4444;font-family:'JetBrains Mono',monospace;letter-spacing:-1px">8.7g</div><div style="font-size:10px;color:#64748B;margin-top:2px">현재 RMS</div></div>
+              <div style="background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.15);border-radius:7px;padding:8px 10px;text-align:center"><div style="font-size:16px;font-weight:900;color:#F59E0B;font-family:'JetBrains Mono',monospace;letter-spacing:-1px">+45%</div><div style="font-size:10px;color:#64748B;margin-top:2px">72h 대비 증가</div></div>
+              <div style="background:rgba(14,165,233,0.06);border:1px solid rgba(14,165,233,0.15);border-radius:7px;padding:8px 10px;text-align:center"><div style="font-size:16px;font-weight:900;color:#0EA5E9;font-family:'JetBrains Mono',monospace;letter-spacing:-1px">87%</div><div style="font-size:10px;color:#64748B;margin-top:2px">고장 패턴 유사도</div></div>
+            </div>
+            <div style="margin-top:12px;background:rgba(14,165,233,0.04);border:1px solid rgba(14,165,233,0.1);border-radius:8px;padding:10px 12px">
+              <div style="font-size:10px;color:#0EA5E9;font-weight:600;margin-bottom:4px;font-family:'JetBrains Mono',monospace">AI INSIGHT</div>
+              <p style="font-size:11px;color:#94A3B8;line-height:1.6">72시간 이내 지속적인 RMS 상승 패턴 감지. 베어링 마모 초기 징후로 판단됩니다. 즉각적인 예방 정비를 권고합니다.</p>
+            </div>
+          </div>
+          <div id="ev-hist" style="display:none">
+            <div style="font-size:11px;color:#64748B;margin-bottom:12px;font-family:'JetBrains Mono',monospace">유사 고장 이력 — 유사도 상위 3건</div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <div style="background:rgba(15,23,42,0.7);border:1px solid rgba(30,41,59,0.6);border-left:3px solid #EF4444;border-radius:8px;padding:12px 14px"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><span style="font-size:11px;font-weight:700;color:#F1F5F9;font-family:'JetBrains Mono',monospace">MNT-2024-09-009</span><span style="font-size:10px;color:#EF4444;font-weight:600;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);border-radius:4px;padding:2px 6px">유사도 91%</span></div><p style="font-size:11px;color:#94A3B8;line-height:1.5;margin-bottom:6px">A-03 압축기 베어링 마모 → 완전 교체. RMS 패턴 동일, 3일 후 설비 정지.</p><div style="display:flex;gap:8px;font-size:10px;color:#64748B"><span>2024.09.15</span><span>정비 4.5h</span><span style="color:#10B981">예방 성공</span></div></div>
+              <div style="background:rgba(15,23,42,0.7);border:1px solid rgba(30,41,59,0.6);border-left:3px solid #F59E0B;border-radius:8px;padding:12px 14px"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><span style="font-size:11px;font-weight:700;color:#F1F5F9;font-family:'JetBrains Mono',monospace">MNT-2024-03-022</span><span style="font-size:10px;color:#F59E0B;font-weight:600;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);border-radius:4px;padding:2px 6px">유사도 84%</span></div><p style="font-size:11px;color:#94A3B8;line-height:1.5;margin-bottom:6px">B라인 압축기 임펠러 이상. 윤활 불량으로 인한 진동 상승.</p><div style="display:flex;gap:8px;font-size:10px;color:#64748B"><span>2024.03.08</span><span>정비 2.0h</span><span style="color:#10B981">윤활 조치</span></div></div>
+              <div style="background:rgba(15,23,42,0.7);border:1px solid rgba(30,41,59,0.6);border-left:3px solid #0EA5E9;border-radius:8px;padding:12px 14px"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><span style="font-size:11px;font-weight:700;color:#F1F5F9;font-family:'JetBrains Mono',monospace">MNT-2023-11-041</span><span style="font-size:10px;color:#0EA5E9;font-weight:600;background:rgba(14,165,233,0.1);border:1px solid rgba(14,165,233,0.2);border-radius:4px;padding:2px 6px">유사도 79%</span></div><p style="font-size:11px;color:#94A3B8;line-height:1.5;margin-bottom:6px">C라인 팬 모터 베어링 이상. 즉시 교체로 비계획 정지 방지.</p><div style="display:flex;gap:8px;font-size:10px;color:#64748B"><span>2023.11.22</span><span>정비 1.5h</span><span style="color:#10B981">교체 완료</span></div></div>
+            </div>
+          </div>
+          <div id="ev-doc" style="display:none">
+            <div style="font-size:11px;color:#64748B;margin-bottom:12px;font-family:'JetBrains Mono',monospace">참조 문서 — 설비 매뉴얼 &amp; 표준</div>
+            <div style="background:rgba(15,23,42,0.6);border:1px solid rgba(30,41,59,0.5);border-radius:8px;padding:14px;margin-bottom:10px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="16" height="20" viewBox="0 0 16 20" fill="none"><rect x="0" y="0" width="16" height="20" rx="2" fill="#EF4444" opacity=".8"/><text x="3" y="14" font-size="7" fill="white" font-weight="700">PDF</text></svg><div><div style="font-size:11px;font-weight:600;color:#F1F5F9">A-03 압축기 유지보수 매뉴얼</div><div style="font-size:10px;color:#64748B">p.47 — 베어링 점검 절차</div></div></div><div style="background:rgba(6,8,16,0.5);border:1px solid rgba(30,41,59,0.4);border-radius:6px;padding:10px;font-size:11px;color:#94A3B8;line-height:1.6;border-left:2px solid #EF4444">"베어링 RMS 값이 6.0g 초과 시 즉각 점검 실시. 8.0g 초과 시 설비 정지 후 베어링 교체를 원칙으로 한다..."</div></div>
+            <div style="background:rgba(15,23,42,0.6);border:1px solid rgba(30,41,59,0.5);border-radius:8px;padding:14px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><svg width="16" height="20" viewBox="0 0 16 20" fill="none"><rect x="0" y="0" width="16" height="20" rx="2" fill="#0EA5E9" opacity=".8"/><text x="3" y="14" font-size="7" fill="white" font-weight="700">SOP</text></svg><div><div style="font-size:11px;font-weight:600;color:#F1F5F9">압축기 이상 대응 SOP</div><div style="font-size:10px;color:#64748B">표준 운영 절차서 v3.2</div></div></div><div style="background:rgba(6,8,16,0.5);border:1px solid rgba(30,41,59,0.4);border-radius:6px;padding:10px;font-size:11px;color:#94A3B8;line-height:1.6;border-left:2px solid #0EA5E9">"Step 1. 설비 부하 경감 → Step 2. 정비팀 승인 요청 → Step 3. 안전 잠금 후 베어링 점검..."</div></div>
+          </div>
+        </div>
       </div>
-      <div class="card card-amber" style="padding:12px 16px">
-        <h3 style="color:#F59E0B;font-size:12px">Learn &mdash; 지속 개선</h3>
-        <p style="font-size:12px">피드백 반영 &rarr; 모델 업데이트 &rarr; 성능 향상</p>
+    </div>
+
+    <!-- === RIGHT: APPROVAL PANEL === -->
+    <div style="background:rgba(10,14,26,0.9);border:1px solid rgba(30,41,59,0.7);border-radius:12px;display:flex;flex-direction:column;overflow:hidden">
+      <div style="padding:14px 16px;border-bottom:1px solid rgba(30,41,59,0.6);display:flex;align-items:center;gap:8px;flex-shrink:0">
+        <span style="font-size:12px;font-weight:700;color:#F1F5F9">승인 · 리포트</span>
+      </div>
+      <div id="da-placeholder" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" style="opacity:.2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p style="font-size:12px;color:#475569;text-align:center;line-height:1.6">승인 요청 후<br/>이곳에 표시됩니다</p>
+      </div>
+      <div id="da-content" style="display:none;flex-direction:column;flex:1;overflow-y:auto;padding:12px;gap:10px">
+        <div style="background:rgba(16,185,129,0.04);border:1px solid rgba(16,185,129,0.15);border-radius:8px;padding:12px">
+          <div style="font-size:10px;font-weight:700;color:#10B981;font-family:'JetBrains Mono',monospace;margin-bottom:8px">승인 요청서 #2026-0314-007</div>
+          <div style="font-size:11px;color:#94A3B8;line-height:1.7">
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(30,41,59,0.4)"><span style="color:#64748B">설비</span><span style="color:#F1F5F9;font-weight:500">A-03 압축기</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(30,41,59,0.4)"><span style="color:#64748B">이상유형</span><span style="color:#EF4444;font-weight:500">베어링 마모</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid rgba(30,41,59,0.4)"><span style="color:#64748B">긴급도</span><span style="color:#F59E0B;font-weight:500">높음</span></div>
+            <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="color:#64748B">요청자</span><span style="color:#F1F5F9;font-weight:500">ExpertX AI</span></div>
+          </div>
+        </div>
+        <div style="background:rgba(15,23,42,0.6);border:1px solid rgba(30,41,59,0.5);border-radius:8px;padding:10px">
+          <div style="font-size:10px;color:#64748B;margin-bottom:6px;font-family:'JetBrains Mono',monospace">권한 확인</div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><div style="width:6px;height:6px;border-radius:50%;background:#10B981"></div><span style="font-size:11px;color:#CBD5E1">설비팀장 (Lv.3)</span><span style="margin-left:auto;font-size:10px;color:#10B981;font-weight:600">승인 가능</span></div>
+          <div style="display:flex;align-items:center;gap:6px"><div style="width:6px;height:6px;border-radius:50%;background:#F59E0B"></div><span style="font-size:11px;color:#CBD5E1">예산 한도</span><span style="margin-left:auto;font-size:10px;color:#F59E0B;font-weight:600">500만원 이내</span></div>
+        </div>
+        <div>
+          <div style="font-size:10px;color:#64748B;margin-bottom:6px;font-family:'JetBrains Mono',monospace">승인 로그</div>
+          <div style="display:flex;flex-direction:column;gap:5px" id="da-log">
+            <div class="da-log-item"><div class="da-log-dot done"></div><div><div style="font-size:10px;color:#94A3B8">AI 분석 완료</div><div style="font-size:9px;color:#475569;font-family:'JetBrains Mono',monospace" id="dl-t1">—</div></div></div>
+            <div class="da-log-item"><div class="da-log-dot done"></div><div><div style="font-size:10px;color:#94A3B8">승인 요청서 생성</div><div style="font-size:9px;color:#475569;font-family:'JetBrains Mono',monospace" id="dl-t2">—</div></div></div>
+            <div class="da-log-item" id="dl-pending"><div class="da-log-dot pending"></div><div><div style="font-size:10px;color:#F59E0B" id="dl-status">승인 대기중...</div><div style="font-size:9px;color:#475569;font-family:'JetBrains Mono',monospace" id="dl-t3">—</div></div></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:auto">
+          <button id="da-approve-btn" onclick="demoApprove()" style="width:100%;padding:9px;background:linear-gradient(135deg,#10B981,#059669);border:none;border-radius:7px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:-.2px;transition:all .3s">✓ 승인하기</button>
+          <button id="da-report-btn" onclick="openReportModal()" style="display:none;width:100%;padding:9px;background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.2);border-radius:7px;color:#0EA5E9;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:-.2px;transition:background .3s" onmouseover="this.style.background='rgba(14,165,233,0.15)'" onmouseout="this.style.background='rgba(14,165,233,0.08)'">리포트 생성</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="divider" style="margin:12px 0"></div>
+  <p class="rv" style="text-align:center;font-size:11px;color:#475569;margin-top:20px;font-family:'JetBrains Mono',monospace;transition-delay:.2s">* 실제 서비스 UI를 기반으로 구성된 시연 화면입니다</p>
+</div>
 
-  <div style="margin-top:14px">
-    <div class="mono accent rv" style="font-size:12px;letter-spacing:2px;margin-bottom:10px;text-align:center">VALUE PROPOSITION</div>
-    <div class="g4">
-      <div class="card card-accent rv" style="transition-delay:.1s;text-align:center;padding:14px">
-        <div class="mono" style="font-size:12px;color:#607080;letter-spacing:1px;margin-bottom:3px">FOR C-LEVEL</div>
-        <h3 style="color:#0EA5E9;font-size:13px">경영진</h3>
-        <p style="font-size:12px">노하우 보존 / 데이터 기반 의사결정</p>
+<!-- ===== REPORT MODAL ===== -->
+<div id="report-modal" style="display:none;position:fixed;inset:0;z-index:5000;align-items:center;justify-content:center">
+  <div onclick="closeReportModal()" style="position:absolute;inset:0;background:rgba(3,5,12,0.85);backdrop-filter:blur(6px)"></div>
+  <div style="position:relative;z-index:1;width:min(780px,92vw);height:520px;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;border:1px solid rgba(30,41,59,0.8);box-shadow:0 40px 100px rgba(0,0,0,0.7)">
+    <div style="background:#111827;border-bottom:1px solid rgba(30,41,59,0.8);padding:10px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0;position:relative">
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px">
+        <svg width="14" height="14" viewBox="0 0 16 20" fill="none"><rect x="0" y="0" width="16" height="20" rx="2" fill="#EF4444" opacity=".9"/><text x="3" y="14" font-size="7" fill="white" font-weight="700">PDF</text></svg>
+        <span style="font-size:12px;color:#94A3B8;font-family:'JetBrains Mono',monospace">설비이상_정비리포트_A03압축기_20260314.pdf</span>
+        <span id="pdf-page-lbl" style="font-size:10px;color:#4B5563;font-family:'JetBrains Mono',monospace;background:rgba(75,85,99,0.3);border-radius:3px;padding:2px 7px">1 / 3</span>
       </div>
-      <div class="card card-purple rv" style="transition-delay:.2s;text-align:center;padding:14px">
-        <div class="mono" style="font-size:12px;color:#607080;letter-spacing:1px;margin-bottom:3px">FOR MANAGERS</div>
-        <h3 style="color:#7C3AED;font-size:13px">현장 관리자</h3>
-        <p style="font-size:12px">실시간 모니터링 / 표준화 지시</p>
+      <button onclick="closeReportModal()" id="report-close-btn" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:6px;background:transparent;border:none;color:#64748B;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s" onmouseover="this.style.background='rgba(239,68,68,0.15)';this.style.color='#EF4444'" onmouseout="this.style.background='transparent';this.style.color='#64748B'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="pdf-scroll-area" style="flex:1;overflow-y:auto;background:#4B5563;padding:20px 20px 24px;display:flex;flex-direction:column;align-items:center;gap:14px;scrollbar-width:thin;scrollbar-color:#6B7280 #4B5563;overscroll-behavior:contain">
+      <div class="pdf-page" data-page="1">
+        <div class="pdf-wm">EXPAI CONFIDENTIAL</div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;padding-bottom:16px;border-bottom:2px solid #0EA5E9">
+          <div><div style="font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#0EA5E9;margin-bottom:5px;font-family:'JetBrains Mono',monospace">EXPAI · Factory ExpertX</div><div style="font-size:18px;font-weight:800;color:#111827;letter-spacing:-.5px;line-height:1.2">설비 이상 · 정비 리포트</div><div style="font-size:11px;color:#6B7280;margin-top:3px">Equipment Anomaly &amp; Maintenance Report</div></div>
+          <div style="text-align:right"><div style="font-size:9px;color:#9CA3AF;font-family:'JetBrains Mono',monospace">문서번호</div><div style="font-size:11px;font-weight:700;color:#374151;font-family:'JetBrains Mono',monospace">RPT-2026-0314-007</div><div style="margin-top:4px;font-size:9px;color:#9CA3AF;font-family:'JetBrains Mono',monospace">생성일시</div><div style="font-size:11px;font-weight:700;color:#374151;font-family:'JetBrains Mono',monospace">2026.03.14 14:23</div></div>
+        </div>
+        <div style="margin-bottom:18px"><div class="pdf-sec-title">01 · 기본 정보</div><div style="border:1px solid #E5E7EB;border-radius:5px;overflow:hidden;font-size:11px"><div style="display:flex;border-bottom:1px solid #E5E7EB"><div class="pdf-th">설비명</div><div class="pdf-td">A-03 압축기 (Air Compressor)</div><div class="pdf-th">라인</div><div class="pdf-td">A 라인 (3공장)</div></div><div style="display:flex;border-bottom:1px solid #E5E7EB"><div class="pdf-th">이상유형</div><div class="pdf-td" style="color:#EF4444;font-weight:600">베어링 마모 (Bearing Wear)</div><div class="pdf-th">긴급도</div><div class="pdf-td" style="color:#EF4444;font-weight:700">높음</div></div><div style="display:flex"><div class="pdf-th">탐지시각</div><div class="pdf-td">2026.03.14 14:23:07</div><div class="pdf-th">승인자</div><div class="pdf-td">설비팀장 (Lv.3)</div></div></div></div>
+        <div><div class="pdf-sec-title">02 · 이상 탐지 분석</div><div style="background:#F9FAFB;border:1px solid #E5E7EB;border-left:3px solid #EF4444;border-radius:5px;padding:10px 14px;margin-bottom:10px"><div style="font-size:11px;font-weight:700;color:#374151;margin-bottom:5px">진동 RMS 측정값</div><div style="display:flex;align-items:center;gap:20px;font-size:11px"><div><span style="color:#6B7280">현재값</span> <strong style="color:#EF4444;font-size:14px;font-family:'JetBrains Mono',monospace">8.7g</strong></div><div><span style="color:#6B7280">임계값</span> <strong style="color:#374151;font-family:'JetBrains Mono',monospace">6.0g</strong></div><div><span style="color:#6B7280">초과율</span> <strong style="color:#EF4444;font-family:'JetBrains Mono',monospace">+45%</strong></div><div><span style="color:#6B7280">72h 트렌드</span> <strong style="color:#F59E0B">지속 상승 ↑</strong></div></div></div>
+        <svg viewBox="0 0 540 72" style="width:100%;border:1px solid #E5E7EB;border-radius:5px;background:#F9FAFB;margin-bottom:10px" preserveAspectRatio="none"><defs><linearGradient id="rGrad2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EF4444" stop-opacity=".18"/><stop offset="100%" stop-color="#EF4444" stop-opacity="0"/></linearGradient></defs><line x1="0" y1="14" x2="540" y2="14" stroke="#E5E7EB" stroke-width="1"/><line x1="0" y1="32" x2="540" y2="32" stroke="#E5E7EB" stroke-width="1"/><line x1="0" y1="50" x2="540" y2="50" stroke="#E5E7EB" stroke-width="1"/><line x1="0" y1="28" x2="540" y2="28" stroke="#EF4444" stroke-width="1" stroke-dasharray="5,3" opacity=".5"/><text x="4" y="62" font-size="7" fill="#9CA3AF" font-family="JetBrains Mono">-72h</text><text x="264" y="62" font-size="7" fill="#9CA3AF" text-anchor="middle" font-family="JetBrains Mono">-36h</text><text x="534" y="62" font-size="7" fill="#EF4444" text-anchor="end" font-family="JetBrains Mono">NOW 8.7g</text><path d="M0,54 C50,52 90,50 130,48 C170,46 200,43 240,40 C270,37 300,34 330,30 C355,27 380,22 410,17 C430,13 460,9 490,7 C510,6 530,6 540,6 L540,60 L0,60Z" fill="url(#rGrad2)"/><path d="M0,54 C50,52 90,50 130,48 C170,46 200,43 240,40 C270,37 300,34 330,30 C355,27 380,22 410,17 C430,13 460,9 490,7 C510,6 530,6 540,6" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/><circle cx="540" cy="6" r="3.5" fill="#EF4444"/></svg>
+        <p style="font-size:11px;color:#374151;line-height:1.65;background:#FFF7ED;border:1px solid #FED7AA;border-radius:5px;padding:9px 12px;margin:0"><strong>AI 분석 결과:</strong> 최근 72시간 동안 A-03 압축기의 진동 RMS 값이 지속 상승, 현재 임계값 대비 45% 초과. 베어링 마모 초기 징후로 판단되며, 방치 시 3일 이내 설비 정지 가능성이 있습니다.</p></div>
+        <div class="pdf-pagenum">1 / 3</div>
       </div>
-      <div class="card card-green rv" style="transition-delay:.3s;text-align:center;padding:14px">
-        <div class="mono" style="font-size:12px;color:#607080;letter-spacing:1px;margin-bottom:3px">FOR EXPERTS</div>
-        <h3 style="color:#10B981;font-size:13px">전문가</h3>
-        <p style="font-size:12px">암묵지 보존 / AI 협업 극대화</p>
+      <div class="pdf-page" data-page="2">
+        <div class="pdf-wm">EXPAI CONFIDENTIAL</div>
+        <div class="pdf-cont-header"><span>설비 이상 · 정비 리포트</span><span style="font-family:'JetBrains Mono',monospace">RPT-2026-0314-007</span></div>
+        <div style="margin-bottom:20px"><div class="pdf-sec-title">03 · 유사 고장 이력 (RAG 검색 결과)</div><div style="border:1px solid #E5E7EB;border-radius:5px;overflow:hidden;font-size:11px"><div style="display:grid;grid-template-columns:140px 1fr 56px 60px;background:#F3F4F6;padding:7px 12px;font-weight:700;color:#374151;gap:8px;border-bottom:1px solid #E5E7EB;font-size:10px"><span>이력 ID</span><span>내용</span><span>유사도</span><span>결과</span></div><div style="display:grid;grid-template-columns:140px 1fr 56px 60px;padding:9px 12px;gap:8px;border-bottom:1px solid #F3F4F6;align-items:start"><span style="font-family:'JetBrains Mono',monospace;color:#6B7280;font-size:10px">MNT-2024-09-009</span><span style="color:#374151">A-03 압축기 베어링 마모 → 완전 교체. RMS 패턴 동일, 3일 후 설비 정지.</span><span style="color:#EF4444;font-weight:700">91%</span><span style="color:#10B981">예방 성공</span></div><div style="display:grid;grid-template-columns:140px 1fr 56px 60px;padding:9px 12px;gap:8px;border-bottom:1px solid #F3F4F6;align-items:start;background:#FAFAFA"><span style="font-family:'JetBrains Mono',monospace;color:#6B7280;font-size:10px">MNT-2024-03-022</span><span style="color:#374151">B라인 압축기 임펠러 이상. 윤활 불량으로 인한 진동 상승.</span><span style="color:#F59E0B;font-weight:700">84%</span><span style="color:#10B981">윤활 조치</span></div><div style="display:grid;grid-template-columns:140px 1fr 56px 60px;padding:9px 12px;gap:8px;align-items:start"><span style="font-family:'JetBrains Mono',monospace;color:#6B7280;font-size:10px">MNT-2023-11-041</span><span style="color:#374151">C라인 팬 모터 베어링 이상. 즉시 교체로 비계획 정지 방지.</span><span style="color:#0EA5E9;font-weight:700">79%</span><span style="color:#10B981">교체 완료</span></div></div></div>
+        <div><div class="pdf-sec-title">04 · 권고 조치 사항</div><div style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;gap:10px;font-size:11px;color:#374151;padding:10px 12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:6px"><span style="color:#10B981;font-weight:700;flex-shrink:0;font-size:13px">①</span><div><strong>즉시 (당일):</strong> A-03 압축기 부하 20% 경감 및 점검 일정 수립.</div></div><div style="display:flex;gap:10px;font-size:11px;color:#374151;padding:10px 12px;background:#FFF7ED;border:1px solid #FED7AA;border-radius:6px"><span style="color:#F59E0B;font-weight:700;flex-shrink:0;font-size:13px">②</span><div><strong>24시간 이내:</strong> 정비팀 투입 후 베어링 상세 점검. 교체 부품 선발주.</div></div><div style="display:flex;gap:10px;font-size:11px;color:#374151;padding:10px 12px;background:#FEF2F2;border:1px solid #FECACA;border-radius:6px"><span style="color:#EF4444;font-weight:700;flex-shrink:0;font-size:13px">③</span><div><strong>72시간 이내:</strong> 베어링 교체 완료 후 RMS 재측정. 6.0g 이하 확인 시 정상 가동 승인.</div></div></div></div>
+        <div class="pdf-pagenum">2 / 3</div>
       </div>
-      <div class="card card-amber rv" style="transition-delay:.4s;text-align:center;padding:14px">
-        <div class="mono" style="font-size:12px;color:#607080;letter-spacing:1px;margin-bottom:3px">FOR NEWCOMERS</div>
-        <h3 style="color:#F59E0B;font-size:13px">신입</h3>
-        <p style="font-size:12px">AI 코칭 / 빠른 숙련 가속</p>
+      <div class="pdf-page" data-page="3">
+        <div class="pdf-wm">EXPAI CONFIDENTIAL</div>
+        <div class="pdf-cont-header"><span>설비 이상 · 정비 리포트</span><span style="font-family:'JetBrains Mono',monospace">RPT-2026-0314-007</span></div>
+        <div style="margin-bottom:20px"><div class="pdf-sec-title">05 · 승인 처리 내역</div><div style="border:1px solid #E5E7EB;border-radius:5px;overflow:hidden;font-size:11px"><div style="display:grid;grid-template-columns:1fr 1fr 110px;background:#F3F4F6;padding:8px 14px;font-weight:700;color:#374151;border-bottom:1px solid #E5E7EB;gap:8px"><span>처리 단계</span><span>처리자</span><span>시각</span></div><div style="display:grid;grid-template-columns:1fr 1fr 110px;padding:10px 14px;gap:8px;border-bottom:1px solid #F3F4F6"><span style="color:#10B981;font-weight:600">✓ AI 분석 완료</span><span style="color:#6B7280">ExpertX v2.1</span><span style="color:#6B7280;font-family:'JetBrains Mono',monospace">14:23:07</span></div><div style="display:grid;grid-template-columns:1fr 1fr 110px;padding:10px 14px;gap:8px;border-bottom:1px solid #F3F4F6;background:#FAFAFA"><span style="color:#10B981;font-weight:600">✓ 승인 요청서 생성</span><span style="color:#6B7280">ExpertX v2.1</span><span style="color:#6B7280;font-family:'JetBrains Mono',monospace">14:23:09</span></div><div style="display:grid;grid-template-columns:1fr 1fr 110px;padding:10px 14px;gap:8px"><span style="color:#10B981;font-weight:600">✓ 최종 승인 완료</span><span style="color:#111827;font-weight:600">장비보전부 김정비 대리</span><span style="color:#6B7280;font-family:'JetBrains Mono',monospace">14:23:11</span></div></div></div>
+        <div style="margin-bottom:20px"><div class="pdf-sec-title">06 · 향후 모니터링 계획</div><div style="background:#F8FAFF;border:1px solid #DBEAFE;border-radius:5px;padding:12px 14px;font-size:11px;color:#374151;line-height:1.7"><div style="display:grid;grid-template-columns:100px 1fr;gap:6px 12px"><span style="color:#6B7280;font-weight:600">정비 완료 후</span><span>RMS 4.0g 이하 목표, 24h 연속 모니터링</span><span style="color:#6B7280;font-weight:600">정기 점검</span><span>매월 1회 베어링 마모 상태 확인</span><span style="color:#6B7280;font-weight:600">알람 기준</span><span>RMS 5.0g 도달 시 사전 경보, 6.0g 초과 시 즉시 알람</span></div></div></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px"><div style="border:1px solid #E5E7EB;border-radius:5px;padding:12px;text-align:center"><div style="font-size:10px;color:#9CA3AF;margin-bottom:24px">작성자 (AI)</div><div style="border-top:1px solid #D1D5DB;padding-top:6px;font-size:11px;color:#6B7280">ExpertX v2.1</div></div><div style="border:1px solid #E5E7EB;border-radius:5px;padding:12px;text-align:center"><div style="font-size:10px;color:#9CA3AF;margin-bottom:24px">정비 담당자</div><div style="border-top:1px solid #D1D5DB;padding-top:6px;font-size:11px;color:#374151;font-weight:600">김정비 대리</div></div><div style="border:1px solid #0EA5E9;border-radius:5px;padding:12px;text-align:center;background:#F0F9FF"><div style="font-size:10px;color:#0EA5E9;margin-bottom:24px">승인자</div><div style="border-top:1px solid #BAE6FD;padding-top:6px;font-size:11px;color:#0EA5E9;font-weight:700">설비팀장 (Lv.3) ✓</div></div></div>
+        <div style="border-top:1px solid #E5E7EB;padding-top:12px;display:flex;justify-content:space-between"><div style="font-size:9px;color:#9CA3AF">본 리포트는 EXPAI Factory ExpertX에 의해 자동 생성되었습니다.</div><div style="font-size:9px;color:#9CA3AF;font-family:'JetBrains Mono',monospace">EXPAI Corp. © 2026</div></div>
+        <div class="pdf-pagenum">3 / 3</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* step indicator */
+.demo-step{display:flex;flex-direction:column;align-items:center;gap:4px}
+.ds-num{width:28px;height:28px;border-radius:50%;background:rgba(30,41,59,0.6);border:1px solid rgba(30,41,59,0.8);color:#475569;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .4s;font-family:'JetBrains Mono',monospace}
+.ds-lbl{font-size:10px;color:#475569;font-weight:500;white-space:nowrap;transition:color .4s}
+.demo-step.active .ds-num{background:rgba(14,165,233,0.15);border-color:rgba(14,165,233,0.4);color:#0EA5E9;box-shadow:0 0 12px rgba(14,165,233,0.2)}
+.demo-step.active .ds-lbl{color:#0EA5E9}
+.demo-step.done .ds-num{background:rgba(16,185,129,0.12);border-color:rgba(16,185,129,0.3);color:#10B981}
+.demo-step.done .ds-lbl{color:#10B981}
+.demo-step-line{width:60px;height:1px;background:rgba(30,41,59,0.6);align-self:center;margin-bottom:18px;transition:background .4s}
+.demo-step-line.done{background:rgba(16,185,129,0.4)}
+.dtab{font-size:11px;font-weight:600;padding:10px 14px;background:none;border:none;border-bottom:2px solid transparent;color:#64748B;cursor:pointer;letter-spacing:-.2px;transition:all .2s}
+.dtab-active{border-bottom-color:#0EA5E9!important;color:#0EA5E9!important}
+.typing-dots{display:flex;align-items:center;gap:4px;padding:4px 0}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:#475569;display:inline-block;animation:tdot .9s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+.da-log-item{display:flex;align-items:flex-start;gap:8px}
+.da-log-dot{width:8px;height:8px;border-radius:50%;margin-top:2px;flex-shrink:0}
+.da-log-dot.done{background:#10B981}
+.da-log-dot.pending{background:#F59E0B;animation:pulse-dot 1.5s infinite}
+.da-log-dot.completed{background:#10B981;animation:none}
+@keyframes pulse-dot{0%,100%{opacity:.5}50%{opacity:1}}
+.ai-avatar{width:26px;height:26px;border-radius:6px;background:linear-gradient(135deg,#1E293B,#0F172A);border:1px solid rgba(14,165,233,0.25);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+#demo button:active{transform:scale(.97)}
+/* pdf */
+.pdf-page{background:#fff;width:100%;max-width:600px;border-radius:3px;box-shadow:0 2px 12px rgba(0,0,0,0.45);padding:36px 40px 28px;color:#111827;font-family:'Inter',sans-serif;position:relative;flex-shrink:0}
+.pdf-wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:.03;transform:rotate(-30deg);font-size:44px;font-weight:900;color:#0EA5E9;white-space:nowrap;letter-spacing:3px}
+.pdf-sec-title{font-size:10px;font-weight:700;color:#0EA5E9;letter-spacing:2px;text-transform:uppercase;margin-bottom:9px;font-family:'JetBrains Mono',monospace}
+.pdf-th{background:#F9FAFB;padding:7px 12px;color:#6B7280;font-weight:600;border-right:1px solid #E5E7EB;white-space:nowrap;min-width:72px}
+.pdf-td{padding:7px 12px;color:#111827;font-weight:500;flex:1}
+.pdf-pagenum{text-align:center;font-size:9px;color:#9CA3AF;margin-top:20px;font-family:'JetBrains Mono',monospace}
+.pdf-cont-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid #E5E7EB;font-size:10px;color:#9CA3AF}
+#report-modal.open{animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes btn-pulse{0%,100%{box-shadow:0 0 0 0 rgba(14,165,233,0.7)}70%{box-shadow:0 0 0 8px rgba(14,165,233,0)}}
+@keyframes tab-pulse{0%,100%{color:#64748B;text-shadow:none}50%{color:#38BDF8;text-shadow:0 0 10px rgba(56,189,248,0.7)}}
+@keyframes approve-pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.7)}70%{box-shadow:0 0 0 8px rgba(16,185,129,0)}}
+@keyframes step1-glow{0%,100%{background:rgba(14,165,233,0.15);border-color:rgba(14,165,233,0.4);box-shadow:0 0 0 0 rgba(14,165,233,0.8);color:#0EA5E9}50%{background:rgba(14,165,233,0.35);border-color:#0EA5E9;box-shadow:0 0 0 7px rgba(14,165,233,0);color:#fff}}
+.ds-num-restart{animation:step1-glow 1.2s ease-in-out infinite!important;cursor:pointer!important}
+.dtab-glow{animation:tab-pulse 1.3s ease-in-out infinite!important;color:#64748B}
+</style>
+
+<script>
+function _stopWheel(e){
+  var el=document.getElementById('pdf-scroll-area');
+  if(el&&el.contains(e.target)){
+    var atTop=el.scrollTop===0,atBottom=el.scrollTop+el.clientHeight>=el.scrollHeight-1;
+    if((e.deltaY<0&&atTop)||(e.deltaY>0&&atBottom))e.preventDefault();
+    e.stopPropagation();
+  } else {e.preventDefault();}
+}
+function _updatePageLbl(){
+  var sa=document.getElementById('pdf-scroll-area'),lbl=document.getElementById('pdf-page-lbl');
+  if(!sa||!lbl)return;
+  var pages=sa.querySelectorAll('.pdf-page'),cur=1;
+  pages.forEach(function(p,i){var r=p.getBoundingClientRect(),sr=sa.getBoundingClientRect();if(r.top<=sr.top+sr.height/2)cur=i+1;});
+  lbl.textContent=cur+' / '+pages.length;
+}
+window.openReportModal=function(){
+  var rb=document.getElementById('da-report-btn');if(rb){rb.style.animation='none';rb.disabled=true;rb.style.opacity='0.5';rb.style.cursor='default';}
+  var s1=document.getElementById('dstep-1');if(s1){s1.style.cursor='pointer';s1.onclick=function(){window.resetDemo();};}
+  var s1n=document.querySelector('#dstep-1 .ds-num');if(s1n)s1n.classList.add('ds-num-restart');
+  var m=document.getElementById('report-modal');
+  m.style.display='flex';m.classList.add('open');
+  document.body.style.overflow='hidden';document.documentElement.style.overflow='hidden';
+  document.addEventListener('wheel',_stopWheel,{passive:false});
+  document.addEventListener('touchmove',_stopWheel,{passive:false});
+  var sa=document.getElementById('pdf-scroll-area');
+  if(sa){sa.scrollTop=0;sa.addEventListener('scroll',_updatePageLbl);}
+  _updatePageLbl();
+};
+window.closeReportModal=function(){
+  var m=document.getElementById('report-modal');
+  m.style.display='none';m.classList.remove('open');
+  document.body.style.overflow='';document.documentElement.style.overflow='';
+  document.removeEventListener('wheel',_stopWheel);
+  document.removeEventListener('touchmove',_stopWheel);
+  var sa=document.getElementById('pdf-scroll-area');
+  if(sa)sa.removeEventListener('scroll',_updatePageLbl);
+};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeReportModal();});
+
+(function(){
+  var state=0;
+  var now=new Date();
+  function ts(d){var t=new Date(now.getTime()+d*1000);return t.getHours().toString().padStart(2,'0')+':'+t.getMinutes().toString().padStart(2,'0')+':'+t.getSeconds().toString().padStart(2,'0')}
+  function aiAvatar(){return '<div class="ai-avatar"><span style="font-size:15px;font-weight:800;color:#0EA5E9;font-family:\'Abril Fatface\',serif;letter-spacing:-.5px;text-shadow:0 0 8px rgba(14,165,233,0.9),0 0 16px rgba(14,165,233,0.5)">X</span></div>'}
+  function userBubble(text){var d=document.createElement('div');d.style.cssText='display:flex;justify-content:flex-end';d.innerHTML='<div style="background:linear-gradient(135deg,#0EA5E9,#0284C7);color:#fff;border-radius:10px 10px 2px 10px;padding:9px 13px;font-size:12px;max-width:200px;line-height:1.5;font-weight:500">'+text+'</div>';return d;}
+  function typingBubble(){var d=document.createElement('div');d.style.cssText='display:flex;align-items:flex-start;gap:8px';d.innerHTML=aiAvatar()+'<div style="background:rgba(15,23,42,0.8);border:1px solid rgba(30,41,59,0.6);border-radius:2px 10px 10px 10px;padding:10px 14px"><div class="typing-dots"><span></span><span></span><span></span></div></div>';return d;}
+  function aiBubble(html){var d=document.createElement('div');d.style.cssText='display:flex;align-items:flex-start;gap:8px';d.innerHTML=aiAvatar()+'<div style="background:rgba(15,23,42,0.8);border:1px solid rgba(30,41,59,0.6);border-radius:2px 10px 10px 10px;padding:9px 13px;font-size:12px;color:#CBD5E1;line-height:1.6;max-width:210px">'+html+'</div>';return d;}
+  function appendMsg(el){var box=document.getElementById('dc-messages');box.appendChild(el);box.scrollTop=box.scrollHeight;return el;}
+  function setStep(n){[1,2,3,4].forEach(function(i){var s=document.getElementById('dstep-'+i);if(!s)return;s.className='demo-step'+(i<n?' done':i===n?' active':'');});[1,2,3].forEach(function(i){var l=document.getElementById('dline-'+i);if(l)l.className='demo-step-line'+(i<n?' done':'');});}
+  function setInput(val,disabled){var inp=document.getElementById('dc-input'),btn=document.getElementById('dc-send');inp.value=val;inp.style.color=disabled?'#475569':'#CBD5E1';btn.disabled=disabled;btn.style.opacity=disabled?'0.3':'1';btn.style.cursor=disabled?'default':'pointer';}
+  function showEvidence(){document.getElementById('de-placeholder').style.display='none';var c=document.getElementById('de-content');c.style.display='flex';var b=document.getElementById('de-badge');b.textContent='A-03 압축기';b.style.color='#0EA5E9';b.style.background='rgba(14,165,233,0.06)';b.style.borderColor='rgba(14,165,233,0.2)';}
+  function showApproval(){document.getElementById('da-placeholder').style.display='none';var c=document.getElementById('da-content');c.style.display='flex';c.style.flexDirection='column';document.getElementById('dl-t1').textContent=ts(0);document.getElementById('dl-t2').textContent=ts(2);document.getElementById('dl-t3').textContent='—';var ab=document.getElementById('da-approve-btn');if(ab)ab.style.animation='approve-pulse 1.4s ease-in-out infinite';setStep(3);}
+  window.demoSend=function(){
+    if(state===0){state=1;setStep(2);setInput('',true);var sb=document.getElementById('dc-send');if(sb)sb.style.animation='none';appendMsg(userBubble('설비에 이상이 있어?'));var t=appendMsg(typingBubble());setTimeout(function(){t.remove();appendMsg(aiBubble('<span style="color:#0EA5E9;font-weight:600;display:block;margin-bottom:4px">분석 완료</span><b>A-03 압축기</b>에서 진동 이상 감지되었습니다.<br><br>RMS 값이 <span style="color:#F59E0B;font-weight:600">8.7g</span>으로 임계값(6.0g) 초과 중입니다. 과거 유사 고장 패턴과 <span style="color:#0EA5E9;font-weight:600">87%</span> 일치합니다.<div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(30,41,59,0.5);font-size:11px;color:#64748B">근거 패널에서 상세 내역 확인 →</div>'));showEvidence();setStep(2);setInput('정비 승인 요청해줘.',false);var sb2=document.getElementById('dc-send');if(sb2)sb2.style.animation='btn-pulse 1.4s ease-in-out infinite';['dt-graph','dt-hist','dt-doc'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.add('dtab-glow');});state=2;},1600);}
+    else if(state===2){state=3;setInput('',true);var sb3=document.getElementById('dc-send');if(sb3)sb3.style.animation='none';['dt-graph','dt-hist','dt-doc'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('dtab-glow');});appendMsg(userBubble('정비 승인 요청해줘.'));var t2=appendMsg(typingBubble());setTimeout(function(){t2.remove();appendMsg(aiBubble('승인 요청서를 생성했습니다.<br>우측 패널에서 확인 후 승인 처리해 주세요.<div style="margin-top:6px"><span style="background:rgba(16,185,129,0.12);color:#10B981;border:1px solid rgba(16,185,129,0.2);border-radius:4px;padding:2px 8px;font-size:10px;font-weight:600">승인 대기중</span></div>'));showApproval();state=4;},1200);}
+  };
+  window.demoApprove=function(){
+    if(state!==4)return;state=5;
+    var btn=document.getElementById('da-approve-btn');btn.disabled=true;btn.style.animation='none';btn.textContent='처리 중...';btn.style.opacity='.6';
+    appendMsg(userBubble('승인해줘.'));var t3=appendMsg(typingBubble());
+    setTimeout(function(){
+      t3.remove();
+      document.getElementById('dl-status').textContent='승인 완료';document.getElementById('dl-status').style.color='#10B981';document.getElementById('dl-t3').textContent=ts(4);
+      var dot=document.querySelector('#dl-pending .da-log-dot');if(dot)dot.className='da-log-dot completed';
+      btn.textContent='✓ 승인 완료';btn.style.background='linear-gradient(135deg,#059669,#047857)';btn.style.opacity='0.8';
+      var rb=document.getElementById('da-report-btn');if(rb){rb.style.display='block';rb.style.animation='btn-pulse 1.4s ease-in-out infinite';}setStep(4);
+      var ad=new Date(now.getTime()+4000);var adStr=ad.getFullYear()+'-'+(ad.getMonth()+1).toString().padStart(2,'0')+'-'+ad.getDate().toString().padStart(2,'0')+' '+ad.getHours().toString().padStart(2,'0')+':'+ad.getMinutes().toString().padStart(2,'0')+':'+ad.getSeconds().toString().padStart(2,'0');
+      appendMsg(aiBubble('<span style="color:#10B981;font-weight:600;display:block;margin-bottom:6px">✓ 승인이 완료되었습니다.</span>정비 승인 날짜: <span style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:#94A3B8">'+adStr+'</span><br>정비 담당자: <b>장비보전부 김정비 대리</b><br><br>리포트를 확인해주세요. 정비 완료 후 완료 알람을 드리겠습니다.'));
+      state=6;
+    },1000);
+  };
+  window.resetDemo=function resetDemo(){
+    state=0;
+    var box=document.getElementById('dc-messages');
+    box.innerHTML='<div style="text-align:center;font-size:10px;color:#475569;font-family:\'JetBrains Mono\',monospace;padding:4px 0">— 설비 A라인 컨텍스트 로드됨 —</div>';
+    document.getElementById('de-placeholder').style.display='flex';
+    var dec=document.getElementById('de-content');dec.style.display='none';
+    var b=document.getElementById('de-badge');b.textContent='대기 중';b.style.color='#475569';b.style.background='rgba(30,41,59,0.4)';b.style.borderColor='rgba(30,41,59,0.5)';
+    document.getElementById('da-placeholder').style.display='flex';
+    document.getElementById('da-content').style.display='none';
+    var ab=document.getElementById('da-approve-btn');ab.disabled=false;ab.style.animation='none';ab.textContent='✓ 승인하기';ab.style.background='linear-gradient(135deg,#10B981,#059669)';ab.style.opacity='1';
+    var rb=document.getElementById('da-report-btn');rb.style.display='none';rb.disabled=false;rb.style.animation='none';rb.style.opacity='1';rb.style.cursor='pointer';
+    document.getElementById('dl-t1').textContent='—';document.getElementById('dl-t2').textContent='—';document.getElementById('dl-t3').textContent='—';
+    var ds=document.getElementById('dl-status');if(ds){ds.textContent='승인 대기중...';ds.style.color='#F59E0B';}
+    var dp=document.querySelector('#dl-pending .da-log-dot');if(dp)dp.className='da-log-dot pending';
+    setInput('설비에 이상이 있어?',false);
+    setStep(1);
+    var sb=document.getElementById('dc-send');if(sb)sb.style.animation='btn-pulse 1.4s ease-in-out infinite';
+    var s1n=document.querySelector('#dstep-1 .ds-num');if(s1n)s1n.classList.remove('ds-num-restart');
+    var s1=document.getElementById('dstep-1');if(s1){s1.style.cursor='default';s1.onclick=null;}
+    ['dt-graph','dt-hist','dt-doc'].forEach(function(id){var el=document.getElementById(id);if(el)el.classList.remove('dtab-glow');});
+  }
+  window.demoTab=function(id){
+    ['ev-graph','ev-hist','ev-doc'].forEach(function(t){document.getElementById(t).style.display=t===id?'block':'none';});
+    ['dt-graph','dt-hist','dt-doc'].forEach(function(b){var btn=document.getElementById(b);if(!btn)return;var active=b==='dt-'+id.replace('ev-','');var glow=btn.classList.contains('dtab-glow');btn.className=(active?'dtab dtab-active':'dtab')+(glow?' dtab-glow':'');});
+  };
+})();
+</script>
+</section>
+
+<!-- ======== TEAM ======== -->
+<section id="team" class="sec-glow" data-name="Team">
+<!-- <div class="sec-bg"><img src="images_html/why_expai_1.png" alt=""/></div> -->
+<div class="inner">
+  <div class="badge rv">06 // Team</div>
+  <h2 class="stitle rv" style="transition-delay:.1s">제조 현장 + AI 플랫폼 + 사업 전략<br><span class="accent">5인 핵심 팀</span></h2>
+  <p class="sdesc rv" style="transition-delay:.15s;margin-bottom:24px">스마트팩토리 현장 경험과 AI 기술력, 영업 네트워크를 완비한 창업팀입니다.</p>
+
+  <div style="display:flex;justify-content:center;margin-bottom:16px" class="rv" style="transition-delay:.2s">
+    <div class="team-card" style="width:300px;border-color:rgba(14,165,233,0.35)">
+      <div class="team-role">CEO</div>
+      <div class="team-name">이병석</div>
+      <div class="team-desc">UNIST 석사<br>스마트팩토리 현장 13년+<br>제조 AI 프로젝트 20건+<br>제품/도메인 총괄</div>
+    </div>
+  </div>
+
+  <div class="g4 rv" style="transition-delay:.3s">
+    <div class="team-card">
+      <div class="team-role">CTO</div>
+      <div class="team-name">조인성</div>
+      <div class="team-desc">UNIST 로보틱스 박사<br>논문 10편+, 6축 로봇 제어<br>Platform Core 리드<br>RAGX/EEPX/DAIP 설계</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">CSO</div>
+      <div class="team-name">성노윤</div>
+      <div class="team-desc">KAIST 경영공학 박사<br>B2B SaaS 가격 전략<br>전략 컨설팅 5년+<br>패키지/가격/재무 설계</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">기술영업이사</div>
+      <div class="team-name">구공서</div>
+      <div class="team-desc">단국대 경영학 석사<br>제조 IT 기술영업 10년+<br>PoC 전환 50건+<br>GTM/고객 확산 담당</div>
+    </div>
+    <div class="team-card">
+      <div class="team-role">영업이사</div>
+      <div class="team-name">문재영</div>
+      <div class="team-desc">숭실대 전자계산학<br>IT 영업 30년+<br>대형 프로젝트 수주 100건+<br>CXO급 네트워크 채널</div>
     </div>
   </div>
 </div>
@@ -826,13 +1214,14 @@ section>.inner{width:100%}
 <!-- ======== CONTACT ======== -->
 <section id="contact" data-name="Contact" style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative">
 <div class="hero-bg" style="opacity:1">
-  <img src="extracted_images/why_expai_1.png" alt="" style="opacity:.1;filter:brightness(0.5) blur(1px)"/>
+  <img src="images_html/why_expai_1.png" alt="" style="opacity:.1;filter:brightness(0.5) blur(1px)"/>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(6,8,16,0.7),rgba(6,8,16,0.95))"></div>
 </div>
 <div style="position:relative;z-index:2;padding:60px">
-  <img src="expai_logo_large.png" alt="EXPAI" class="rv" style="height:60px;margin-bottom:28px"/>
-  <div class="mono rv" style="font-size:12px;color:#0EA5E9;letter-spacing:5px;margin-bottom:18px;transition-delay:.1s">EXPERT AI FOR FACTORY</div>
-  <h2 class="stitle rv" style="transition-delay:.15s;text-align:center">"전문가의 20년이<br><span class="accent">AI의 하루</span>가 된다"</h2>
+  <img src="images_html/expai_logo_large.png" alt="EXPAI" class="rv" style="height:60px;margin-bottom:28px"/>
+  <div class="mono rv" style="font-size:12px;color:#0EA5E9;letter-spacing:5px;margin-bottom:18px;transition-delay:.1s">FACTORY EXPERTX</div>
+  <div class="rv" style="font-size:13px;color:#94A3B8;margin-bottom:14px;transition-delay:.12s">Factory ExpertX — 제조 특화 LLM 챗봇 플랫폼</div>
+  <h2 class="stitle rv" style="transition-delay:.15s;text-align:center"><span class="accent">"손안의 제조업 AI 전문가"</span></h2>
   <div class="divider rv" style="max-width:180px;margin:28px auto;transition-delay:.2s"></div>
   <div class="rv" style="transition-delay:.25s">
     <p style="font-size:18px;font-weight:700;color:#F1F5F9;margin-bottom:4px;letter-spacing:-.5px">EXPAI (엑스파이)</p>
@@ -876,9 +1265,9 @@ section>.inner{width:100%}
 
 <!-- FOOTER -->
 <div id="footer">
-  <img src="expai_logo_large.png" alt="EXPAI"/>
+  <img src="images_html/expai_logo_large.png" alt="EXPAI"/>
   <p>&copy; 2026 EXPAI Inc. All rights reserved.<br>
-  <span class="mono" style="font-size:12px;letter-spacing:1px">Expert AI for Factory &mdash; Sense / Think / Act / Learn</span></p>
+  <span class="mono" style="font-size:12px;letter-spacing:1px">Factory ExpertX &mdash; Thinking Factory Manager</span></p>
 </div>
 
 <script>
@@ -930,6 +1319,7 @@ document.querySelectorAll('.stat-num[data-target]').forEach(el=>co.observe(el))
 /* TABS - Case card tabs */
 document.querySelectorAll('.case-tab').forEach(tab=>{
   tab.addEventListener('click',()=>{
+    if(tab.classList.contains('active'))return
     const id=tab.dataset.tab
     document.querySelectorAll('.case-tab').forEach(t=>t.classList.remove('active'))
     tab.classList.add('active')
