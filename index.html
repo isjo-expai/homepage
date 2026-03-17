@@ -200,6 +200,20 @@ section>.inner{width:100%}
 .step-list li{font-size:12px;color:#AEAEBC;line-height:1.9;padding-left:14px;position:relative}
 .step-list li::before{content:'→';position:absolute;left:0;color:#0EA5E9;font-size:10px;top:1px}
 
+/* === VOICE GUIDE === */
+#voice-guide{position:fixed;left:24px;bottom:24px;z-index:170;display:flex;align-items:flex-end;gap:10px;pointer-events:none}
+#voice-mesh-wrap{width:90px;height:90px;border-radius:50%;overflow:hidden;background:#050510;border:1px solid rgba(14,165,233,0.2);box-shadow:0 0 20px rgba(14,165,233,0.08);flex-shrink:0}
+#voice-mesh{width:100%;height:100%;display:block}
+#voice-caption{max-width:240px;background:rgba(6,8,16,0.82);border:1px solid rgba(14,165,233,0.16);border-radius:10px;padding:10px 14px;backdrop-filter:blur(14px);opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s}
+#voice-caption.visible{opacity:1;transform:translateY(0)}
+.vc-header{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.vc-dot{width:6px;height:6px;border-radius:50%;background:#0EA5E9;animation:vcPulse 1.6s ease-in-out infinite;flex-shrink:0}
+@keyframes vcPulse{0%,100%{opacity:.4;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+.vc-label{font-size:10px;font-weight:600;letter-spacing:2px;color:#0EA5E9;font-family:'JetBrains Mono',monospace}
+.vc-title{font-size:12px;font-weight:700;color:#F1F5F9;margin-bottom:4px;letter-spacing:-.2px}
+.vc-text{font-size:11px;color:#94A3B8;line-height:1.65}
+@media(max-width:640px){#voice-guide{left:12px;bottom:56px}#voice-mesh-wrap{width:56px;height:56px}#voice-caption{display:none}}
+
 /* === RESPONSIVE === */
 @media(max-width:1024px){
   .g2{grid-template-columns:1fr}
@@ -251,7 +265,7 @@ section>.inner{width:100%}
 <div id="side-dots"></div>
 
 <!-- ======== HERO ======== -->
-<section id="hero" data-name="Home">
+<section id="hero" data-name="Home" data-voice-title="Factory ExpertX" data-voice="안녕하세요. EXPAI는 제조 전문가의 판단을 실행형 AI로 전환합니다. 공장을 감지·분석·실행·학습하는 Thinking Factory Manager입니다.">
   <div class="hero-bg">
     <img src="images_html/cover_1.png" alt="Factory ExpertX"/>
   </div>
@@ -281,7 +295,7 @@ section>.inner{width:100%}
 </div>
 
 <!-- ======== ABOUT ======== -->
-<section id="about" class="sec-glow" data-name="About">
+<section id="about" class="sec-glow" data-name="About" data-voice-title="About EXPAI" data-voice="XAI, LLM, ExpertX Agent를 결합해 제조 현장의 판단과 실행을 연결합니다. 현장 경험과 네트워크까지 갖춘 실행형 팀입니다.">
 <div class="inner">
   <div class="g2">
     <div>
@@ -325,7 +339,7 @@ section>.inner{width:100%}
 </section>
 
 <!-- ======== AI 도입 장벽 ======== -->
-<section id="barrier" class="sec-glow" data-name="AI 도입 장벽">
+<section id="barrier" class="sec-glow" data-name="AI 도입 장벽" data-voice-title="AI 도입 장벽" data-voice="첫째, 근거 없는 알람. 둘째, 실행·승인 체계의 부재. 셋째, PoC 이후 확장되지 않는 구조. EXPAI가 이 세 가지를 해결합니다.">
 <div class="sec-bg"><img src="images_html/business_1.png" alt=""/></div>
 <div class="inner">
   <div class="badge rv">02 // AI 도입 장벽</div>
@@ -380,7 +394,7 @@ section>.inner{width:100%}
 </section>
 
 <!-- ======== SOLUTION ======== -->
-<section id="solution" class="sec-glow" data-name="Solution">
+<section id="solution" class="sec-glow" data-name="Solution" data-voice-title="Factory ExpertX" data-voice="AssistX부터 ExpertX Agent, Platform Core까지 하나로 연결됩니다. RAGX·EEPX·DAIP·SSOTX가 데이터를 실행 구조로 전환합니다.">
 <div class="inner">
   <div class="g2" style="margin-bottom:10px">
     <div>
@@ -488,7 +502,7 @@ section>.inner{width:100%}
 
 
 <!-- ======== CASES ======== -->
-<section id="cases" class="sec-glow" data-name="Cases">
+<section id="cases" class="sec-glow" data-name="Cases" data-voice-title="적용 사례" data-voice="ExpertX Agent는 유지보전, 생산 최적화, 품질, 안전 영역으로 확장됩니다. 탭을 클릭해 각 사례를 확인하세요.">
 <div class="inner" style="padding-top:28px;padding-bottom:28px">
   <div class="badge rv">04 // ExpertX Agent Cases</div>
   <h2 class="stitle rv" style="transition-delay:.1s"><span class="accent">적용 사례</span></h2>
@@ -768,7 +782,7 @@ section>.inner{width:100%}
 </section>
 
 <!-- ======== 도입 절차 ======== -->
-<section id="consulting" class="sec-glow" data-name="도입 절차">
+<section id="consulting" class="sec-glow" data-name="도입 절차" data-voice-title="도입 프로세스" data-voice="도입은 무료 현장 진단으로 시작합니다. 6주 PoC로 핵심 유스케이스를 검증하고, ROI 기반으로 본도입을 전환합니다.">
 <div class="inner">
   <div class="badge rv">05 // ConsultingX</div>
   <h2 class="stitle rv" style="transition-delay:.1s">도입 시작 — <span class="accent">0원 진단</span>으로 시작합니다</h2>
@@ -835,7 +849,7 @@ section>.inner{width:100%}
 </section>
 
 <!-- ======== DEMO ======== -->
-<section id="demo" data-name="서비스 데모" style="background:linear-gradient(180deg,#060810 0%,#080D1A 50%,#060810 100%)">
+<section id="demo" data-name="서비스 데모" data-voice-title="Live Demo" data-voice="실제 화면에서 Factory ExpertX의 동작 방식을 확인할 수 있습니다. 질문을 전송해 AI의 근거 분석을 경험해보세요." style="background:linear-gradient(180deg,#060810 0%,#080D1A 50%,#060810 100%)">
 <div class="inner" style="padding-top:80px;padding-bottom:80px">
   <div class="rv" style="text-align:center;margin-bottom:40px">
     <div class="badge">LIVE DEMO</div>
@@ -1171,7 +1185,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeReportM
 </section>
 
 <!-- ======== TEAM ======== -->
-<section id="team" class="sec-glow" data-name="Team">
+<section id="team" class="sec-glow" data-name="Team" data-voice-title="Team" data-voice="EXPAI는 제조 현장 경험과 AI 연구개발 역량을 함께 가진 팀입니다.">
 <!-- <div class="sec-bg"><img src="images_html/why_expai_1.png" alt=""/></div> -->
 <div class="inner">
   <div class="badge rv">06 // Team</div>
@@ -1212,7 +1226,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeReportM
 </section>
 
 <!-- ======== CONTACT ======== -->
-<section id="contact" data-name="Contact" style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative">
+<section id="contact" data-name="Contact" data-voice-title="Contact" data-voice="적용 가능성 진단, 시연 요청, 도입 상담을 바로 시작할 수 있습니다." style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative">
 <div class="hero-bg" style="opacity:1">
   <img src="images_html/why_expai_1.png" alt="" style="opacity:.1;filter:brightness(0.5) blur(1px)"/>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(6,8,16,0.7),rgba(6,8,16,0.95))"></div>
@@ -1405,6 +1419,170 @@ document.querySelectorAll('.img-frame img').forEach(img=>{
   if(img.complete){img.style.opacity='1'}
   else{img.addEventListener('load',()=>{img.style.opacity='1'})}
 })
+</script>
+
+<!-- ======== VOICE GUIDE ======== -->
+<div id="voice-guide">
+  <div id="voice-mesh-wrap">
+    <canvas id="voice-mesh"></canvas>
+  </div>
+  <div id="voice-caption">
+    <div class="vc-header">
+      <div class="vc-dot"></div>
+      <span class="vc-label">NOW EXPLAINING</span>
+    </div>
+    <div class="vc-title" id="vc-section-title"></div>
+    <div class="vc-text" id="vc-text"></div>
+  </div>
+</div>
+
+<script>
+/* ===== MESH AVATAR (Voice Guide) ===== */
+(function(){
+const canvas=document.getElementById('voice-mesh');
+const ctx=canvas.getContext('2d');
+const dpr=Math.min(window.devicePixelRatio,2);
+function resize(){const s=canvas.clientWidth;canvas.width=s*dpr;canvas.height=s*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+resize();window.addEventListener('resize',resize);
+
+const RINGS=20,PTS=200,NUM_NODES=220;
+const seed=[];
+for(let i=0;i<NUM_NODES;i++)seed.push({ri:Math.random()*(RINGS-1),pi:Math.random()*PTS,baseSize:0.6+Math.random()*2.8,phase:Math.random()*Math.PI*2,speed:1.5+Math.random()*3,bright:0.3+Math.random()*0.7});
+
+let stateBoost=0.75,targetBoost=0.75;
+window.setMeshState=function(s){
+  if(s==='idle')targetBoost=0.75;
+  else if(s==='speaking')targetBoost=1.15;
+  else if(s==='emphasis')targetBoost=1.45;
+};
+
+function env(t){
+  const a=Math.max(0,Math.sin(t*2.8))*Math.max(0,Math.sin(t*0.6));
+  const b=Math.max(0,Math.sin(t*4.2+1))*0.7;
+  const c=Math.max(0,Math.sin(t*1.8+2.5))*0.5;
+  return Math.min(1,(a+b+c)*(0.5+0.5*Math.sin(t*0.25)))*stateBoost;
+}
+
+function ringPt(ri,pi,t,e,cx,cy,R){
+  const ang=(pi/PTS)*Math.PI*2,rT=ri/(RINGS-1),rR=R+(rT-0.5)*R*0.45;
+  const sp=1.0+ri*0.22,ph=ri*0.9,isC=ri>=RINGS-3;
+  const amp=isC?R*(0.04+e*0.10):R*(0.08+e*0.22)*(0.3+rT*0.7);
+  let d=Math.sin(ang*2+t*sp+ph)*0.5+Math.sin(ang*3-t*sp*0.8+ph*1.3)*0.4+Math.sin(ang*5+t*sp*1.4+ph*0.5)*0.3+Math.sin(ang*7-t*sp*0.5+ph*2.1)*0.2+Math.sin(ang*1+t*sp*1.8+ph*3)*0.35;
+  d*=amp;
+  return{x:cx+Math.cos(ang)*(rR+d),y:cy+Math.sin(ang)*(rR+d)};
+}
+
+function lerpPt(ri,pi,t,e,cx,cy,R){
+  const r0=Math.floor(ri),r1=Math.min(r0+1,RINGS-1),f=ri-r0;
+  const p0=ringPt(r0,pi,t,e,cx,cy,R),p1=ringPt(r1,pi,t,e,cx,cy,R);
+  return{x:p0.x+(p1.x-p0.x)*f,y:p0.y+(p1.y-p0.y)*f};
+}
+
+function animate(time){
+  requestAnimationFrame(animate);
+  stateBoost+=(targetBoost-stateBoost)*0.05;
+  const t=time*0.001,w=canvas.clientWidth,h=canvas.clientHeight,e=env(t),cx=w/2,cy=h/2,R=w*0.28;
+  ctx.clearRect(0,0,w,h);
+  ctx.fillStyle='#050510';ctx.fillRect(0,0,w,h);
+
+  const bg=ctx.createRadialGradient(cx,cy,R*0.2,cx,cy,R*(1.8+e*0.6));
+  bg.addColorStop(0,`rgba(40,120,200,${0.08+e*0.1})`);
+  bg.addColorStop(0.4,`rgba(15,50,120,${0.04+e*0.04})`);
+  bg.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+
+  const rings=[];
+  for(let r=0;r<RINGS;r++){const ps=[];for(let p=0;p<=PTS;p++)ps.push(ringPt(r,p%PTS,t,e,cx,cy,R));rings.push(ps);}
+
+  for(let r=0;r<RINGS-1;r++){const rT=r/(RINGS-1),isNC=r>=RINGS-4;
+    for(let p=0;p<PTS;p++){const a0=rings[r][p],a1=rings[r][p+1],b0=rings[r+1][p],b1=rings[r+1][p+1];
+      ctx.beginPath();ctx.moveTo(a0.x,a0.y);ctx.lineTo(a1.x,a1.y);ctx.lineTo(b1.x,b1.y);ctx.lineTo(b0.x,b0.y);ctx.closePath();
+      ctx.fillStyle=`rgba(40,150,240,${isNC?0.07+e*0.1:0.012+rT*0.03+e*0.03})`;ctx.fill();}}
+
+  for(let r=0;r<RINGS-1;r++){const rT=r/(RINGS-1),isNC=r>=RINGS-4;
+    ctx.strokeStyle=`rgba(50,160,240,${isNC?0.18+e*0.2:0.03+rT*0.06+e*0.05})`;ctx.lineWidth=isNC?0.8:0.4;
+    for(let p=0;p<PTS;p+=6){ctx.beginPath();ctx.moveTo(rings[r][p].x,rings[r][p].y);ctx.lineTo(rings[r+1][p].x,rings[r+1][p].y);ctx.stroke();}}
+
+  for(let r=0;r<RINGS;r++){const rT=r/(RINGS-1),isC=r>=RINGS-3,ps=rings[r];
+    ctx.beginPath();for(let p=0;p<=PTS;p++){if(p===0)ctx.moveTo(ps[p].x,ps[p].y);else ctx.lineTo(ps[p].x,ps[p].y);}ctx.closePath();
+    if(isC){ctx.save();ctx.shadowColor=`rgba(50,170,255,${0.8+e*0.2})`;ctx.shadowBlur=22+e*20;
+      ctx.strokeStyle=`rgba(60,190,255,${0.75+e*0.25})`;ctx.lineWidth=2.2;ctx.stroke();ctx.restore();
+      ctx.strokeStyle=`rgba(170,215,255,${0.5+e*0.3})`;ctx.lineWidth=0.8;ctx.stroke();
+    }else{ctx.strokeStyle=`rgba(40,150,220,${0.05+rT*0.12+e*0.1})`;ctx.lineWidth=0.5+rT*0.5;ctx.stroke();}}
+
+  for(let i=0;i<NUM_NODES;i++){const n=seed[i];const pp=lerpPt(n.ri,n.pi,t,e,cx,cy,R);
+    const pulse=Math.sin(t*n.speed+n.phase),rT=n.ri/(RINGS-1),isNearCore=n.ri>=RINGS-4;
+    const na=(isNearCore?0.5+e*0.4:0.08+rT*0.2+e*0.25)*n.bright*(0.7+pulse*0.3);
+    if(na<0.02)continue;const nr=n.baseSize*(isNearCore?1.5+e*1.2+pulse*0.5:0.8+e*0.7+pulse*0.3)*0.7;
+    const gs=nr*5;const grd=ctx.createRadialGradient(pp.x,pp.y,0,pp.x,pp.y,gs);
+    grd.addColorStop(0,`rgba(70,190,255,${na*0.5})`);grd.addColorStop(0.3,`rgba(30,130,210,${na*0.15})`);grd.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=grd;ctx.fillRect(pp.x-gs,pp.y-gs,gs*2,gs*2);
+    ctx.beginPath();ctx.arc(pp.x,pp.y,Math.max(0.3,nr),0,Math.PI*2);ctx.fillStyle=`rgba(150,215,255,${na})`;ctx.fill();}
+
+  ctx.save();const cr=rings[RINGS-2];ctx.beginPath();
+  for(let p=0;p<=PTS;p++){if(p===0)ctx.moveTo(cr[p].x,cr[p].y);else ctx.lineTo(cr[p].x,cr[p].y);}ctx.closePath();
+  ctx.shadowColor='rgba(50,180,255,0.9)';ctx.shadowBlur=55+e*35;
+  ctx.strokeStyle=`rgba(50,190,255,${0.25+e*0.25})`;ctx.lineWidth=3.5;ctx.stroke();ctx.restore();
+}
+requestAnimationFrame(animate);
+})();
+
+/* ===== VOICE SYSTEM ===== */
+(function(){
+const caption=document.getElementById('voice-caption');
+const titleEl=document.getElementById('vc-section-title');
+const textEl=document.getElementById('vc-text');
+let typingTimer=null,stateTimer=null;
+
+function showCaption(title,text){
+  caption.classList.remove('visible');
+  clearTimeout(typingTimer);clearTimeout(stateTimer);
+  setTimeout(()=>{
+    titleEl.textContent=title;
+    textEl.textContent='';
+    caption.classList.add('visible');
+    let i=0;
+    const displayText=text.length>110?text.slice(0,110)+'…':text;
+    function typeNext(){
+      if(i<displayText.length){
+        textEl.textContent=displayText.slice(0,++i);
+        typingTimer=setTimeout(typeNext,22);
+      }else{
+        stateTimer=setTimeout(()=>window.setMeshState('idle'),2500);
+      }
+    }
+    typeNext();
+  },350);
+}
+
+function activateSection(sec){
+  const title=sec.dataset.voiceTitle;
+  const text=sec.dataset.voice;
+  if(!title||!text)return;
+  window.setMeshState('speaking');
+  showCaption(title,text);
+}
+
+const voiceSo=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting)activateSection(e.target);});
+},{threshold:0.3});
+document.querySelectorAll('section[data-voice]').forEach(s=>voiceSo.observe(s));
+
+const caseVoice={
+  'c1':'이 사례는 6축 로봇의 센서 패턴과 정비 문서를 결합한 예지보전입니다.',
+  'c2':'이 사례는 전문가 운전 로직을 재현하는 소각로 운영 최적화입니다.',
+  'c3':'이 사례는 3D 스캔과 공차 기준을 결합한 품질 판정입니다.',
+  'c4':'이 사례는 다중 카메라 기반의 실시간 안전 감시입니다.'
+};
+document.querySelectorAll('.case-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    const txt=caseVoice[tab.dataset.tab];
+    if(!txt)return;
+    window.setMeshState('emphasis');
+    showCaption('적용 사례',txt);
+  });
+});
+})();
 </script>
 </body>
 </html>
